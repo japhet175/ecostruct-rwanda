@@ -1,15 +1,58 @@
+
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const SERVICES = ['Construction', 'Renovation', 'Electrical', 'Plumbing', 'Landscaping']
 
 export default function Hero() {
   const [videoError, setVideoError] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    // Forcer l'autoplay avec stratégie agressive
+    const forcePlay = () => {
+      const playPromise = video.play()
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Réessayer après interaction utilisateur
+          const onInteraction = () => {
+            video.play().catch(() => setVideoError(true))
+            document.removeEventListener('click', onInteraction)
+            document.removeEventListener('touchstart', onInteraction)
+          }
+          document.addEventListener('click', onInteraction)
+          document.addEventListener('touchstart', onInteraction)
+        })
+      }
+    }
+
+    // Démarrer la lecture
+    forcePlay()
+
+    // Maintenir la lecture (éviter les pauses intempestives)
+    const maintainPlay = () => {
+      if (video.paused && !video.ended && video.currentTime > 0) {
+        video.play().catch(() => {})
+      }
+    }
+
+    const interval = setInterval(maintainPlay, 1000)
+    video.addEventListener('pause', maintainPlay)
+    video.addEventListener('stalled', forcePlay)
+
+    return () => {
+      clearInterval(interval)
+      video.removeEventListener('pause', maintainPlay)
+      video.removeEventListener('stalled', forcePlay)
+    }
+  }, [])
 
   const handleVideoError = () => {
-    console.warn('Hero video failed to load')
     setVideoError(true)
   }
 
@@ -18,19 +61,20 @@ export default function Hero() {
       className="relative h-screen w-full overflow-hidden pt-16"
       aria-label="Hero section with background video"
     >
-      {/* Background video */}
+      {/* Video background */}
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
         className="absolute inset-0 w-full h-full object-cover"
         aria-hidden="true"
         onError={handleVideoError}
-       
       >
         <source src="/videos/hero-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
 
       {/* Dark overlay */}
@@ -39,7 +83,7 @@ export default function Hero() {
         aria-hidden="true" 
       />
 
-      {/* Main content */}
+      {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4 sm:px-6 lg:px-8">
         
         {/* Badge */}
@@ -48,25 +92,28 @@ export default function Hero() {
           Founded in 2024
         </div>
 
+        {/* Title */}
         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 leading-[1.1]">
           WE ARE{' '}
           <span className="text-amber-500 inline-block hover:scale-105 transition-transform duration-300">
-            E-CONSTRUCT
+            ECOSTRUCT
           </span>
         </h1>
 
+        {/* Tagline */}
         <p className="text-xl sm:text-2xl md:text-3xl font-semibold mb-6 text-amber-400">
           You Dream It, <span className="italic">We Build It</span>
         </p>
 
+        {/* Services list */}
         <p className="text-base sm:text-lg max-w-2xl mb-8 text-gray-200 tracking-wide">
           {SERVICES.join(' • ')}
         </p>
 
-        {/* Call to action buttons */}
+        {/* Buttons */}
         <div className="flex gap-4 flex-wrap justify-center">
           <Link
-            href="/contact"
+            href="/#contact"
             className="bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-gray-900 px-8 py-3 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-black/50 shadow-lg hover:shadow-xl"
           >
             Free Quote
