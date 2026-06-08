@@ -1,4 +1,4 @@
-// app/components/AboutSection.tsx
+
 'use client'
 
 import Image from 'next/image'
@@ -6,46 +6,42 @@ import { useEffect, useRef, useState } from 'react'
 import { founderPhoto } from '@/app/data/media'
 
 // ─────────────────────────────────────────────
-// Data
+// Data - ADAPTED FROM PDF
 // ─────────────────────────────────────────────
 
 const EXPERTISE_AREAS = [
   { label: 'Building Construction',        icon: '🏗️' },
-  { label: 'Renovation Works',             icon: '🔨' },
-  { label: 'Maintenance Services',         icon: '🔧' },
+  { label: 'Re-building Construction',     icon: '🔨' },
+  { label: 'Electrical & Plumbing',        icon: '⚡' },
   { label: 'Landscaping & External Works', icon: '🌿' },
-  { label: 'Technical Supervision',        icon: '📐' },
+  { label: 'Maintenance & Facility Mgmt',  icon: '🔧' },
 ]
 
 const STATS = [
   { value: 20,   suffix: '+', label: 'Years of Experience' },
-  { value: 10,   suffix: '+', label: 'Projects Completed'  },
-  { value: 100,  suffix: '%', label: 'Rwanda-Based'        },
+  { value: 2024, suffix: '',  label: 'Founded' },
+  { value: 100,  suffix: '%', label: 'Client Satisfaction' },
 ]
 
 const TIMELINE = [
   {
-    year: '20+ yrs',
-    title: 'Built in France',
-    body: 'Decades of hands-on experience across construction and renovation projects throughout France, building deep technical expertise.',
-  },
-  {
     year: '2024',
-    title: 'Return to Rwanda',
-    body: 'Ndemeye Gaius returned to Rwanda with a clear mission: bring international standards and modern methods home.',
+    title: 'Founded',
+    body: 'ECOSTRUCT was founded in 2024 by Ndemeye Gaius, bringing over 20 years of international construction experience to Rwanda.',
   },
   {
     year: 'Now',
-    title: 'ECOSTRUCT Rwanda',
-    body: 'Delivering quality, sustainable construction that raises the bar and leaves a lasting positive impact on communities.',
+    title: 'Trusted Partner',
+    body: 'We are trusted by international organizations, NGOs, and embassies, who have recognized our professionalism through official recommendation letters.',
   },
 ]
 
 const TRUST_SIGNALS = [
-  'Licensed & locally operated in Rwanda',
-  'Sustainable materials & methods',
-  'End-to-end project management',
-  'International construction standards',
+  '✓ Experience with international institutions',
+  '✓ Strong commitment to quality & safety',
+  '✓ Environmentally responsible practices',
+  '✓ Focus on human values & client satisfaction',
+  '✓ Reliable & on-time delivery',
 ]
 
 // ─────────────────────────────────────────────
@@ -108,7 +104,6 @@ function TimelineStep({
 }: (typeof TIMELINE)[number] & { index: number; total: number }) {
   return (
     <div className="relative flex gap-6">
-      {/* Left: dot + line */}
       <div className="flex flex-col items-center flex-shrink-0">
         <div className="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center shadow-md z-10">
           <span className="text-white text-xs font-bold leading-none text-center px-1">
@@ -119,8 +114,6 @@ function TimelineStep({
           <div className="w-0.5 flex-1 bg-gradient-to-b from-amber-400/60 to-green-200/20 mt-1" />
         )}
       </div>
-
-      {/* Right: content */}
       <div className="pb-10">
         <h4 className="font-bold text-green-900 text-lg mb-1">{title}</h4>
         <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
@@ -142,25 +135,22 @@ export default function AboutSection() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
 
-        {/* ── Headline ── */}
+        {/* Headline */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <span className="inline-block text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
             Who We Are
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-green-900 leading-tight">
-            Building Today,{' '}
-            <span className="text-amber-500">Preserving Tomorrow</span>
+            ECOSTRUCT – Your Trusted Partner in Rwanda
           </h2>
           <p className="mt-4 text-gray-500 text-lg leading-relaxed">
-            ECOSTRUCT Rwanda is a construction firm committed to quality,
-            sustainability, and lasting impact across the country.
+            Construction • Renovation • Electrical & Plumbing • Landscaping • Maintenance
           </p>
         </div>
 
-        {/* ── Founder: photo | bio + timeline ── */}
+        {/* Founder section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-24">
 
-          {/* Photo + trust signals */}
           <div className="flex flex-col gap-6">
             <figure className="rounded-2xl overflow-hidden shadow-xl ring-1 ring-green-900/10">
               <Image
@@ -173,26 +163,20 @@ export default function AboutSection() {
               />
             </figure>
 
-            {/* Trust signals below photo */}
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <ul className="grid grid-cols-1 gap-2">
               {TRUST_SIGNALS.map(item => (
                 <li
                   key={item}
-                  className="flex items-start gap-2 text-sm text-gray-600 bg-green-50 rounded-lg px-3 py-2"
+                  className="flex items-start gap-2 text-sm text-gray-700 bg-green-50 rounded-lg px-3 py-2"
                 >
-                  <span className="flex-shrink-0 mt-0.5 w-4 h-4 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 text-xs font-bold">
-                    ✓
-                  </span>
-                  {item}
+                  <span className="text-amber-500 text-base">{item.substring(0, 2)}</span>
+                  <span>{item.substring(2)}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Bio + timeline */}
           <div className="flex flex-col gap-8">
-
-            {/* Name & title */}
             <div className="border-l-4 border-amber-400 pl-5">
               <h3 className="text-3xl font-bold text-green-900">Ndemeye Gaius</h3>
               <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mt-1">
@@ -200,26 +184,17 @@ export default function AboutSection() {
               </p>
             </div>
 
-            {/* Bio paragraph */}
             <p className="text-gray-600 leading-relaxed">
-              With over{' '}
-              <strong className="text-green-900">20 years of experience</strong> in
-              the construction industry in France, Ndemeye Gaius built deep expertise,
-              high standards, and a passion for quality, sustainable, and innovative
-              construction. In{' '}
-              <strong className="text-green-900">2024</strong>, he returned to Rwanda
-              with a clear purpose: to bring international methods and modern standards
-              home, contributing to the country's development and building a better
-              future for the next generations.
+              <strong>ECOSTRUCT</strong> is a Rwandan company with proven expertise in construction, renovation, 
+              and technical facility management. We are trusted by international organizations, NGOs, and embassies, 
+              who have recognized our professionalism through official recommendation letters.
             </p>
 
-            {/* Divider */}
             <div className="border-t border-gray-100" />
 
-            {/* Timeline */}
             <div>
               <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
-                Journey
+                Our Journey
               </h4>
               {TIMELINE.map((step, i) => (
                 <TimelineStep
@@ -233,21 +208,18 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* ── Expertise cards ── */}
+        {/* Expertise cards */}
         <div className="mb-24">
           <div className="text-center mb-10">
             <span className="text-amber-600 font-semibold text-sm uppercase tracking-widest">
-              What We Do
+              Our Services
             </span>
             <h3 className="text-2xl md:text-3xl font-bold text-green-900 mt-2">
-              Areas of Expertise
+              What We Do Best
             </h3>
           </div>
 
-          <ul
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"
-            role="list"
-          >
+          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {EXPERTISE_AREAS.map(({ label, icon }) => (
               <li
                 key={label}
@@ -264,41 +236,31 @@ export default function AboutSection() {
           </ul>
         </div>
 
-        {/* ── Impact banner ── */}
+        {/* Impact banner */}
         <div className="rounded-3xl bg-green-900 overflow-hidden">
-          {/* Top accent strip */}
           <div className="h-1 w-full bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500" />
 
           <div className="px-8 py-14 md:px-16">
             <div className="text-center mb-12">
               <p className="text-amber-400 font-semibold text-sm uppercase tracking-widest mb-2">
-                Our Impact
+                Our Commitment
               </p>
               <h3 className="text-white text-2xl md:text-3xl font-bold">
-                Positive Impact on Communities & Environment
+                We don't just build structures – we build trust and long-lasting partnerships.
               </h3>
-              <p className="mt-3 text-green-300 text-sm max-w-lg mx-auto leading-relaxed">
-                Building responsibly — respecting people, strengthening communities,
-                and protecting our planet for future generations.
-              </p>
             </div>
 
-            {/* Stat cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
               {STATS.map(s => (
                 <StatCard key={s.label} {...s} />
               ))}
             </div>
 
-            {/* Bottom quote */}
             <div className="border-t border-white/10 pt-8 text-center">
               <blockquote className="text-green-100 text-lg md:text-xl font-medium italic max-w-2xl mx-auto leading-relaxed">
-                "Strong communities start with education, and strong education
-                starts with the spaces we build."
+                "Building responsibly — respecting people, strengthening communities,
+                and protecting our planet for future generations."
               </blockquote>
-              <p className="mt-3 text-amber-400 text-sm font-semibold">
-                — Ndemeye Gaius, Founder
-              </p>
             </div>
           </div>
         </div>

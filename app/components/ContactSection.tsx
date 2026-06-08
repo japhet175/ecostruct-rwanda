@@ -1,3 +1,4 @@
+
 'use client'
 
 import { useState, useCallback } from 'react'
@@ -5,7 +6,7 @@ import { useState, useCallback } from 'react'
 interface FormData {
   name: string
   email: string
- phone: string
+  phone: string
   message: string
 }
 
@@ -126,7 +127,7 @@ export default function ContactSection() {
 
         <div className="flex flex-wrap gap-8 max-w-5xl mx-auto">
           
-          {/* Contact Info Card */}
+          {/* Contact Info Card - updated with PDF info */}
           <div className="flex-1 min-w-[280px] bg-white/10 backdrop-blur-md rounded-2xl p-8 text-white border border-white/20 shadow-xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-amber-500/20 rounded-xl flex items-center justify-center">
@@ -136,6 +137,7 @@ export default function ContactSection() {
             </div>
             
             <div className="space-y-4">
+              {/* Phone Rwanda - from PDF */}
               <div className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors">
                 <span className="text-amber-400 text-xl">📞</span>
                 <div>
@@ -144,22 +146,25 @@ export default function ContactSection() {
                 </div>
               </div>
               
+              {/* Phone France - from PDF */}
               <div className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors">
                 <span className="text-amber-400 text-xl">📞</span>
                 <div>
                   <p className="text-sm text-green-200">France</p>
-                  <p className="font-medium">+33 6 44 84 22 56</p>
+                  <p className="font-medium">+33 64 84 422 56</p>
                 </div>
               </div>
               
+              {/* Email - from PDF */}
               <div className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors">
                 <span className="text-amber-400 text-xl">✉️</span>
                 <div>
                   <p className="text-sm text-green-200">Email</p>
-                  <p className="font-medium break-all">info@ecostruct-rwanda.com</p>
+                  <p className="font-medium break-all">ndemeyegals@gmail.com</p>
                 </div>
               </div>
               
+              {/* Location */}
               <div className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors">
                 <span className="text-amber-400 text-xl">📍</span>
                 <div>
