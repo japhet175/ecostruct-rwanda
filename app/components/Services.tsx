@@ -49,7 +49,7 @@ export default function Services() {
             What We Do Best
           </h2>
           <p className="text-gray-600 italic">
-            "Quality, durability, and professionalism — in every project we undertake."
+            "Building with Quality responsability and trust."
           </p>
         </div>
 
