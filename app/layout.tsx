@@ -11,8 +11,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'E-Construct | Construction & Renovation in Rwanda',
-  description: 'E-Construct - You Dream It We Build It. Construction, renovation, electrical, plumbing, landscaping in Rwanda.',
+  title: 'ECOSTRUCT | Construction & Renovation in Rwanda',
+  description: 'ECOSTRUCT - You Dream It We Build It. Construction, renovation, electrical, plumbing, landscaping in Rwanda.',
   icons: {
     icon: '/favicon.ico',
   },
