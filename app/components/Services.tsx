@@ -8,12 +8,31 @@ interface Service {
 }
 
 const services: Service[] = [
-  { icon: "🏗️", title: "Building Construction", description: "Industrial, commercial, institutional buildings - turnkey solutions with international standards." },
-  { icon: "🔄", title: "Re-building Construction", description: "Complete reconstruction, extension, and rehabilitation of existing structures." },
-  { icon: "🛋️", title: "Interior Design", description: "Custom layout, modern decoration, and functional space optimization." },
-  { icon: "🌿", title: "Garden Construction", description: "Green spaces creation, landscaping, and sustainable outdoor management." },
-  { icon: "⚡", title: "Electrical Wiring", description: "Professional electrical installation, repair, and maintenance services." },
-  { icon: "🔧", title: "Plumbing", description: "Complete plumbing installation, repair, and maintenance solutions." }
+  { 
+    icon: "🏗️", 
+    title: "Building Construction", 
+    description: "Residential, commercial and institutional buildings." 
+  },
+  { 
+    icon: "🔨", 
+    title: "Renovation Works", 
+    description: "Office renovation, schools, houses, apartments and public buildings." 
+  },
+  { 
+    icon: "🔧", 
+    title: "Maintenance Services", 
+    description: "Repairs, painting, plumbing, masonry, concrete and finishing works." 
+  },
+  { 
+    icon: "🌿", 
+    title: "Landscaping & External Works", 
+    description: "Fences, drainage, paving, gardens, external layouts." 
+  },
+  { 
+    icon: "📐", 
+    title: "Technical Supervision", 
+    description: "Formwork, reinforcement, concrete quality control and site coordination." 
+  }
 ]
 
 export default function Services() {
@@ -21,16 +40,16 @@ export default function Services() {
     <section className="py-20 bg-gray-50 scroll-mt-16" id="services">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header - conforme au PDF */}
+        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center rounded-full bg-green-100 px-4 py-1.5 text-sm font-medium text-green-800 mb-4">
-            ⭐ WE PROVIDE THE BEST SERVICES
+            ⭐ OUR AREAS OF EXPERTISE
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">
-            Our Professional Services
+            What We Do Best
           </h2>
-          <p className="text-gray-600">
-            Building Construction • Re-building Construction • Interior Design • Garden Construction • Electrical Wiring • Plumbing
+          <p className="text-gray-600 italic">
+            "Quality, durability, and professionalism — in every project we undertake."
           </p>
         </div>
 
