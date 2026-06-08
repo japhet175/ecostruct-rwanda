@@ -1,5 +1,4 @@
 
-'use client'
 
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
@@ -25,13 +24,18 @@ const STATS = [
 
 const TIMELINE = [
   {
+    year: '20+ yrs',
+    title: 'Built in France',
+    body: 'With more than 20 years of experience in the construction industry in France, Ndemeye Gaius developed strong expertise, high standards and a passion for quality, sustainable and innovative construction.',
+  },
+  {
     year: '2024',
-    title: 'Founded',
-    body: 'ECOSTRUCT was founded in 2024 by Ndemeye Gaius, bringing over 20 years of international construction experience to Rwanda.',
+    title: 'Return to Rwanda',
+    body: 'After many successful projects in France, he decided in 2024 to return to Rwanda with a clear purpose: to bring his knowledge, international experience and modern construction methods to his country.',
   },
   {
     year: 'Now',
-    title: 'Trusted Partner',
+    title: 'ECOSTRUCT Rwanda',
     body: 'We are trusted by international organizations, NGOs, and embassies, who have recognized our professionalism through official recommendation letters.',
   },
 ]
