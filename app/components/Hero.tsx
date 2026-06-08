@@ -1,14 +1,15 @@
+
 'use client'
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
 
+// Services from PDF - 5 core services
 const SERVICES = [
   'Building Construction',
-  'Re-building Construction',
-  'Interior Design',
-  'Garden Construction',
-  'Electrical Wiring',
-  'Plumbing',
+  'Renovation Works',
+  'Maintenance Services',
+  'Landscaping & External Works',
+  'Technical Supervision'
 ]
 
 export default function Hero() {
@@ -70,7 +71,7 @@ export default function Hero() {
 
         {/* Eyebrow */}
         <span className="inline-block text-amber-400 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] mb-4 border border-amber-400/40 rounded-full px-4 py-1.5">
-          Rwanda&apos;s Trusted Construction Partner
+          Rwanda's Trusted Construction Partner
         </span>
 
         {/* Headline */}
@@ -86,8 +87,8 @@ export default function Hero() {
           You Dream It — We Build It
         </p>
 
-        {/* Services list */}
-        <div className="flex flex-wrap justify-center gap-2 max-w-2xl mb-10">
+        {/* Services list - now with correct services */}
+        <div className="flex flex-wrap justify-center gap-2 max-w-3xl mb-10">
           {SERVICES.map((service) => (
             <span
               key={service}
