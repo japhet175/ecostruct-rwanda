@@ -1,4 +1,3 @@
-
 'use client'
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
@@ -87,7 +86,7 @@ export default function Hero() {
           You Dream It — We Build It
         </p>
 
-        {/* Services list - now with correct services */}
+        {/* Services list */}
         <div className="flex flex-wrap justify-center gap-2 max-w-3xl mb-10">
           {SERVICES.map((service) => (
             <span
@@ -108,7 +107,7 @@ export default function Hero() {
             Get a Free Quote
           </Link>
           <Link
-            href="/realisations"
+            href="/#gallery"
             className="border border-white/50 hover:border-white hover:bg-white/10 text-white px-8 py-3 rounded-lg font-semibold text-sm uppercase tracking-wide transition-all duration-200 backdrop-blur-sm hover:-translate-y-0.5"
           >
             View Our Work

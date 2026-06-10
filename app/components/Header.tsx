@@ -17,7 +17,6 @@ const NAV_LINKS: NavLink[] = [
   { href: '/', label: 'Home', labelFr: 'Accueil' },
   { href: '/#services', label: 'Services', labelFr: 'Services' },
   { href: '/#sustainability', label: 'Why Us', labelFr: 'Pourquoi Nous' },
-  { href: '/realisations', label: 'Projects', labelFr: 'Projets' },
   { href: '/#about', label: 'About', labelFr: 'À propos' },
   { href: '/#contact', label: 'Contact', labelFr: 'Contact' },
   { href: '/careers', label: 'Careers', labelFr: 'Carrières' },

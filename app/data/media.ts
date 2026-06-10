@@ -34,8 +34,7 @@ export const otherProjects = [
   { src: "/images/projects/projet-en-cours.jpeg", title: "Project in Progress", category: "Other Achievement" }
 ]
 
-// 5. Vidéo École Française (page /realisations)
-export const ecoleVideo = "/videos/Project ecole francaise.mp4"
+
 
 // 6. Vidéo témoignage (gardée)
 export const testimonialVideo = "/videos/Testimony.mp4"
