@@ -18,11 +18,11 @@ const teamMembers: TeamMember[] = [
     bio: "20+ years of experience in France, now leading construction excellence in Rwanda.",
   },
   {
-    name: "Strategic AI & Construction Relations",
-    role: "AI & Strategic Partnerships",
-    photo: "/images/equipe/strategic-ai-communication.jpg",
-    bio: "Driving AI-powered communication and strategic partnerships in construction.",
-  },
+  name: "Construction Software Security & Design",
+  role: "Security & Digital Design Lead",
+  photo: "/images/equipe/strategic-ai-communication.jpg",
+  bio: "Bridging secure software development and modern construction design for resilient infrastructure.",
+},
   {
     name: "Construction Legal & Compliance Director",
     role: "Legal & Compliance",
