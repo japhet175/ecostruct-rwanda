@@ -1,4 +1,9 @@
-// app/data/media.ts
+// Logo
+export const logoEnglish = "/images/logo/logo-english.jpeg"
+export const logoFrench = "/images/logo/logo-francais.jpeg"
+
+// Photo fondateur
+export const founderPhoto = "/images/equipe/founder.jpg"
 
 // 1. EGB + IMARA (stratégiques)
 export const egImaraPartners = [
