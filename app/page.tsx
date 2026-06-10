@@ -14,10 +14,10 @@ export default function Home() {
       <AboutSection />
       <Services />
       <Sustainability />
-      <VideoTestimonial />
-      <Gallery />
-      <ContactSection />
-      <Team />
+      <Team />                 // ← équipe juste après les valeurs (confiance)
+      <VideoTestimonial />     // ← preuve sociale après l’équipe
+      <Gallery />              // ← preuves visuelles
+      <ContactSection />       // ← appel à l’action final
     </main>
   )
 }

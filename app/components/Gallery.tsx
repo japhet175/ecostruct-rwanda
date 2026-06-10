@@ -1,16 +1,24 @@
 'use client'
 
 import Image from 'next/image'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useRef, useMemo, useCallback, useId } from 'react'
 import { egImaraPartners, ambassadePhotos, ecolePhotos, otherProjects } from '@/app/data/media'
+
+// ─── Types ────────────────────────────────────────────────────────────────────
 
 type TabKey = 'partners' | 'ecole' | 'others'
 
-interface Photo {
+interface PhotoItem {
   src: string
   title: string
   category: string
 }
+
+interface IndexedPhoto extends PhotoItem {
+  _globalIndex: number
+}
+
+// ─── Constants ────────────────────────────────────────────────────────────────
 
 const TABS: { key: TabKey; label: string; emoji: string }[] = [
   { key: 'partners', label: 'Strategic Partners', emoji: '🤝' },
@@ -18,90 +26,145 @@ const TABS: { key: TabKey; label: string; emoji: string }[] = [
   { key: 'others',   label: 'Other Projects',     emoji: '🏗️' },
 ]
 
+// ─── Component ────────────────────────────────────────────────────────────────
+
 export default function Gallery() {
-  const [selected, setSelected] = useState<number | null>(null)
-  const [activeTab, setActiveTab] = useState<TabKey>('partners')
+  const [selected,     setSelected]     = useState<number | null>(null)
+  const [activeTab,    setActiveTab]    = useState<TabKey>('partners')
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set())
 
-  const photosByTab: Record<TabKey, Photo[]> = {
-    partners: [...egImaraPartners, ...ambassadePhotos],
-    ecole: ecolePhotos,
-    others: otherProjects,
-  }
+  const cardRefs  = useRef<(HTMLDivElement | null)[]>([])
+  const touchStartX = useRef<number | null>(null)
+  const modalTitleId = useId()
 
-  const allPhotos: Photo[] = [
-    ...egImaraPartners,
-    ...ambassadePhotos,
-    ...ecolePhotos,
-    ...otherProjects,
-  ]
+  // Assign a stable global index once at mount
+  const allPhotos = useMemo<IndexedPhoto[]>(() =>
+    ([...egImaraPartners, ...ambassadePhotos, ...ecolePhotos, ...otherProjects] as PhotoItem[])
+      .map((p, i) => ({ ...p, _globalIndex: i })),
+  [])
+
+  // Each tab maps to a slice of allPhotos (already indexed)
+  const photosByTab = useMemo<Record<TabKey, IndexedPhoto[]>>(() => {
+    const byTab: Record<string, PhotoItem[]> = {
+      partners: [...egImaraPartners, ...ambassadePhotos],
+      ecole:    ecolePhotos,
+      others:   otherProjects,
+    }
+    // Attach global index by matching src
+    const srcToIndex = new Map(allPhotos.map((p) => [p.src, p._globalIndex]))
+    return Object.fromEntries(
+      Object.entries(byTab).map(([key, photos]) => [
+        key,
+        (photos as PhotoItem[]).map((p) => ({
+          ...p,
+          _globalIndex: srcToIndex.get(p.src) ?? -1,
+        })),
+      ])
+    ) as Record<TabKey, IndexedPhoto[]>
+  }, [allPhotos])
 
   const currentPhotos = photosByTab[activeTab]
 
-  // Keyboard navigation
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (selected === null) return
-      if (e.key === 'ArrowRight') setSelected((s) => (s! + 1) % allPhotos.length)
-      if (e.key === 'ArrowLeft')  setSelected((s) => (s! - 1 + allPhotos.length) % allPhotos.length)
-      if (e.key === 'Escape')     setSelected(null)
-    },
-    [selected, allPhotos.length]
-  )
-
+  // ── Tab change: reset cards and refs ──────────────────────────────────────
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [handleKeyDown])
+    setVisibleCards(new Set())
+    cardRefs.current = []
+  }, [activeTab])
 
-  // Lock body scroll when modal is open
+  // ── Scroll-in animation via IntersectionObserver ──────────────────────────
+  useEffect(() => {
+    // Wait one tick so cardRefs are populated after the reset
+    const id = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const index = cardRefs.current.indexOf(entry.target as HTMLDivElement)
+            if (entry.isIntersecting && index !== -1) {
+              setVisibleCards((prev) => new Set([...prev, index]))
+            }
+          })
+        },
+        { threshold: 0.15, rootMargin: '40px' }
+      )
+      cardRefs.current.forEach((ref) => { if (ref) observer.observe(ref) })
+      return () => observer.disconnect()
+    }, 0)
+    return () => clearTimeout(id)
+  }, [activeTab])
+
+  // ── Lock body scroll while modal is open ─────────────────────────────────
   useEffect(() => {
     document.body.style.overflow = selected !== null ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [selected])
 
-  const openPhoto = (photo: Photo) => {
-    const idx = allPhotos.findIndex((p) => p.src === photo.src)
-    setSelected(idx !== -1 ? idx : null)
+  // ── Keyboard navigation ───────────────────────────────────────────────────
+  const navigate = useCallback((delta: number) => {
+    setSelected((s) => s !== null
+      ? Math.max(0, Math.min(allPhotos.length - 1, s + delta))
+      : null
+    )
+  }, [allPhotos.length])
+
+  useEffect(() => {
+    if (selected === null) return
+    const handle = (e: KeyboardEvent) => {
+      if (e.key === 'Escape')      setSelected(null)
+      if (e.key === 'ArrowRight')  navigate(+1)
+      if (e.key === 'ArrowLeft')   navigate(-1)
+    }
+    window.addEventListener('keydown', handle)
+    return () => window.removeEventListener('keydown', handle)
+  }, [selected, navigate])
+
+  // ── Swipe on mobile ───────────────────────────────────────────────────────
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return
+    const delta = touchStartX.current - e.changedTouches[0].clientX
+    if (Math.abs(delta) > 50) navigate(delta > 0 ? +1 : -1)
+    touchStartX.current = null
   }
 
-  const navigate = (e: React.MouseEvent, dir: 1 | -1) => {
-    e.stopPropagation()
-    setSelected((s) => ((s ?? 0) + dir + allPhotos.length) % allPhotos.length)
-  }
+  // ─── Render ───────────────────────────────────────────────────────────────
 
   return (
-    <section className="py-20 bg-gray-50 scroll-mt-16" id="gallery">
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white scroll-mt-16" id="gallery">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-amber-600 font-semibold text-sm uppercase tracking-wider">
-            Our Portfolio
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-green-900 mt-2 mb-4">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
+            <span className="w-2 h-2 bg-green-600 rounded-full animate-pulse" aria-hidden="true" />
+            EXPLORE OUR WORK
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-green-900 mt-3 mb-4">
             Our Projects & Partnerships
           </h2>
-          <p className="text-gray-600">
-            Discover our strategic partnerships and key achievements in Rwanda.
+          <p className="text-gray-600 text-lg">
+            Discover the projects that have earned us the trust of leading institutions.
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
           {TABS.map(({ key, label, emoji }) => (
             <button
               key={key}
               onClick={() => setActiveTab(key)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
+              aria-pressed={activeTab === key}
+              className={`px-6 py-3 rounded-full text-base font-semibold transition-all duration-300 flex items-center gap-2 shadow-md hover:shadow-lg ${
                 activeTab === key
-                  ? 'bg-green-900 text-white shadow-md scale-105'
-                  : 'bg-white text-gray-700 hover:bg-green-100 border border-gray-200'
+                  ? 'bg-green-800 text-white scale-105 shadow-xl'
+                  : 'bg-white text-gray-700 hover:bg-green-50 border border-gray-200'
               }`}
             >
-              <span>{emoji}</span>
-              <span>{label}</span>
-              <span className={`text-xs rounded-full px-2 py-0.5 ${
-                activeTab === key ? 'bg-white/20' : 'bg-gray-100 text-gray-500'
+              <span className="text-xl" aria-hidden="true">{emoji}</span>
+              {label}
+              <span className={`ml-1 text-xs rounded-full px-2 py-0.5 ${
+                activeTab === key ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-500'
               }`}>
                 {photosByTab[key].length}
               </span>
@@ -109,107 +172,139 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* Grid */}
-        {currentPhotos.length === 0 ? (
-          <p className="text-center text-gray-400 py-20">No photos in this category yet.</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {currentPhotos.map((photo, idx) => (
-              <button
-                key={`${photo.src}-${idx}`}
-                onClick={() => openPhoto(photo)}
-                className="group relative aspect-video bg-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
-                aria-label={`View ${photo.title}`}
-              >
+        {/* Partnership banner */}
+        {activeTab === 'partners' && (
+          <div className="relative overflow-hidden mb-12 rounded-2xl bg-gradient-to-r from-amber-50 to-green-50 border border-amber-200 shadow-md">
+            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#eab308_1px,transparent_1px)] [background-size:16px_16px]" aria-hidden="true" />
+            <div className="relative p-5 text-center">
+              <p className="text-green-800 text-base md:text-lg font-semibold flex flex-wrap items-center justify-center gap-2">
+                <span className="text-3xl" aria-hidden="true">🤝</span>
+                <span>
+                  ECOSTRUCT is proud to collaborate with{' '}
+                  <strong className="text-amber-700">EGB</strong> and{' '}
+                  <strong className="text-amber-700">IMARA Property</strong>{' '}
+                  on strategic construction projects.
+                </span>
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Card grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {currentPhotos.map((photo, idx) => (
+            <div
+              key={`${photo.src}-${idx}`}
+              ref={(el) => { cardRefs.current[idx] = el }}
+              onClick={() => setSelected(photo._globalIndex)}
+              onKeyDown={(e) => e.key === 'Enter' && setSelected(photo._globalIndex)}
+              role="button"
+              tabIndex={0}
+              aria-label={`View ${photo.title}`}
+              className={`group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-lg
+                hover:shadow-2xl transition-all duration-500 hover:-translate-y-2
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700
+                ${visibleCards.has(idx) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${idx * 80}ms` }}
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                 {photo.src ? (
                   <Image
                     src={photo.src}
                     alt={photo.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400 text-4xl">
+                  <div className="w-full h-full flex items-center justify-center text-gray-400 text-5xl bg-gray-50"
+                       aria-label="No image available">
                     📷
                   </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-white font-semibold leading-tight">{photo.title}</p>
-                    <p className="text-white/70 text-sm mt-0.5">{photo.category}</p>
-                  </div>
+                <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white text-xs font-semibold px-2 py-1 rounded-full">
+                  {photo.category}
                 </div>
-              </button>
-            ))}
-          </div>
-        )}
+              </div>
+
+              <div className="p-5 bg-white">
+                <h3 className="text-lg font-bold text-green-800 leading-tight mb-1">
+                  {photo.title}
+                </h3>
+                {photo.title.includes('EGB') || photo.title.includes('IMARA') ? (
+                  <div className="mt-2 inline-flex items-center gap-1 bg-amber-100 text-amber-800 text-xs font-semibold px-2 py-1 rounded-full">
+                    <span aria-hidden="true">🤝</span> ECOSTRUCT × EGB × IMARA
+                  </div>
+                ) : (
+                  <p className="text-sm text-gray-500 mt-1">{photo.category}</p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Modal / Lightbox */}
+      {/* Modal */}
       {selected !== null && (
         <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelected(null)}
           role="dialog"
           aria-modal="true"
-          aria-label="Photo viewer"
+          aria-labelledby={modalTitleId}
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
+          style={{ animation: 'gallery-fade-in 0.2s ease-out' }}
+          onClick={() => setSelected(null)}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
         >
           <div
-            className="relative bg-gray-900 rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl"
+            className="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-auto relative"
+            style={{ animation: 'gallery-scale-in 0.3s ease-out' }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close button */}
+            {/* Prev */}
             <button
-              onClick={() => setSelected(null)}
-              className="absolute top-3 right-3 z-10 bg-black/50 hover:bg-black/80 text-white rounded-full w-9 h-9 flex items-center justify-center transition"
-              aria-label="Close"
+              aria-label="Previous image"
+              onClick={(e) => { e.stopPropagation(); navigate(-1) }}
+              disabled={selected === 0}
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 disabled:opacity-20 text-white rounded-full p-3 transition focus-visible:ring-2 focus-visible:ring-white"
             >
-              ✕
+              ←
             </button>
 
-            {/* Counter */}
-            <div className="absolute top-3 left-3 z-10 bg-black/50 text-white text-xs rounded-full px-3 py-1">
-              {selected + 1} / {allPhotos.length}
+            {/* Next */}
+            <button
+              aria-label="Next image"
+              onClick={(e) => { e.stopPropagation(); navigate(+1) }}
+              disabled={selected === allPhotos.length - 1}
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 disabled:opacity-20 text-white rounded-full p-3 transition focus-visible:ring-2 focus-visible:ring-white"
+            >
+              →
+            </button>
+
+            <div className="relative aspect-video">
+              <Image
+                src={allPhotos[selected].src}
+                alt={allPhotos[selected].title}
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
 
-            {/* Image */}
-            <div className="aspect-video bg-gray-800 relative">
-              {allPhotos[selected]?.src ? (
-                <Image
-                  src={allPhotos[selected].src}
-                  alt={allPhotos[selected].title}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 768px"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-white/40 text-5xl">
-                  📷
-                </div>
-              )}
-
-              {/* Prev / Next arrows */}
+            <div className="p-6 text-center">
+              <h3 id={modalTitleId} className="text-xl font-bold text-white mb-1">
+                {allPhotos[selected].title}
+              </h3>
+              <p className="text-amber-400 text-sm">{allPhotos[selected].category}</p>
+              <p className="text-gray-500 text-xs mt-1">
+                {selected + 1} / {allPhotos.length}
+              </p>
               <button
-                onClick={(e) => navigate(e, -1)}
-                className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white rounded-full w-10 h-10 flex items-center justify-center transition"
-                aria-label="Previous photo"
+                onClick={() => setSelected(null)}
+                className="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm transition focus-visible:ring-2 focus-visible:ring-white"
               >
-                ‹
+                Close ✕
               </button>
-              <button
-                onClick={(e) => navigate(e, 1)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white rounded-full w-10 h-10 flex items-center justify-center transition"
-                aria-label="Next photo"
-              >
-                ›
-              </button>
-            </div>
-
-            {/* Caption */}
-            <div className="p-4 text-center">
-              <p className="text-white font-semibold">{allPhotos[selected]?.title}</p>
-              <p className="text-sm text-gray-400 mt-1">{allPhotos[selected]?.category}</p>
             </div>
           </div>
         </div>
