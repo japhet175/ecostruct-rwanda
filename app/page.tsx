@@ -5,6 +5,7 @@ import Sustainability from './components/Sustainability'
 import Team from './components/Team'
 import VideoTestimonial from './components/VideoTestimonial'
 import Gallery from './components/Gallery'
+import Careers from './components/Careers'
 import ContactSection from './components/ContactSection'
 
 export default function Home() {
@@ -14,10 +15,11 @@ export default function Home() {
       <AboutSection />
       <Services />
       <Sustainability />
-      <Team />                 // ← équipe juste après les valeurs (confiance)
-      <VideoTestimonial />     // ← preuve sociale après l’équipe
-      <Gallery />              // ← preuves visuelles
-      <ContactSection />       // ← appel à l’action final
+      <Team />
+      <VideoTestimonial />
+      <Gallery />
+      <Careers />
+      <ContactSection />
     </main>
   )
 }
