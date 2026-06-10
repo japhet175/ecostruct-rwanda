@@ -1,39 +1,36 @@
 // app/data/media.ts
 
-// Photos des projets pour la galerie
-export const projectPhotos = [
-  { src: "/images/projects/simple.jpeg", title: "Modern Construction", category: "Construction" },
-  { src: "/images/projects/simple-2.jpeg", title: "Residential Villa", category: "Renovation" },
-  { src: "/images/projects/simple-3.jpeg", title: "Commercial Building", category: "Construction" },
-  { src: "/images/projects/simple-4.jpeg", title: "Landscaping Project", category: "Landscaping" },
-  { src: "/images/projects/Avenir.jpeg", title: "Avenir Complex", category: "Construction" },
-  { src: "/images/projects/projet-en-cours.jpeg", title: "Current Project", category: "Renovation" },
-  { src: "/images/projects/photo-galerie-3.jpeg", title: "Office Building", category: "Construction" },
-  { src: "/images/projects/photo-j.jpeg", title: "Residential Project", category: "Renovation" },
+// 1. EGB + IMARA (stratégiques)
+export const egImaraPartners = [
+  { src: "/images/projects/egb-imara-partnership.jpg", title: "EGB & IMARA Property", category: "Strategic Partnership" },
+  { src: "/images/projects/egb-imara-2.jpg", title: "EGB Partnership", category: "Strategic Partner" },
+  { src: "/images/projects/egb-imara-3.jpg", title: "IMARA Property", category: "Strategic Partner" }
 ]
 
-// Vidéos pour la galerie vidéo
-export const projectVideos = [
-  { 
-    title: "Construction Project", 
-    src: "/videos/project-middle.mp4",
-    thumbnail: "/images/projects/simple.jpeg"
-  },
-  { 
-    title: "Renovation Work", 
-    src: "/videos/project-whatsapp.mp4",
-    thumbnail: "/images/projects/simple-2.jpeg"
-  },
-  { 
-    title: "Latest Project", 
-    src: "/videos/project-last.mp4",
-    thumbnail: "/images/projects/Avenir.jpeg"
-  },
+// 2. Ambassade de France
+export const ambassadePhotos = [
+  { src: "/images/projects/ambassade-france-project.jpeg", title: "Ambassade de France", category: "Institutional Partner" }
 ]
 
-// Logo (version anglaise par défaut)
-export const logoEnglish = "/images/logo/logo-english.jpeg"
-export const logoFrench = "/images/logo/logo-francais.jpeg"
+// 3. École Française (6 photos)
+export const ecolePhotos = [
+  { src: "/images/projects/ecole-francaise-1.jpg", title: "École Française", category: "Renovation" },
+  { src: "/images/projects/ecole-francaise-2.jpg", title: "École Française", category: "Renovation" },
+  { src: "/images/projects/ecole-francaise-3.jpg", title: "École Française", category: "Renovation" },
+  { src: "/images/projects/ecole-francaise-4.jpg", title: "École Française", category: "Renovation" },
+  { src: "/images/projects/ecole-francaise-5.jpg", title: "École Française", category: "Renovation" },
+  { src: "/images/projects/ecole-francaise-6.jpg", title: "École Française", category: "Renovation" }
+]
 
-// Photo du fondateur - CORRIGÉ (dossier equipe au lieu de team)
-export const founderPhoto = "/images/equipe/founder.jpg"  
+// 4. Autres projets (auxiliaires – fin de galerie)
+export const otherProjects = [
+  { src: "/images/projects/Avenir.jpeg", title: "Avenir Project", category: "Other Achievement" },
+  { src: "/images/projects/Project1.jpeg", title: "Project 1", category: "Other Achievement" },
+  { src: "/images/projects/projet-en-cours.jpeg", title: "Project in Progress", category: "Other Achievement" }
+]
+
+// 5. Vidéo École Française (page /realisations)
+export const ecoleVideo = "/videos/Project ecole francaise.mp4"
+
+// 6. Vidéo témoignage (gardée)
+export const testimonialVideo = "/videos/Testimony.mp4"

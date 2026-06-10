@@ -2,7 +2,7 @@ import Hero from './components/Hero'
 import AboutSection from './components/AboutSection'
 import Services from './components/Services'
 import Sustainability from './components/Sustainability'
-import FeaturedProject from './components/FeaturedProject'
+import Team from './components/Team'
 import VideoTestimonial from './components/VideoTestimonial'
 import Gallery from './components/Gallery'
 import ContactSection from './components/ContactSection'
@@ -14,10 +14,10 @@ export default function Home() {
       <AboutSection />
       <Services />
       <Sustainability />
-      <FeaturedProject />
       <VideoTestimonial />
       <Gallery />
       <ContactSection />
+      <Team />
     </main>
   )
 }
