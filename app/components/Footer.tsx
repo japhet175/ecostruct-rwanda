@@ -41,6 +41,7 @@ export default function Footer() {
               <li><Link href="/realisations" className="hover:text-amber-400 transition">Projects</Link></li>
               <li><Link href="/#about" className="hover:text-amber-400 transition">About</Link></li>
               <li><Link href="/contact" className="hover:text-amber-400 transition">Contact</Link></li>
+              <li><Link href="/careers" className="hover:text-amber-400 transition">Careers</Link></li>
             </ul>
           </div>
 

@@ -20,6 +20,7 @@ const NAV_LINKS: NavLink[] = [
   { href: '/realisations', label: 'Projects', labelFr: 'Projets' },
   { href: '/#about', label: 'About', labelFr: 'À propos' },
   { href: '/#contact', label: 'Contact', labelFr: 'Contact' },
+  { href: '/careers', label: 'Careers', labelFr: 'Carrières' },
 ]
 
 const SLOGANS: Record<Language, string> = {
