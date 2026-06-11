@@ -1,8 +1,6 @@
-
 'use client'
 
 import { useState, useCallback } from 'react'
-import { useLanguage } from '../i18n/LanguageContext'
 
 interface FormData {
   name: string
@@ -12,7 +10,6 @@ interface FormData {
 }
 
 export default function ContactSection() {
-  const { t } = useLanguage()
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -35,6 +32,7 @@ export default function ContactSection() {
     e.preventDefault()
     setIsSubmitting(true)
     
+    // Simulation d'envoi (à remplacer par votre API)
     await new Promise(resolve => setTimeout(resolve, 1000))
     
     console.log('Form submitted:', formData)
@@ -48,13 +46,13 @@ export default function ContactSection() {
   const InputField = ({ 
     name, 
     type = 'text', 
-    placeholderKey, 
+    placeholder, 
     required = false,
     rows 
   }: { 
     name: keyof FormData
     type?: string
-    placeholderKey: string
+    placeholder: string
     required?: boolean
     rows?: number
   }) => {
@@ -96,7 +94,7 @@ export default function ContactSection() {
               : 'top-3.5 text-gray-500 group-hover:text-gray-700'
             }`}
         >
-          {t(`Contact.${placeholderKey}`)} {required && <span className="text-amber-500">*</span>}
+          {placeholder} {required && <span className="text-amber-500">*</span>}
         </label>
       </div>
     )
@@ -105,6 +103,7 @@ export default function ContactSection() {
   return (
     <section className="py-24 bg-gradient-to-br from-green-900 via-green-800 to-green-900 scroll-mt-16 relative overflow-hidden" id="contact">
       
+      {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-72 h-72 bg-amber-500 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-green-500 rounded-full blur-3xl" />
@@ -112,29 +111,32 @@ export default function ContactSection() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
+        {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">
-            {t('Contact.getInTouch')}
+            Get in Touch
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
-            {t('Contact.title')}
+            Ready to Start Your Project?
           </h2>
           <p className="text-green-100 text-lg">
-            {t('Contact.subtitle')}
+            Contact us today for a free quote. We'll respond within 24 hours.
           </p>
         </div>
 
         <div className="flex flex-wrap gap-8 max-w-5xl mx-auto">
           
+          {/* Contact Info Card - updated with PDF info */}
           <div className="flex-1 min-w-[280px] bg-white/10 backdrop-blur-md rounded-2xl p-8 text-white border border-white/20 shadow-xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-amber-500/20 rounded-xl flex items-center justify-center">
                 <span className="text-amber-400 text-xl">📞</span>
               </div>
-              <h3 className="text-xl font-semibold">{t('Contact.getInTouch')}</h3>
+              <h3 className="text-xl font-semibold">Contact Information</h3>
             </div>
             
             <div className="space-y-4">
+              {/* Phone Rwanda - from PDF */}
               <div className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors">
                 <span className="text-amber-400 text-xl">📞</span>
                 <div>
@@ -143,6 +145,7 @@ export default function ContactSection() {
                 </div>
               </div>
               
+              {/* Phone France - from PDF */}
               <div className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors">
                 <span className="text-amber-400 text-xl">📞</span>
                 <div>
@@ -151,25 +154,27 @@ export default function ContactSection() {
                 </div>
               </div>
               
+              {/* Email - from PDF */}
               <div className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors">
                 <span className="text-amber-400 text-xl">✉️</span>
                 <div>
-                  <p className="text-sm text-green-200">{t('Contact.email')}</p>
+                  <p className="text-sm text-green-200">Email</p>
                   <p className="font-medium break-all">ndemeyegals@gmail.com</p>
                 </div>
               </div>
               
+              {/* Location */}
               <div className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors">
                 <span className="text-amber-400 text-xl">📍</span>
                 <div>
-                  <p className="text-sm text-green-200">{t('Contact.location')}</p>
+                  <p className="text-sm text-green-200">Location</p>
                   <p className="font-medium">Kigali, Rwanda</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-8 pt-6 border-t border-white/20">
-              <p className="text-sm text-green-200 mb-3">{t('Contact.followUs')}:</p>
+              <p className="text-sm text-green-200 mb-3">Follow us:</p>
               <div className="flex gap-3">
                 <a href="#" className="w-10 h-10 bg-white/10 hover:bg-amber-500 rounded-full flex items-center justify-center transition-all duration-200 group">
                   <span className="text-white group-hover:text-white">🔗</span>
@@ -181,12 +186,13 @@ export default function ContactSection() {
             </div>
           </div>
 
+          {/* Form Card */}
           <form onSubmit={handleSubmit} className="flex-1 min-w-[280px] bg-white rounded-2xl p-8 shadow-2xl">
             <div className="space-y-5">
-              <InputField name="name" placeholderKey="fullName" required />
-              <InputField name="email" type="email" placeholderKey="emailAddress" required />
-              <InputField name="phone" placeholderKey="phoneNumber" />
-              <InputField name="message" placeholderKey="message" required rows={5} />
+              <InputField name="name" placeholder="Full Name" required />
+              <InputField name="email" type="email" placeholder="Email Address" required />
+              <InputField name="phone" placeholder="Phone Number" />
+              <InputField name="message" placeholder="Tell us about your project" required rows={5} />
               
               <button
                 type="submit"
@@ -196,16 +202,17 @@ export default function ContactSection() {
                 {isSubmitting ? (
                   <div className="flex items-center justify-center gap-2">
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    {t('Contact.sending')}...
+                    Sending...
                   </div>
                 ) : (
-                  t('Contact.send')
+                  'Send Message →'
                 )}
               </button>
 
+              {/* Status Messages */}
               {submitStatus === 'success' && (
                 <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-xl text-green-700 text-sm text-center animate-in fade-in">
-                  ✓ {t('Contact.success')}
+                  ✓ Message sent successfully! We'll contact you soon.
                 </div>
               )}
             </div>
