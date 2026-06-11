@@ -1,5 +1,6 @@
-
 'use client'
+
+import { useLanguage } from '../i18n/LanguageContext'
 
 interface Service {
   icon: string
@@ -7,35 +8,18 @@ interface Service {
   description: string
 }
 
-const services: Service[] = [
-  { 
-    icon: "🏗️", 
-    title: "Building Construction", 
-    description: "Residential, commercial and institutional buildings." 
-  },
-  { 
-    icon: "🔨", 
-    title: "Renovation Works", 
-    description: "Office renovation, schools, houses, apartments and public buildings." 
-  },
-  { 
-    icon: "🔧", 
-    title: "Maintenance Services", 
-    description: "Repairs, painting, plumbing, masonry, concrete and finishing works." 
-  },
-  { 
-    icon: "🌿", 
-    title: "Landscaping & External Works", 
-    description: "Fences, drainage, paving, gardens, external layouts." 
-  },
-  { 
-    icon: "📐", 
-    title: "Technical Supervision", 
-    description: "Formwork, reinforcement, concrete quality control and site coordination." 
-  }
-]
-
 export default function Services() {
+  const { t } = useLanguage()
+
+  // Utilise les traductions depuis les fichiers JSON
+  const services: Service[] = [
+    { icon: "🏗️", title: t('Services.building'), description: t('Services.buildingDesc') },
+    { icon: "🔨", title: t('Services.renovation'), description: t('Services.renovationDesc') },
+    { icon: "🔧", title: t('Services.maintenance'), description: t('Services.maintenanceDesc') },
+    { icon: "🌿", title: t('Services.landscaping'), description: t('Services.landscapingDesc') },
+    { icon: "📐", title: t('Services.supervision'), description: t('Services.supervisionDesc') }
+  ]
+
   return (
     <section className="py-20 bg-gray-50 scroll-mt-16" id="services">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,13 +27,13 @@ export default function Services() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center rounded-full bg-green-100 px-4 py-1.5 text-sm font-medium text-green-800 mb-4">
-            ⭐ OUR AREAS OF EXPERTISE
+            ⭐ {t('Services.badge')}
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">
-            What We Do Best
+            {t('Services.title')}
           </h2>
           <p className="text-gray-600 italic">
-            "Building with Quality responsability and trust."
+            "{t('Services.subtitle')}"
           </p>
         </div>
 

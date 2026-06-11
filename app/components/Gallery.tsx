@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useState, useEffect, useRef, useMemo, useCallback, useId } from 'react'
 import { egImaraPartners, inProgressPhotos, ecolePhotos, otherProjects } from '@/app/data/media'
-// ─── Types ────────────────────────────────────────────────────────────────────
+import { useLanguage } from '../i18n/LanguageContext'
 
 type TabKey = 'partners' | 'ecole' | 'others'
 
@@ -17,39 +17,33 @@ interface IndexedPhoto extends PhotoItem {
   _globalIndex: number
 }
 
-// ─── Constants ────────────────────────────────────────────────────────────────
-
-const TABS: { key: TabKey; label: string; emoji: string }[] = [
-  { key: 'partners', label: 'Strategic Partners', emoji: '🤝' },
-  { key: 'ecole',    label: 'École Française',    emoji: '🏫' },
-  { key: 'others',   label: 'Other Projects',     emoji: '🏗️' },
-]
-
-// ─── Component ────────────────────────────────────────────────────────────────
-
 export default function Gallery() {
-  const [selected,     setSelected]     = useState<number | null>(null)
-  const [activeTab,    setActiveTab]    = useState<TabKey>('partners')
+  const { t, language } = useLanguage()
+  const [selected, setSelected] = useState<number | null>(null)
+  const [activeTab, setActiveTab] = useState<TabKey>('partners')
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set())
 
-  const cardRefs  = useRef<(HTMLDivElement | null)[]>([])
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
   const touchStartX = useRef<number | null>(null)
   const modalTitleId = useId()
 
-  // Assign a stable global index once at mount
+  const TABS: { key: TabKey; label: string; emoji: string }[] = [
+    { key: 'partners', label: t('Gallery.tabPartners'), emoji: '🤝' },
+    { key: 'ecole', label: t('Gallery.tabEcole'), emoji: '🏫' },
+    { key: 'others', label: t('Gallery.tabOthers'), emoji: '🏗️' },
+  ]
+
   const allPhotos = useMemo<IndexedPhoto[]>(() =>
     ([...egImaraPartners, ...inProgressPhotos, ...ecolePhotos, ...otherProjects] as PhotoItem[])
       .map((p, i) => ({ ...p, _globalIndex: i })),
   [])
 
-  // Each tab maps to a slice of allPhotos (already indexed)
   const photosByTab = useMemo<Record<TabKey, IndexedPhoto[]>>(() => {
     const byTab: Record<string, PhotoItem[]> = {
       partners: [...egImaraPartners, ...inProgressPhotos],
-      ecole:    ecolePhotos,
-      others:   otherProjects,
+      ecole: ecolePhotos,
+      others: otherProjects,
     }
-    // Attach global index by matching src
     const srcToIndex = new Map(allPhotos.map((p) => [p.src, p._globalIndex]))
     return Object.fromEntries(
       Object.entries(byTab).map(([key, photos]) => [
@@ -64,15 +58,12 @@ export default function Gallery() {
 
   const currentPhotos = photosByTab[activeTab]
 
-  // ── Tab change: reset cards and refs ──────────────────────────────────────
   useEffect(() => {
     setVisibleCards(new Set())
     cardRefs.current = []
   }, [activeTab])
 
-  // ── Scroll-in animation via IntersectionObserver ──────────────────────────
   useEffect(() => {
-    // Wait one tick so cardRefs are populated after the reset
     const id = setTimeout(() => {
       const observer = new IntersectionObserver(
         (entries) => {
@@ -91,13 +82,11 @@ export default function Gallery() {
     return () => clearTimeout(id)
   }, [activeTab])
 
-  // ── Lock body scroll while modal is open ─────────────────────────────────
   useEffect(() => {
     document.body.style.overflow = selected !== null ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [selected])
 
-  // ── Keyboard navigation ───────────────────────────────────────────────────
   const navigate = useCallback((delta: number) => {
     setSelected((s) => s !== null
       ? Math.max(0, Math.min(allPhotos.length - 1, s + delta))
@@ -108,15 +97,14 @@ export default function Gallery() {
   useEffect(() => {
     if (selected === null) return
     const handle = (e: KeyboardEvent) => {
-      if (e.key === 'Escape')      setSelected(null)
-      if (e.key === 'ArrowRight')  navigate(+1)
-      if (e.key === 'ArrowLeft')   navigate(-1)
+      if (e.key === 'Escape') setSelected(null)
+      if (e.key === 'ArrowRight') navigate(+1)
+      if (e.key === 'ArrowLeft') navigate(-1)
     }
     window.addEventListener('keydown', handle)
     return () => window.removeEventListener('keydown', handle)
   }, [selected, navigate])
 
-  // ── Swipe on mobile ───────────────────────────────────────────────────────
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX
   }
@@ -127,27 +115,27 @@ export default function Gallery() {
     touchStartX.current = null
   }
 
-  // ─── Render ───────────────────────────────────────────────────────────────
+  const partnershipBannerText = language === 'en'
+    ? `ECOSTRUCT is proud to collaborate with EGB and IMARA Property on strategic construction projects.`
+    : `ECOSTRUCT est fier de collaborer avec EGB et IMARA Property sur des projets de construction stratégiques.`
 
   return (
     <section className="py-24 bg-gradient-to-b from-gray-50 to-white scroll-mt-16" id="gallery">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
             <span className="w-2 h-2 bg-green-600 rounded-full animate-pulse" aria-hidden="true" />
-            EXPLORE OUR WORK
+            {t('Gallery.badge')}
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-green-900 mt-3 mb-4">
-            Our Projects & Partnerships
+            {t('Gallery.title')}
           </h2>
           <p className="text-gray-600 text-lg">
-            Discover the projects that have earned us the trust of leading institutions.
+            {t('Gallery.subtitle')}
           </p>
         </div>
 
-        {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {TABS.map(({ key, label, emoji }) => (
             <button
@@ -171,25 +159,18 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* Partnership banner */}
         {activeTab === 'partners' && (
           <div className="relative overflow-hidden mb-12 rounded-2xl bg-gradient-to-r from-amber-50 to-green-50 border border-amber-200 shadow-md">
             <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#eab308_1px,transparent_1px)] [background-size:16px_16px]" aria-hidden="true" />
             <div className="relative p-5 text-center">
               <p className="text-green-800 text-base md:text-lg font-semibold flex flex-wrap items-center justify-center gap-2">
                 <span className="text-3xl" aria-hidden="true">🤝</span>
-                <span>
-                  ECOSTRUCT is proud to collaborate with{' '}
-                  <strong className="text-amber-700">EGB</strong> and{' '}
-                  <strong className="text-amber-700">IMARA Property</strong>{' '}
-                  on strategic construction projects.
-                </span>
+                <span>{partnershipBannerText}</span>
               </p>
             </div>
           </div>
         )}
 
-        {/* Card grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentPhotos.map((photo, idx) => (
             <div
@@ -216,8 +197,7 @@ export default function Gallery() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-400 text-5xl bg-gray-50"
-                       aria-label="No image available">
+                  <div className="w-full h-full flex items-center justify-center text-gray-400 text-5xl bg-gray-50" aria-label="No image available">
                     📷
                   </div>
                 )}
@@ -227,9 +207,7 @@ export default function Gallery() {
               </div>
 
               <div className="p-5 bg-white">
-                <h3 className="text-lg font-bold text-green-800 leading-tight mb-1">
-                  {photo.title}
-                </h3>
+                <h3 className="text-lg font-bold text-green-800 leading-tight mb-1">{photo.title}</h3>
                 {photo.title.includes('EGB') || photo.title.includes('IMARA') ? (
                   <div className="mt-2 inline-flex items-center gap-1 bg-amber-100 text-amber-800 text-xs font-semibold px-2 py-1 rounded-full">
                     <span aria-hidden="true">🤝</span> ECOSTRUCT × EGB × IMARA
@@ -243,7 +221,6 @@ export default function Gallery() {
         </div>
       </div>
 
-      {/* Modal */}
       {selected !== null && (
         <div
           role="dialog"
@@ -260,7 +237,6 @@ export default function Gallery() {
             style={{ animation: 'gallery-scale-in 0.3s ease-out' }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Prev */}
             <button
               aria-label="Previous image"
               onClick={(e) => { e.stopPropagation(); navigate(-1) }}
@@ -269,8 +245,6 @@ export default function Gallery() {
             >
               ←
             </button>
-
-            {/* Next */}
             <button
               aria-label="Next image"
               onClick={(e) => { e.stopPropagation(); navigate(+1) }}
@@ -279,7 +253,6 @@ export default function Gallery() {
             >
               →
             </button>
-
             <div className="relative aspect-video">
               <Image
                 src={allPhotos[selected].src}
@@ -289,20 +262,17 @@ export default function Gallery() {
                 priority
               />
             </div>
-
             <div className="p-6 text-center">
               <h3 id={modalTitleId} className="text-xl font-bold text-white mb-1">
                 {allPhotos[selected].title}
               </h3>
               <p className="text-amber-400 text-sm">{allPhotos[selected].category}</p>
-              <p className="text-gray-500 text-xs mt-1">
-                {selected + 1} / {allPhotos.length}
-              </p>
+              <p className="text-gray-500 text-xs mt-1">{selected + 1} / {allPhotos.length}</p>
               <button
                 onClick={() => setSelected(null)}
                 className="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm transition focus-visible:ring-2 focus-visible:ring-white"
               >
-                Close ✕
+                {t('Gallery.close')} ✕
               </button>
             </div>
           </div>

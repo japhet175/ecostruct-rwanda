@@ -4,43 +4,30 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { logoEnglish, logoFrench } from '@/app/data/media'
-
-type Language = 'en' | 'fr'
-
-interface NavLink {
-  href: string
-  label: string
-  labelFr: string
-}
-
-const NAV_LINKS: NavLink[] = [
-  { href: '/', label: 'Home', labelFr: 'Accueil' },
-  { href: '/#services', label: 'Services', labelFr: 'Services' },
-  { href: '/#sustainability', label: 'Why Us', labelFr: 'Pourquoi Nous' },
-  { href: '/#about', label: 'About', labelFr: 'À propos' },
-  { href: '/#contact', label: 'Contact', labelFr: 'Contact' },
-  { href: '/careers', label: 'Careers', labelFr: 'Carrières' },
-  // Dans NAV_LINKS, ajouter ou garder :
-{ href: '/realisations', label: 'Projects', labelFr: 'Projets' },
-]
-
-const SLOGANS: Record<Language, string> = {
-  en: 'Building Today, Preserving Tomorrow',
-  fr: "Construire Aujourd'hui, Préserver Demain",
-}
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function Header() {
+  const { t, language, setLanguage } = useLanguage()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [language, setLanguage] = useState<Language>('en')
 
   const toggleMenu = () => setIsMenuOpen(prev => !prev)
   const closeMenu = () => setIsMenuOpen(false)
-  const toggleLanguage = () => setLanguage(prev => prev === 'en' ? 'fr' : 'en')
+  const toggleLanguage = () => setLanguage(language === 'en' ? 'fr' : 'en')
 
-  const getLabel = (link: NavLink) => language === 'en' ? link.label : link.labelFr
+  const NAV_LINKS = [
+    { href: '/', key: 'home' },
+    { href: '/#services', key: 'services' },
+    { href: '/#sustainability', key: 'whyUs' },
+    { href: '/#about', key: 'about' },
+    { href: '/#contact', key: 'contact' },
+    { href: '/careers', key: 'careers' },
+    { href: '/realisations', key: 'projects' },
+  ]
 
   const logoSrc = language === 'en' ? logoEnglish : logoFrench
-  const logoSlogan = SLOGANS[language]
+  const logoSlogan = language === 'en' 
+    ? 'Building Today, Preserving Tomorrow'
+    : "Construire Aujourd'hui, Préserver Demain"
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-sm z-50" role="banner">
@@ -64,7 +51,7 @@ export default function Header() {
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-gray-700 hover:text-amber-600 font-medium transition-colors duration-200">
-                    {getLabel(link)}
+                    {t(`Navigation.${link.key}`)}
                   </Link>
                 </li>
               ))}
@@ -96,7 +83,7 @@ export default function Header() {
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="block text-gray-700 hover:text-amber-600 font-medium py-2" onClick={closeMenu}>
-                  {getLabel(link)}
+                  {t(`Navigation.${link.key}`)}
                 </Link>
               </li>
             ))}

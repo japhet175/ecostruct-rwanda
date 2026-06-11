@@ -1,9 +1,10 @@
-
 'use client'
 
 import { useRef, useState, useEffect, useCallback } from 'react'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function VideoTestimonial() {
+  const { t } = useLanguage()
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [videoError, setVideoError] = useState(false)
@@ -73,29 +74,25 @@ export default function VideoTestimonial() {
   }
 
   return (
-    <section
-      className="py-20 bg-gradient-to-br from-green-50 to-white scroll-mt-16"
-      id="testimonial"
-    >
+    <section className="py-20 bg-gradient-to-br from-green-50 to-white scroll-mt-16" id="testimonial">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
+        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="text-amber-600 font-semibold text-sm uppercase tracking-wider">
-            Community Impact
+            {t('VideoTestimonial.badge')}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-green-900 mt-3 mb-4">
-            Building Beyond Construction
+            {t('VideoTestimonial.title')}
           </h2>
           <p className="text-gray-600 text-lg">
-            ECOSTRUCT Rwanda is committed to empowering communities through education.
+            {t('VideoTestimonial.subtitle')}
           </p>
         </div>
 
-        {/* Video Player - format original rectangle */}
+        {/* Video Player */}
         <div className="max-w-4xl mx-auto">
           <div className="rounded-2xl overflow-hidden shadow-2xl bg-black ring-1 ring-black/10">
-
-            {/* Video container - sans contrainte de ratio forcé */}
             <div className="relative cursor-pointer" onClick={togglePlay}>
               <video
                 ref={videoRef}
@@ -110,7 +107,7 @@ export default function VideoTestimonial() {
               {videoError && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 gap-3">
                   <span className="text-5xl">🎬</span>
-                  <p className="text-white font-medium">Video unavailable</p>
+                  <p className="text-white font-medium">{t('VideoTestimonial.unavailable')}</p>
                 </div>
               )}
 
@@ -138,7 +135,7 @@ export default function VideoTestimonial() {
               <div className="bg-gray-950 px-4 py-3 flex items-center gap-3">
                 <button
                   onClick={togglePlay}
-                  aria-label={isPlaying ? 'Pause' : 'Play'}
+                  aria-label={isPlaying ? t('VideoTestimonial.pause') : t('VideoTestimonial.play')}
                   className="text-white/70 hover:text-white transition-colors flex-shrink-0"
                 >
                   {isPlaying ? (
@@ -170,7 +167,7 @@ export default function VideoTestimonial() {
 
                 <button
                   onClick={toggleMute}
-                  aria-label={isMuted ? 'Unmute' : 'Mute'}
+                  aria-label={isMuted ? t('VideoTestimonial.unmute') : t('VideoTestimonial.mute')}
                   className="text-white/70 hover:text-white transition-colors flex-shrink-0"
                 >
                   {isMuted ? (
@@ -187,19 +184,19 @@ export default function VideoTestimonial() {
             )}
           </div>
 
+          {/* Partnership message */}
           <div className="mt-8 text-center">
             <div className="inline-flex items-center gap-2 bg-green-100 rounded-full px-4 py-2 mb-5">
               <span className="text-green-800 text-sm font-medium">
-                🏗️ Building Today → 📚 Empowering Tomorrow
+                {t('VideoTestimonial.partnerBadge')}
               </span>
             </div>
             <p className="text-gray-700 text-lg max-w-2xl mx-auto leading-relaxed">
-              <span className="font-semibold text-green-800">ECOSTRUCT Rwanda</span>{' '}
-              doesn't just build structures — we build futures. Through this partnership,
-              we help provide{' '}
-              <span className="font-medium">quality learning materials</span> to children,
-              because{' '}
-              <span className="italic">strong communities start with education</span>.
+              <span className="font-semibold text-green-800">{t('VideoTestimonial.partnerName')}</span>{' '}
+              {t('VideoTestimonial.message1')}{' '}
+              <span className="font-medium">{t('VideoTestimonial.message2')}</span>{' '}
+              {t('VideoTestimonial.message3')}{' '}
+              <span className="italic">{t('VideoTestimonial.message4')}</span>.
             </p>
           </div>
         </div>

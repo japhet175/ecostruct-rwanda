@@ -1,0 +1,75 @@
+{
+  "Hero": {
+    "eyebrow": "Partenaire de Confiance au Rwanda",
+    "weAre": "NOUS SOMMES",
+    "brand": "ECOSTRUCT",
+    "tagline": "Vous le Rêvez — Nous le Construisons",
+    "freeQuote": "Demander un Devis",
+    "viewWork": "Voir nos Réalisations",
+    "scroll": "Défiler",
+    "services": ["Construction de Bâtiments", "Travaux de Rénovation", "Services de Maintenance", "Aménagement Paysager", "Supervision Technique"]
+  },
+  "Services": {
+    "badge": "NOS DOMAINES D'EXPERTISE",
+    "title": "Ce Que Nous Faisons de Mieux",
+    "subtitle": "Matériaux locaux. Méthodes durables. Impact durable.",
+    "building": "Construction de Bâtiments",
+    "buildingDesc": "Bâtiments résidentiels, commerciaux et institutionnels.",
+    "renovation": "Travaux de Rénovation",
+    "renovationDesc": "Rénovation de bureaux, écoles, maisons, appartements et bâtiments publics.",
+    "maintenance": "Services de Maintenance",
+    "maintenanceDesc": "Réparations, peinture, plomberie, maçonnerie, béton et finitions.",
+    "landscaping": "Aménagement Paysager",
+    "landscapingDesc": "Clôtures, drainage, pavage, jardins, aménagements extérieurs.",
+    "supervision": "Supervision Technique",
+    "supervisionDesc": "Coffrage, ferraillage, contrôle qualité béton et coordination de chantier."
+  },
+  "Team": {
+    "badge": "RENCONTREZ L'ÉQUIPE",
+    "title": "Derrière ECOSTRUCT, une Équipe Passionnée",
+    "subtitle": "Une expertise collective au service de nos clients — ensemble, nous construisons l'avenir du Rwanda.",
+    "footer": "👥 Une équipe en croissance — de nouveaux talents arrivent bientôt.",
+    "founderName": "Ndemeye Gaius",
+    "founderRole": "Fondateur & DG – Expert en Construction",
+    "founderBio": "Plus de 20 ans d'expérience en France, il dirige aujourd'hui l'excellence en construction au Rwanda.",
+    "japhetName": "Japhet",
+    "japhetRole": "Coordinateur de Projets Construction",
+    "japhetBio": "Coordination des projets de construction, planning chantier et contrôle qualité.",
+    "gercyName": "Gercy",
+    "gercyRole": "Superviseur Technique de Chantier",
+    "gercyBio": "Supervision des opérations sur site, assurance qualité et conformité technique."
+  },
+  "Navigation": {
+    "home": "Accueil",
+    "services": "Services",
+    "whyUs": "Pourquoi Nous",
+    "projects": "Projets",
+    "about": "À propos",
+    "contact": "Contact",
+    "careers": "Carrières"
+  },
+  "Footer": {
+    "quickLinks": "Liens Rapides",
+    "contact": "Contact",
+    "rights": "Tous droits réservés."
+  },
+  "Contact": {
+    "getInTouch": "Nous Contacter",
+    "title": "Prêt à Démarrer Votre Projet ?",
+    "subtitle": "Contactez-nous pour un devis gratuit. Réponse sous 24h.",
+    "fullName": "Nom Complet",
+    "emailAddress": "Adresse Email",
+    "phoneNumber": "Téléphone",
+    "message": "Parlez-nous de votre projet",
+    "send": "Envoyer le Message",
+    "sending": "Envoi",
+    "success": "Message envoyé ! Nous vous contacterons bientôt.",
+    "location": "Localisation",
+    "followUs": "Suivez-nous",
+    "email": "Email"
+  },
+  "Realisations": {
+    "title": "Projets & Réalisations",
+    "subtitle": "Travaux achevés et chantiers en cours au Rwanda — construits avec précision, livrés avec fierté."
+  }
+}

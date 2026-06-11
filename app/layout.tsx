@@ -4,10 +4,11 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import { LanguageProvider } from './i18n/LanguageContext'
 
 const inter = Inter({ 
   subsets: ['latin'],
-  display: 'swap', // ← Améliore le temps de chargement des polices
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -26,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <LanguageProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   )

@@ -3,58 +3,11 @@
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { founderPhoto } from '@/app/data/media'
-
-// ─────────────────────────────────────────────
-// Data
-// ─────────────────────────────────────────────
-
-const EXPERTISE_AREAS = [
-  { label: 'Building Construction',        icon: '🏗️' },
-  { label: 'Re-building Construction',     icon: '🔨' },
-  { label: 'Electrical & Plumbing',        icon: '⚡' },
-  { label: 'Landscaping & External Works', icon: '🌿' },
-  { label: 'Maintenance & Facility Mgmt',  icon: '🔧' },
-]
-
-const STATS = [
-  { value: 20,   suffix: '+', label: 'Years of Experience' },
-  { value: 2024, suffix: '',  label: 'Founded' },
-  { value: 100,  suffix: '%', label: 'Client Satisfaction' },
-]
-
-const TIMELINE = [
-  {
-    year: '20+ yrs',
-    title: 'Built in France',
-    body: 'With more than 20 years of experience in the construction industry in France, Ndemeye Gaius developed strong expertise, high standards and a passion for quality, sustainable and innovative construction.',
-  },
-  {
-    year: '2024',
-    title: 'Return to Rwanda',
-    body: 'After many successful projects in France, he decided in 2024 to return to Rwanda with a clear purpose: to bring his knowledge, international experience and modern construction methods to his country.',
-  },
-  {
-    year: 'Now',
-    title: 'ECOSTRUCT Rwanda',
-    body: 'We are trusted by international organizations, NGOs, and embassies, who have recognized our professionalism through official recommendation letters.',
-  },
-]
-
-const TRUST_SIGNALS = [
-  'Experience with international institutions',
-  'Strong commitment to quality & safety',
-  'Environmentally responsible practices',
-  'Focus on human values & client satisfaction',
-  'Reliable & on-time delivery',
-]
-
-// ─────────────────────────────────────────────
-// useCountUp hook
-// ─────────────────────────────────────────────
+import { useLanguage } from '../i18n/LanguageContext'
 
 function useCountUp(end: number, duration = 1600) {
   const [count, setCount] = useState(0)
-  const hasAnimated = useRef(false)       // FIX: prevents re-running on re-renders
+  const hasAnimated = useRef(false)
   const ref = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
@@ -85,11 +38,8 @@ function useCountUp(end: number, duration = 1600) {
   return { count, ref }
 }
 
-// ─────────────────────────────────────────────
-// Sub-components
-// ─────────────────────────────────────────────
-
-function StatCard({ value, suffix, label }: (typeof STATS)[number]) {
+function StatCard({ value, suffix, labelKey }: { value: number; suffix: string; labelKey: string }) {
+  const { t } = useLanguage()
   const { count, ref } = useCountUp(value)
   return (
     <div className="flex flex-col items-center gap-1 bg-white/5 rounded-2xl px-6 py-8 border border-white/10 hover:bg-white/10 transition-colors duration-300">
@@ -97,25 +47,32 @@ function StatCard({ value, suffix, label }: (typeof STATS)[number]) {
         <span ref={ref}>{count}</span>{suffix}
       </p>
       <p className="mt-1 text-sm text-green-200 tracking-widest uppercase text-center">
-        {label}
+        {t(`About.${labelKey}`)}
       </p>
     </div>
   )
 }
 
 function TimelineStep({
-  year,
-  title,
-  body,
+  yearKey,
+  titleKey,
+  bodyKey,
   index,
   total,
-}: (typeof TIMELINE)[number] & { index: number; total: number }) {
+}: {
+  yearKey: string
+  titleKey: string
+  bodyKey: string
+  index: number
+  total: number
+}) {
+  const { t } = useLanguage()
   return (
     <div className="relative flex gap-6">
       <div className="flex flex-col items-center flex-shrink-0">
         <div className="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center shadow-md z-10">
           <span className="text-white text-xs font-bold leading-none text-center px-1">
-            {year}
+            {t(`About.${yearKey}`)}
           </span>
         </div>
         {index < total - 1 && (
@@ -123,47 +80,62 @@ function TimelineStep({
         )}
       </div>
       <div className="pb-10">
-        <h4 className="font-bold text-green-900 text-lg mb-1">{title}</h4>
-        <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
+        <h4 className="font-bold text-green-900 text-lg mb-1">{t(`About.${titleKey}`)}</h4>
+        <p className="text-gray-600 text-sm leading-relaxed">{t(`About.${bodyKey}`)}</p>
       </div>
     </div>
   )
 }
 
-// ─────────────────────────────────────────────
-// Main component
-// ─────────────────────────────────────────────
-
 export default function AboutSection() {
+  const { t } = useLanguage()
+
+  const expertiseAreas = [
+    { key: 'buildingConstruction', icon: '🏗️' },
+    { key: 'reBuildingConstruction', icon: '🔨' },
+    { key: 'electricalPlumbing', icon: '⚡' },
+    { key: 'landscaping', icon: '🌿' },
+    { key: 'maintenance', icon: '🔧' },
+  ]
+
+  const trustSignalsKeys = [
+    'internationalExperience',
+    'qualitySafety',
+    'environmentalPractices',
+    'humanValues',
+    'reliableDelivery',
+  ]
+
+  const timelineSteps = [
+    { yearKey: 'timelineYear1', titleKey: 'timelineTitle1', bodyKey: 'timelineBody1' },
+    { yearKey: 'timelineYear2', titleKey: 'timelineTitle2', bodyKey: 'timelineBody2' },
+    { yearKey: 'timelineYear3', titleKey: 'timelineTitle3', bodyKey: 'timelineBody3' },
+  ]
+
+  const stats = [
+    { value: 20, suffix: '+', labelKey: 'yearsExperience' },
+    { value: 2024, suffix: '', labelKey: 'founded' },
+    { value: 100, suffix: '%', labelKey: 'clientSatisfaction' },
+  ]
+
   return (
-    <section
-      className="py-24 bg-white scroll-mt-16"
-      aria-labelledby="about-heading"   // FIX: aria-labelledby instead of aria-label
-      id="about"
-    >
+    <section className="py-24 bg-white scroll-mt-16" aria-labelledby="about-heading" id="about">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
 
-        {/* Headline */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <span className="inline-block text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
-            Who We Are
+            {t('About.whoWeAre')}
           </span>
-          <h2
-            id="about-heading"
-            className="text-4xl md:text-5xl font-bold text-green-900 leading-tight"
-          >
-            ECOSTRUCT – Your Trusted Partner in Rwanda
+          <h2 id="about-heading" className="text-4xl md:text-5xl font-bold text-green-900 leading-tight">
+            {t('About.title')}
           </h2>
           <p className="mt-4 text-gray-500 text-lg leading-relaxed">
-            Construction • Renovation • Electrical &amp; Plumbing • Landscaping • Maintenance
+            {t('About.subtitle')}
           </p>
         </div>
 
-        {/* Founder section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-24">
-
           <div className="flex flex-col gap-6">
-            {/* FIX: <figure> without <figcaption> is noise — replaced with plain div */}
             <div className="rounded-2xl overflow-hidden shadow-xl ring-1 ring-green-900/10">
               <Image
                 src={founderPhoto}
@@ -174,16 +146,11 @@ export default function AboutSection() {
                 priority
               />
             </div>
-
-            {/* FIX: checkmark splitting (substring) removed — use structured data */}
             <ul className="grid grid-cols-1 gap-2" aria-label="Why choose ECOSTRUCT">
-              {TRUST_SIGNALS.map(item => (
-                <li
-                  key={item}
-                  className="flex items-start gap-2 text-sm text-gray-700 bg-green-50 rounded-lg px-3 py-2"
-                >
+              {trustSignalsKeys.map((key) => (
+                <li key={key} className="flex items-start gap-2 text-sm text-gray-700 bg-green-50 rounded-lg px-3 py-2">
                   <span className="text-amber-500 text-base shrink-0" aria-hidden="true">✓</span>
-                  <span>{item}</span>
+                  <span>{t(`About.${key}`)}</span>
                 </li>
               ))}
             </ul>
@@ -191,146 +158,122 @@ export default function AboutSection() {
 
           <div className="flex flex-col gap-8">
             <div className="border-l-4 border-amber-400 pl-5">
-              <h3 className="text-3xl font-bold text-green-900">Ndemeye Gaius</h3>
+              <h3 className="text-3xl font-bold text-green-900">{t('About.founderName')}</h3>
               <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mt-1">
-                Founder &amp; CEO
+                {t('About.founderRole')}
               </p>
             </div>
-
             <p className="text-gray-600 leading-relaxed">
-              <strong>ECOSTRUCT</strong> is a Rwandan company with proven expertise in construction,
-              renovation, and technical facility management. We are trusted by international
-              organizations, NGOs, and embassies, who have recognized our professionalism through
-              official recommendation letters.
+              {t('About.description')}
             </p>
-
             <div className="border-t border-gray-100" />
-
             <div>
               <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
-                Our Journey
+                {t('About.journey')}
               </h4>
-              {TIMELINE.map((step, i) => (
+              {timelineSteps.map((step, i) => (
                 <TimelineStep
-                  key={step.year}
-                  {...step}
+                  key={step.yearKey}
+                  yearKey={step.yearKey}
+                  titleKey={step.titleKey}
+                  bodyKey={step.bodyKey}
                   index={i}
-                  total={TIMELINE.length}
+                  total={timelineSteps.length}
                 />
               ))}
             </div>
           </div>
         </div>
 
-        {/* Team in action */}
         <div className="mb-24">
           <div className="text-center mb-10">
             <span className="text-amber-600 font-semibold text-sm uppercase tracking-widest">
-              In Action
+              {t('About.inAction')}
             </span>
             <h3 className="text-2xl md:text-3xl font-bold text-green-900 mt-2">
-              Our Team at Work
+              {t('About.teamAtWork')}
             </h3>
             <p className="text-gray-500 mt-2 max-w-2xl mx-auto">
-              Behind every project, a dedicated team ensuring quality and precision.
+              {t('About.teamAtWorkDesc')}
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-video group">
               <Image
                 src="/images/equipe/Construction-worker.png"
                 alt="Engineer supervising construction on site"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"   // FIX: missing sizes prop
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4"
-                aria-hidden="true"
-              >
-                <p className="text-white font-medium">On-site engineering supervision</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4" aria-hidden="true">
+                <p className="text-white font-medium">{t('About.onSiteSupervision')}</p>
               </div>
             </div>
-
             <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-video group">
               <Image
                 src="/images/equipe/worker.jpeg"
                 alt="Team reviewing construction plans"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"   // FIX: missing sizes prop
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4"
-                aria-hidden="true"
-              >
-                <p className="text-white font-medium">Precision planning &amp; design</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4" aria-hidden="true">
+                <p className="text-white font-medium">{t('About.precisionPlanning')}</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Expertise cards */}
         <div className="mb-24">
           <div className="text-center mb-10">
             <span className="text-amber-600 font-semibold text-sm uppercase tracking-widest">
-              Our Services
+              {t('About.ourServices')}
             </span>
             <h3 className="text-2xl md:text-3xl font-bold text-green-900 mt-2">
-              What We Do Best
+              {t('About.whatWeDoBest')}
             </h3>
           </div>
-
           <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            {EXPERTISE_AREAS.map(({ label, icon }) => (
+            {expertiseAreas.map(({ key, icon }) => (
               <li
-                key={label}
+                key={key}
                 className="group flex flex-col items-center gap-3 bg-green-50 border border-green-100 rounded-xl p-5 text-center hover:bg-green-900 hover:border-green-900 hover:shadow-lg transition-all duration-300 cursor-default"
               >
-                <span
-                  className="text-3xl group-hover:scale-110 transition-transform duration-300 inline-block"
-                  aria-hidden="true"
-                >
+                <span className="text-3xl group-hover:scale-110 transition-transform duration-300 inline-block" aria-hidden="true">
                   {icon}
                 </span>
                 <span className="text-green-800 group-hover:text-white font-medium text-sm leading-snug transition-colors duration-300">
-                  {label}
+                  {t(`About.${key}`)}
                 </span>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Impact banner */}
         <div className="rounded-3xl bg-green-900 overflow-hidden">
           <div className="h-1 w-full bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500" />
-
           <div className="px-8 py-14 md:px-16">
             <div className="text-center mb-12">
               <p className="text-amber-400 font-semibold text-sm uppercase tracking-widest mb-2">
-                Our Commitment
+                {t('About.ourCommitment')}
               </p>
               <h3 className="text-white text-2xl md:text-3xl font-bold">
-                We don&apos;t just build structures – we build trust and long-lasting partnerships.
+                {t('About.commitmentQuote')}
               </h3>
             </div>
-
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
-              {STATS.map(s => (
-                <StatCard key={s.label} {...s} />
+              {stats.map((stat) => (
+                <StatCard key={stat.labelKey} value={stat.value} suffix={stat.suffix} labelKey={stat.labelKey} />
               ))}
             </div>
-
             <div className="border-t border-white/10 pt-8 text-center">
-              {/* FIX: blockquote should have a cite or attribution; added role for screen readers */}
               <figure>
                 <blockquote className="text-green-100 text-lg md:text-xl font-medium italic max-w-2xl mx-auto leading-relaxed">
-                  &ldquo;Building responsibly — respecting people, strengthening communities,
-                  and protecting our planet for future generations.&rdquo;
+                  {t('About.footerQuote')}
                 </blockquote>
                 <figcaption className="mt-3 text-green-400 text-sm">
-                  — Ndemeye Gaius, Founder &amp; CEO, ECOSTRUCT Rwanda
+                  — Ndemeye Gaius, {t('About.founderRole')}
                 </figcaption>
               </figure>
             </div>
