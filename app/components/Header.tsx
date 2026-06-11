@@ -1,3 +1,4 @@
+
 'use client'
 
 import { useState } from 'react'
@@ -34,6 +35,7 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex justify-between items-center py-3 md:py-4" aria-label="Main navigation">
           
+          {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-amber-500 rounded-lg">
             <div className="w-10 h-10 md:w-12 md:h-12 relative overflow-hidden rounded-lg bg-green-50 shrink-0">
               <Image src={logoSrc} alt="" width={48} height={48} className="object-contain p-1" priority />
@@ -46,6 +48,7 @@ export default function Header() {
             </div>
           </Link>
 
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <ul className="flex items-center space-x-8" role="list">
               {NAV_LINKS.map((link) => (
@@ -57,6 +60,7 @@ export default function Header() {
               ))}
             </ul>
 
+            {/* Language Switcher - Desktop */}
             <div className="flex items-center gap-1 bg-gray-200 rounded-full p-0.5">
               <button onClick={() => setLanguage('en')} className={`px-3 py-1.5 text-sm font-bold rounded-full transition ${
                 language === 'en' ? 'bg-amber-500 text-white shadow-md' : 'bg-transparent text-gray-700 hover:text-amber-600'
@@ -67,7 +71,8 @@ export default function Header() {
             </div>
           </div>
 
-          <button className="md:hidden text-gray-700 p-1" onClick={toggleMenu} aria-expanded={isMenuOpen}>
+          {/* Mobile Menu Button */}
+          <button className="md:hidden text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition" onClick={toggleMenu} aria-expanded={isMenuOpen}>
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -78,19 +83,41 @@ export default function Header() {
           </button>
         </nav>
 
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ${isMenuOpen ? 'max-h-96 py-4' : 'max-h-0'}`}>
-          <ul className="flex flex-col space-y-3 border-t border-gray-100 pt-4">
+        {/* Mobile Menu */}
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-[500px] py-4' : 'max-h-0'}`}>
+          <ul className="flex flex-col space-y-2 border-t border-gray-100 pt-4">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="block text-gray-700 hover:text-amber-600 font-medium py-2" onClick={closeMenu}>
+                <Link href={link.href} className="block text-gray-700 hover:text-amber-600 font-medium py-2 px-2 rounded-lg hover:bg-gray-50 transition" onClick={closeMenu}>
                   {t(`Navigation.${link.key}`)}
                 </Link>
               </li>
             ))}
-            <li className="pt-2 border-t border-gray-100">
-              <button onClick={() => { toggleLanguage(); closeMenu() }} className="flex items-center gap-2 w-full text-gray-700 hover:text-amber-600 font-medium py-2">
-                🌐 {language === 'en' ? 'Français' : 'English'}
-              </button>
+            
+            {/* Language Switcher - Mobile (bien visible) */}
+            <li className="mt-3 pt-3 border-t border-gray-200">
+              <div className="flex gap-2 p-1 bg-gray-100 rounded-full">
+                <button
+                  onClick={() => { setLanguage('en'); closeMenu() }}
+                  className={`flex-1 py-2.5 text-sm font-bold rounded-full transition ${
+                    language === 'en'
+                      ? 'bg-amber-500 text-white shadow-md'
+                      : 'bg-transparent text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  ENGLISH
+                </button>
+                <button
+                  onClick={() => { setLanguage('fr'); closeMenu() }}
+                  className={`flex-1 py-2.5 text-sm font-bold rounded-full transition ${
+                    language === 'fr'
+                      ? 'bg-amber-500 text-white shadow-md'
+                      : 'bg-transparent text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  FRANÇAIS
+                </button>
+              </div>
             </li>
           </ul>
         </div>
