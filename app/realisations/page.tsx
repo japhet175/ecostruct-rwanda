@@ -10,7 +10,7 @@ const projects = [
     emoji: '🎓',
     title: 'École Française de Kigali',
     status: 'completed',
-    statusLabel: '✅ Completed 2024',
+    statusLabel: '✅ Completed 2025',
     statusClass: 'bg-green-100 text-green-700',
     description:
       'Full renovation of the French School in Kigali — modernised classrooms, administrative spaces, and outdoor facilities. Delivered on schedule to the highest standards.',
@@ -25,7 +25,7 @@ const projects = [
     statusLabel: '🔄 In Progress',
     statusClass: 'bg-amber-100 text-amber-700',
     description:
-      'A new construction project currently underway across Rwanda. More details will be shared as the project advances — follow our updates to see the transformation.',
+      'A new construction project currently underway across Rwanda. More details and progress updates will be shared soon.',
     image: '/images/projects/In progress.jpeg',
     tags: ['Construction', 'New Build', 'Rwanda'],
   },
@@ -49,6 +49,19 @@ export default function RealisationsPage() {
           </p>
         </header>
 
+        {/* Bandeau partenaires + lien galerie */}
+        <div className="text-center mb-12 p-5 bg-green-50 rounded-xl border border-green-100 shadow-sm">
+          <p className="text-green-800 font-medium">
+            🤝 We are currently working on multiple projects with <strong>strategic partners</strong>.
+          </p>
+          <Link
+            href="/#gallery"
+            className="inline-block mt-2 text-amber-600 hover:text-amber-700 font-semibold underline transition"
+          >
+            Explore our partnerships in the gallery →
+          </Link>
+        </div>
+
         {/* Project Cards */}
         <div className="space-y-8">
           {projects.map((project) => (
@@ -58,18 +71,16 @@ export default function RealisationsPage() {
             >
               <div className={`md:flex ${project.image ? '' : ''}`}>
 
-                {/* Image (if available) */}
+                {/* Image (if available) – object-contain pour voir l’image entière */}
                 {project.image && (
-                  <div className="md:w-1/2 relative h-64 md:h-auto bg-gray-100 flex-shrink-0">
+                  <div className="md:w-1/2 relative h-72 md:h-auto bg-gray-50 flex-shrink-0">
                     <Image
                       src={project.image}
                       alt={`Photo of ${project.title}`}
                       fill
-                      className="object-cover"
+                      className="object-contain p-4"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                    {/* Subtle overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   </div>
                 )}
 
@@ -114,7 +125,7 @@ export default function RealisationsPage() {
         {/* Stats strip */}
         <div className="mt-16 grid grid-cols-3 gap-4 text-center">
           {[
-            { value: '10+', label: 'Projects Delivered&In Progress '},
+            { value: '10+', label: 'Projects Delivered & In Progress' },
             { value: '20+', label: 'Years Experience' },
             { value: '100%', label: 'Client Satisfaction' },
           ].map((stat) => (
