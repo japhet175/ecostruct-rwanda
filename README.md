@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ECOSTRUCT Rwanda – Site Vitrine
 
-## Getting Started
+## 📖 Description
 
-First, run the development server:
+Site web professionnel pour **ECOSTRUCT Rwanda**, entreprise de construction, rénovation, électricité, plomberie et aménagement paysager.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 🌍 **Bilingue** : Anglais / Français
+- 📱 **Responsive** : Mobile, tablette, desktop
+- ⚡ **Performant** : Optimisé Lighthouse (>90)
+- 🔒 **Sécurisé** : Headers CSP, XSS protection
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Stack Technique
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Technologie | Version | Rôle |
+|-------------|---------|------|
+| **Next.js** | 16.2.6 | Framework React (App Router) |
+| **TypeScript** | 6.0.3 | Typage statique |
+| **Tailwind CSS** | 4.x | Stylisme utilitaire |
+| **Vercel** | – | Hébergement & CDN |
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Structure du Projet
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🎨 Système de Design
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Palette de couleurs
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Rôle | Code HEX |
+|------|----------|
+| Primary – Vert | `#1e3c2c` (green-900) |
+| Secondary – Or | `#f59e0b` (amber-500) |
+| Background – Blanc | `#ffffff` |
+| Background – Gris clair | `#f9fafb` (gray-50) |
+| Texte principal | `#374151` (gray-700) |
+
+### Typographie
+
+- **Police** : Inter (Google Fonts)
+- **Hiérarchie** :
+  - Hero : 5xl → 8xl
+  - Titres sections : 3xl → 5xl
+  - Corps : text-sm → text-base
+
+### Animations
+
+- `hover:-translate-y-2` : Cartes au survol
+- `animate-pulse` : Badges
+- `animate-bounce` : Indicateur de scroll
+- `group-hover:scale-110` : Icônes
+
+### Composants UI réutilisables
+
+| Composant | Utilisation |
+|-----------|-------------|
+| `StatCard` | Cartes statistiques (About) |
+| `TimelineStep` | Frise chronologique |
+| `InputField` | Champ de formulaire flottant |
+| `PhotoCard` | Carte galerie |
+
+---
+
+## 🔧 Patterns de développement
+
+### 1. Multilinguisme (Context API)
+
+```tsx
+// Appel dans un composant
+const { t, language, setLanguage } = useLanguage()
+return <h1>{t('Hero.title')}</h1>
+
+--
+
+econstruct/
+├── app/
+│ ├── components/
+│ │ ├── Header.tsx
+│ │ ├── Hero.tsx
+│ │ ├── AboutSection.tsx
+│ │ ├── Services.tsx
+│ │ ├── Team.tsx
+│ │ ├── Gallery.tsx
+│ │ ├── ContactSection.tsx
+│ │ └── Footer.tsx
+│ ├── i18n/
+│ │ ├── LanguageContext.tsx
+│ │ ├── en.json
+│ │ └── fr.json
+│ ├── careers/
+│ │ └── page.tsx
+│ ├── realisations/
+│ │ └── page.tsx
+│ ├── layout.tsx
+│ └── page.tsx
+├── public/
+│ ├── images/
+│ └── videos/
+├── next.config.ts
+├── tailwind.config.ts
+└── package.json
