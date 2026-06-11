@@ -1,11 +1,12 @@
 
+'use client'
 
 import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '../i18n/LanguageContext'
 
 export default function RealisationsPage() {
-  const { t, language } = useLanguage()
+  const { t } = useLanguage()
 
   const getTag = (tag: string) => {
     const tags: Record<string, string> = {
