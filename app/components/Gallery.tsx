@@ -2,8 +2,7 @@
 
 import Image from 'next/image'
 import { useState, useEffect, useRef, useMemo, useCallback, useId } from 'react'
-import { egImaraPartners, ambassadePhotos, ecolePhotos, otherProjects } from '@/app/data/media'
-
+import { egImaraPartners, inProgressPhotos, ecolePhotos, otherProjects } from '@/app/data/media'
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type TabKey = 'partners' | 'ecole' | 'others'
@@ -39,14 +38,14 @@ export default function Gallery() {
 
   // Assign a stable global index once at mount
   const allPhotos = useMemo<IndexedPhoto[]>(() =>
-    ([...egImaraPartners, ...ambassadePhotos, ...ecolePhotos, ...otherProjects] as PhotoItem[])
+    ([...egImaraPartners, ...inProgressPhotos, ...ecolePhotos, ...otherProjects] as PhotoItem[])
       .map((p, i) => ({ ...p, _globalIndex: i })),
   [])
 
   // Each tab maps to a slice of allPhotos (already indexed)
   const photosByTab = useMemo<Record<TabKey, IndexedPhoto[]>>(() => {
     const byTab: Record<string, PhotoItem[]> = {
-      partners: [...egImaraPartners, ...ambassadePhotos],
+      partners: [...egImaraPartners, ...inProgressPhotos],
       ecole:    ecolePhotos,
       others:   otherProjects,
     }

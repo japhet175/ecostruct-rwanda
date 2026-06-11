@@ -12,9 +12,8 @@ export const egImaraPartners = [
   { src: "/images/projects/egb-imara-3.jpg", title: "IMARA Property", category: "Strategic Partner" }
 ]
 
-// 2. Ambassade de France
-export const ambassadePhotos = [
-  { src: "/images/projects/ambassade-france-project.jpeg", title: "Ambassade de France", category: "Institutional Partner" }
+export const inProgressPhotos = [
+  { src: "/images/projects/ambassade-france-project.jpeg", title: "Project in collaboration with EGB&IMARA", category: "Strategic Partner" }
 ]
 
 // 3. École Française (6 photos)

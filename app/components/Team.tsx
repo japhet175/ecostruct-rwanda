@@ -18,16 +18,16 @@ const teamMembers: TeamMember[] = [
     bio: "20+ years of experience in France, now leading construction excellence in Rwanda.",
   },
   {
-  name: "Construction Software Security & Design",
-  role: "Security & Digital Design Lead",
-  photo: "/images/equipe/strategic-ai-communication.jpg",
-  bio: "Bridging secure software development and modern construction design for resilient infrastructure.",
-},
+    name: "Japhet",
+    role: "Construction Project Coordinator",
+    photo: "/images/equipe/strategic-ai-communication.jpg",
+    bio: "Coordinating construction projects, site planning, and quality control across all operations.",
+  },
   {
-    name: "Construction Legal & Compliance Director",
-    role: "Legal & Compliance",
+    name: "Gercy",
+    role: "Technical Site Supervisor",
     photo: "/images/equipe/construction-legal-coordinator.jpg",
-    bio: "Overseeing legal strategy, contracts, and regulatory compliance for all projects.",
+    bio: "Overseeing on-site operations, quality assurance, and technical compliance for all construction projects.",
   },
 ]
 
