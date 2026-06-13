@@ -13,7 +13,7 @@ export const egImaraPartners = [
 ]
 
 export const inProgressPhotos = [
-  { src: "/images/projects/ambassade-france-project.jpeg", title: "Project in collaboration with EGB&IMARA", category: "Strategic Partner" }
+  { src: "/images/projects/ambassade-france-project.jpeg", title: "ECOSTRUCT", category: "Strategic Partner" }
 ]
 
 // 3. École Française (6 photos)

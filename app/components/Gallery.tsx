@@ -1,3 +1,4 @@
+
 'use client'
 
 import Image from 'next/image'
@@ -49,14 +50,6 @@ function PartnerBadge() {
   return (
     <div className="mt-2 inline-flex items-center gap-1 bg-amber-100 text-amber-800 text-xs font-semibold px-2 py-1 rounded-full">
       <span aria-hidden="true">🤝</span> ECOSTRUCT × EGB × IMARA
-    </div>
-  )
-}
-
-function EcostructBadge() {
-  return (
-    <div className="mt-2 inline-flex items-center gap-1 bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded-full">
-      <span aria-hidden="true">🏗️</span> ECOSTRUCT
     </div>
   )
 }
@@ -313,12 +306,15 @@ export default function Gallery() {
                   <h3 className="text-lg font-bold text-green-800 leading-tight mb-1">
                     {photo.title}
                   </h3>
-                  {isPartnerPhoto(photo.title)
-                    ? <PartnerBadge />
-                    : photo.src.includes('ambassade-france-project')
-                      ? <EcostructBadge />
-                      : <p className="text-sm text-gray-500 mt-1">{photo.category}</p>
-                  }
+                  {isPartnerPhoto(photo.title) ? (
+                    <PartnerBadge />
+                  ) : photo.src.includes('ambassade-france-project') ? (
+                    <div className="mt-2 inline-flex items-center gap-1 bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded-full">
+                      <span aria-hidden="true">🏗️</span> ECOSTRUCT
+                    </div>
+                  ) : (
+                    <p className="text-sm text-gray-500 mt-1">{photo.category}</p>
+                  )}
                 </div>
               </button>
             )
