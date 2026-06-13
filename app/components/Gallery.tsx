@@ -1,4 +1,3 @@
-
 'use client'
 
 import Image from 'next/image'
@@ -39,16 +38,12 @@ const PHOTOS_BY_TAB: Record<TabKey, IndexedPhoto[]> = {
   others:   toIndexed(otherProjects),
 }
 
-// ─── Helpers (basés sur le fichier source, pas sur le titre traduit) ─────────
+// ─── Helpers ─────────────────────────────────────────────────────────────────
 
 const isPartnerPhoto = (title: string) =>
   title.includes('EGB') || title.includes('IMARA')
 
-// Identifier la photo ex-Ambassade par son nom de fichier (indépendant de la langue)
-const isEcostructOnlyPhoto = (src: string) =>
-  src.includes('ambassade-france-project')
-
-// ─── Sous-composants badges ─────────────────────────────────────────────────
+// ─── Sous-composants badges ───────────────────────────────────────────────────
 
 function PartnerBadge() {
   return (
@@ -66,18 +61,18 @@ function EcostructBadge() {
   )
 }
 
-// ─── Composant principal ─────────────────────────────────────────────────────
+// ─── Composant principal ──────────────────────────────────────────────────────
 
 export default function Gallery() {
   const { t } = useLanguage()
 
-  const [selected, setSelected]       = useState<number | null>(null)
-  const [activeTab, setActiveTab]     = useState<TabKey>('partners')
+  const [selected, setSelected]         = useState<number | null>(null)
+  const [activeTab, setActiveTab]       = useState<TabKey>('partners')
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set())
 
-  const cardRefs    = useRef<(HTMLDivElement | null)[]>([])
-  const touchStartX = useRef<number | null>(null)
-  const modalRef    = useRef<HTMLDivElement>(null)
+  const cardRefs     = useRef<(HTMLDivElement | null)[]>([])
+  const touchStartX  = useRef<number | null>(null)
+  const modalRef     = useRef<HTMLDivElement>(null)
   const modalTitleId = useId()
 
   const prefersReducedMotion =
@@ -121,13 +116,13 @@ export default function Gallery() {
     }
   }, [activeTab])
 
-  // ── Scroll lock ──────────────────────────────────────────────────────────
+  // ── Scroll lock ───────────────────────────────────────────────────────────
   useEffect(() => {
     document.body.style.overflow = selected !== null ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [selected])
 
-  // ── Focus on modal open ──────────────────────────────────────────────────
+  // ── Focus on modal open ───────────────────────────────────────────────────
   useEffect(() => {
     if (selected !== null) {
       const id = setTimeout(() => {
@@ -137,7 +132,7 @@ export default function Gallery() {
     }
   }, [selected])
 
-  // ── Navigation ───────────────────────────────────────────────────────────
+  // ── Navigation ────────────────────────────────────────────────────────────
   const navigate = useCallback((delta: number) => {
     setSelected((s) =>
       s !== null
@@ -146,19 +141,19 @@ export default function Gallery() {
     )
   }, [])
 
-  // ── Keyboard shortcuts ───────────────────────────────────────────────────
+  // ── Keyboard shortcuts ────────────────────────────────────────────────────
   useEffect(() => {
     if (selected === null) return
     const handle = (e: KeyboardEvent) => {
-      if (e.key === 'Escape')      setSelected(null)
-      if (e.key === 'ArrowRight')  navigate(+1)
-      if (e.key === 'ArrowLeft')   navigate(-1)
+      if (e.key === 'Escape')     setSelected(null)
+      if (e.key === 'ArrowRight') navigate(+1)
+      if (e.key === 'ArrowLeft')  navigate(-1)
     }
     window.addEventListener('keydown', handle)
     return () => window.removeEventListener('keydown', handle)
   }, [selected, navigate])
 
-  // ── Swipe ────────────────────────────────────────────────────────────────
+  // ── Swipe ─────────────────────────────────────────────────────────────────
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX
   }
@@ -169,7 +164,7 @@ export default function Gallery() {
     touchStartX.current = null
   }
 
-  // ── Focus trap ───────────────────────────────────────────────────────────
+  // ── Focus trap ────────────────────────────────────────────────────────────
   const onModalKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key !== 'Tab' || !modalRef.current) return
     const focusable = modalRef.current.querySelectorAll<HTMLElement>(
@@ -288,6 +283,7 @@ export default function Gallery() {
                   transitionDelay: prefersReducedMotion ? '0ms' : `${idx * CARD_ANIMATION_DELAY_MS}ms`,
                 }}
               >
+                {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                   {photo.src ? (
                     <Image
@@ -317,13 +313,12 @@ export default function Gallery() {
                   <h3 className="text-lg font-bold text-green-800 leading-tight mb-1">
                     {photo.title}
                   </h3>
-                  {isPartnerPhoto(photo.title) ? (
-                    <PartnerBadge />
-                  ) : isEcostructOnlyPhoto(photo.src) ? (
-                    <EcostructBadge />
-                  ) : (
-                    <p className="text-sm text-gray-500 mt-1">{photo.category}</p>
-                  )}
+                  {isPartnerPhoto(photo.title)
+                    ? <PartnerBadge />
+                    : photo.src.includes('ambassade-france-project')
+                      ? <EcostructBadge />
+                      : <p className="text-sm text-gray-500 mt-1">{photo.category}</p>
+                  }
                 </div>
               </button>
             )
