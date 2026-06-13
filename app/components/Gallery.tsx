@@ -210,7 +210,7 @@ export default function Gallery() {
                 <h3 className="text-lg font-bold text-green-800 leading-tight mb-1">{photo.title}</h3>
                 {photo.title.includes('EGB') || photo.title.includes('IMARA') ? (
                   <div className="mt-2 inline-flex items-center gap-1 bg-amber-100 text-amber-800 text-xs font-semibold px-2 py-1 rounded-full">
-                    <span aria-hidden="true">🤝</span> ECOSTRUCT × EGB × IMARA
+                    <span aria-hidden="true">🤝</span> ECOSTRUCT ×  × 
                   </div>
                 ) : (
                   <p className="text-sm text-gray-500 mt-1">{photo.category}</p>
