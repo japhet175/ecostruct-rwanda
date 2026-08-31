@@ -37,7 +37,10 @@
     "japhetBio": "Coordination des projets de construction, planning chantier et contrôle qualité.",
     "gercyName": "Gercy",
     "gercyRole": "Superviseur Technique de Chantier",
-    "gercyBio": "Supervision des opérations sur site, assurance qualité et conformité technique."
+    "gercyBio": "Supervision des opérations sur site, assurance qualité et conformité technique.",
+    "shadrackName": "Shadrack",
+    "shadrackRole": "Directeur Commercial",
+    "shadrackBio": "Pilote le développement commercial et les partenariats stratégiques."
   },
   "Navigation": {
     "home": "Accueil",

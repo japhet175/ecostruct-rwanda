@@ -37,8 +37,11 @@
     "japhetBio": "Coordinating construction projects, site planning, and quality control across all operations.",
     "gercyName": "Gercy EMANE NDONG",
     "gercyRole": "Technical Site Supervisor",
-    "gercyBio": "Overseeing on-site operations, quality assurance, and technical compliance for all construction projects."
-  },
+    "gercyBio": "Overseeing on-site operations, quality assurance, and technical compliance for all construction projects.",
+    "shadrackName": "Shadrack",
+    "shadrackRole": "Commercial Director",
+    "shadrackBio": "Driving business development and strategic partnerships."
+},
   "Navigation": {
     "home": "Home",
     "services": "Services",
