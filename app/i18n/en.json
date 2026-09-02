@@ -273,6 +273,7 @@
     "send": "Send Message",
     "sending": "Sending",
     "success": "Message sent successfully! We'll contact you soon.",
+    "error": "Could not send your message. Please try again later.",
     "location": "Location",
     "followUs": "Follow us",
     "email": "Email"

@@ -9,6 +9,7 @@ interface FormData {
   email: string
   phone: string
   message: string
+  website: string
 }
 
 interface InputFieldProps {
@@ -85,7 +86,8 @@ export default function ContactSection() {
     name: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    website: ''
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -99,18 +101,33 @@ export default function ContactSection() {
     setFormData(prev => ({ ...prev, [name]: value }))
   }, [])
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus('idle')
 
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
 
-    console.log('Form submitted:', formData)
-    setSubmitStatus('success')
-    setFormData({ name: '', email: '', phone: '', message: '' })
-    setIsSubmitting(false)
+      const data = await res.json().catch(() => ({} as { error?: string }))
 
-    setTimeout(() => setSubmitStatus('idle'), 5000)
+      if (!res.ok) {
+        throw new Error(data.error || 'Request failed')
+      }
+
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '', phone: '', message: '', website: '' })
+    } catch (err) {
+      console.error('Contact form error:', err)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+      setTimeout(() => setSubmitStatus('idle'), 5000)
+    }
   }
 
   return (
@@ -227,6 +244,18 @@ export default function ContactSection() {
                 onBlur={() => setFocused(null)}
               />
 
+              {/* Honeypot anti-spam (caché pour les humains) */}
+              <input
+                type="text"
+                name="website"
+                value={formData.website}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden"
+              />
+
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -245,6 +274,12 @@ export default function ContactSection() {
               {submitStatus === 'success' && (
                 <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-md text-green-700 text-sm text-center">
                   {t('Contact.success')}
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-sm text-center">
+                  {t('Contact.error')}
                 </div>
               )}
             </div>
