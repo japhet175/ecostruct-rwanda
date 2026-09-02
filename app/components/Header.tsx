@@ -13,12 +13,11 @@ export default function Header() {
 
   const toggleMenu = () => setIsMenuOpen(prev => !prev)
   const closeMenu = () => setIsMenuOpen(false)
-  const toggleLanguage = () => setLanguage(language === 'en' ? 'fr' : 'en')
 
   const NAV_LINKS = [
     { href: '/', key: 'home' },
     { href: '/#services', key: 'services' },
-    { href: '/#sustainability', key: 'whyUs' },
+    { href: '/#why', key: 'whyUs' },
     { href: '/#about', key: 'about' },
     { href: '/#contact', key: 'contact' },
     { href: '/careers', key: 'careers' },
@@ -26,9 +25,9 @@ export default function Header() {
   ]
 
   const logoSrc = language === 'en' ? logoEnglish : logoFrench
-  const logoSlogan = language === 'en' 
-    ? 'Building Today, Preserving Tomorrow'
-    : "Construire Aujourd'hui, Préserver Demain"
+  const logoSlogan = language === 'en'
+    ? 'Building Today. Creating Tomorrow.'
+    : "Construire aujourd'hui. Créer demain."
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-sm z-50" role="banner">
@@ -42,7 +41,7 @@ export default function Header() {
             </div>
             <div>
               <span className="text-lg md:text-xl font-bold text-green-800 group-hover:text-green-700 transition-colors duration-200">
-                ECOSTRUCT<span className="text-amber-600">-RWANDA</span>
+                ECO-STRUCT <span className="text-amber-600">RWANDA LTD</span>
               </span>
               <span className="hidden md:block text-xs text-gray-500 -mt-1 leading-tight">{logoSlogan}</span>
             </div>
@@ -53,7 +52,7 @@ export default function Header() {
             <ul className="flex items-center space-x-8" role="list">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-gray-700 hover:text-amber-600 font-medium transition-colors duration-200">
+                  <Link href={link.href} className="text-sm text-gray-700 hover:text-green-900 font-medium transition-colors duration-200 underline-offset-8 decoration-2 decoration-amber-500 hover:underline">
                     {t(`Navigation.${link.key}`)}
                   </Link>
                 </li>
@@ -61,12 +60,13 @@ export default function Header() {
             </ul>
 
             {/* Language Switcher - Desktop */}
-            <div className="flex items-center gap-1 bg-gray-200 rounded-full p-0.5">
-              <button onClick={() => setLanguage('en')} className={`px-3 py-1.5 text-sm font-bold rounded-full transition ${
-                language === 'en' ? 'bg-amber-500 text-white shadow-md' : 'bg-transparent text-gray-700 hover:text-amber-600'
+            <div className="flex items-center gap-1 pl-4 ml-2 border-l border-gray-200">
+              <button onClick={() => setLanguage('en')} className={`px-2 py-1 text-sm font-semibold transition-colors ${
+                language === 'en' ? 'text-amber-600' : 'text-gray-400 hover:text-gray-700'
               }`}>EN</button>
-              <button onClick={() => setLanguage('fr')} className={`px-3 py-1.5 text-sm font-bold rounded-full transition ${
-                language === 'fr' ? 'bg-amber-500 text-white shadow-md' : 'bg-transparent text-gray-700 hover:text-amber-600'
+              <span className="text-gray-300" aria-hidden="true">/</span>
+              <button onClick={() => setLanguage('fr')} className={`px-2 py-1 text-sm font-semibold transition-colors ${
+                language === 'fr' ? 'text-amber-600' : 'text-gray-400 hover:text-gray-700'
               }`}>FR</button>
             </div>
           </div>
@@ -94,14 +94,14 @@ export default function Header() {
               </li>
             ))}
             
-            {/* Language Switcher - Mobile (bien visible) */}
+            {/* Language Switcher - Mobile */}
             <li className="mt-3 pt-3 border-t border-gray-200">
-              <div className="flex gap-2 p-1 bg-gray-100 rounded-full">
+              <div className="flex gap-1 p-1 bg-gray-100 rounded-md">
                 <button
                   onClick={() => { setLanguage('en'); closeMenu() }}
-                  className={`flex-1 py-2.5 text-sm font-bold rounded-full transition ${
+                  className={`flex-1 py-2 text-sm font-semibold rounded transition-colors ${
                     language === 'en'
-                      ? 'bg-amber-500 text-white shadow-md'
+                      ? 'bg-green-900 text-white'
                       : 'bg-transparent text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -109,9 +109,9 @@ export default function Header() {
                 </button>
                 <button
                   onClick={() => { setLanguage('fr'); closeMenu() }}
-                  className={`flex-1 py-2.5 text-sm font-bold rounded-full transition ${
+                  className={`flex-1 py-2 text-sm font-semibold rounded transition-colors ${
                     language === 'fr'
-                      ? 'bg-amber-500 text-white shadow-md'
+                      ? 'bg-green-900 text-white'
                       : 'bg-transparent text-gray-700 hover:bg-gray-200'
                   }`}
                 >

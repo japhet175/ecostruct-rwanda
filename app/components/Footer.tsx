@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { Phone, Mail, MapPin } from 'lucide-react'
 import { logoEnglish, logoFrench } from '@/app/data/media'
 import { useLanguage } from '../i18n/LanguageContext'
 
@@ -10,8 +11,8 @@ export default function Footer() {
 
   const logoSrc = language === 'en' ? logoEnglish : logoFrench
   const slogan = language === 'en'
-    ? 'Building Today, Preserving Tomorrow'
-    : "Construire Aujourd'hui, Préserver Demain"
+    ? 'Building Today. Creating Tomorrow.'
+    : "Construire aujourd'hui. Créer demain."
 
   const navLinks = [
     { href: '/', key: 'home' },
@@ -41,7 +42,7 @@ export default function Footer() {
                 />
               </div>
               <span className="text-xl font-bold text-white">
-                ECOSTRUCT<span className="text-amber-500">-RWANDA</span>
+                ECO-STRUCT <span className="text-amber-500">RWANDA LTD</span>
               </span>
             </Link>
             <p className="text-sm text-gray-500 mt-2">
@@ -66,18 +67,22 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h4 className="font-semibold text-white mb-3">{t('Footer.contact')}</h4>
-            <ul className="space-y-2 text-sm">
-              <li className="flex items-center gap-2">
-                <span>📞</span> +250 795 514 457
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-center gap-2.5">
+                <Phone className="h-4 w-4 text-amber-400 shrink-0" strokeWidth={1.5} aria-hidden="true" />
+                +250 795 514 457
               </li>
-              <li className="flex items-center gap-2">
-                <span>📞</span> +33 64 84 422 56
+              <li className="flex items-center gap-2.5">
+                <Phone className="h-4 w-4 text-amber-400 shrink-0" strokeWidth={1.5} aria-hidden="true" />
+                +33 64 84 422 56
               </li>
-              <li className="flex items-center gap-2">
-                <span>✉️</span> info@ecostruct-rwanda.com
+              <li className="flex items-center gap-2.5">
+                <Mail className="h-4 w-4 text-amber-400 shrink-0" strokeWidth={1.5} aria-hidden="true" />
+                info@ecostruct-rwanda.com
               </li>
-              <li className="flex items-center gap-2">
-                <span>📍</span> Kigali, Rwanda
+              <li className="flex items-center gap-2.5">
+                <MapPin className="h-4 w-4 text-amber-400 shrink-0" strokeWidth={1.5} aria-hidden="true" />
+                Kigali, Rwanda
               </li>
             </ul>
           </div>
@@ -85,12 +90,12 @@ export default function Footer() {
           {/* Social Media */}
           <div>
             <h4 className="font-semibold text-white mb-3">{t('Footer.followUs')}</h4>
-            <div className="flex space-x-4">
-              <a href="#" className="hover:text-amber-400 transition" aria-label="LinkedIn">
-                🔗 LinkedIn
+            <div className="flex flex-col space-y-2">
+              <a href="#" className="hover:text-amber-400 transition-colors" aria-label="LinkedIn">
+                LinkedIn
               </a>
-              <a href="#" className="hover:text-amber-400 transition" aria-label="Facebook">
-                📘 Facebook
+              <a href="#" className="hover:text-amber-400 transition-colors" aria-label="Facebook">
+                Facebook
               </a>
             </div>
           </div>
@@ -98,7 +103,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} ECOSTRUCT-RWANDA. {t('Footer.rights')}
+          © {new Date().getFullYear()} ECO-STRUCT RWANDA LTD. {t('Footer.rights')}
         </div>
       </div>
     </footer>

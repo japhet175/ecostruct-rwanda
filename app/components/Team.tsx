@@ -29,6 +29,12 @@ export default function Team() {
       bioKey: 'gercyBio',
       photo: '/images/equipe/construction-legal-coordinator.jpg',
     },
+   {
+  nameKey: 'shadrackName',
+  roleKey: 'shadrackRole',
+  bioKey: 'shadrackBio',
+  photo: '/images/equipe/shadrack.jpg',
+},
   ]
 
   // Animation au scroll
@@ -53,16 +59,13 @@ export default function Team() {
   }, [])
 
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-white scroll-mt-16" id="team">
+    <section className="py-24 bg-white scroll-mt-16" id="team">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         
         {/* Header avec badge */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
-            <span className="w-2 h-2 bg-green-600 rounded-full animate-pulse" />
-            {t('Team.badge')}
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-green-900 mt-3 mb-4">
+          <span className="text-amber-600 font-semibold text-xs uppercase tracking-[0.2em]">{t('Team.badge')}</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-green-900 mt-3 mb-4 tracking-tight">
             {t('Team.title')}
           </h2>
           <p className="text-gray-600 text-lg">
@@ -76,7 +79,7 @@ export default function Team() {
             <div
               key={index}
               ref={(el) => { cardRefs.current[index] = el }}
-              className={`group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 ${
+              className={`group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-500 ${
                 visibleCards.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
@@ -84,7 +87,7 @@ export default function Team() {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Photo avec overlay gradient */}
-              <div className="aspect-square relative overflow-hidden bg-gradient-to-br from-green-800 to-green-600">
+              <div className="aspect-square relative overflow-hidden bg-green-800">
                 <Image
                   src={member.photo}
                   alt={t(`Team.${member.nameKey}`)}
@@ -119,10 +122,7 @@ export default function Team() {
 
         {/* Message de fin */}
         <div className="text-center mt-16 pt-8 border-t border-gray-200">
-          <p className="text-gray-500 text-sm flex items-center justify-center gap-2">
-            <span className="text-xl">👥</span>
-            {t('Team.footer')}
-          </p>
+          <p className="text-gray-500 text-sm">{t('Team.footer')}</p>
         </div>
       </div>
     </section>

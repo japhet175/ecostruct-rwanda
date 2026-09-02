@@ -1,69 +1,63 @@
 'use client'
 
+import type { LucideIcon } from 'lucide-react'
+import { Building2, Hammer, Umbrella, Zap, Droplets, Shovel } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 
-interface Service {
-  icon: string
+interface ServiceCategory {
   title: string
-  description: string
+  items: string[]
 }
+
+const ICONS: LucideIcon[] = [Building2, Hammer, Umbrella, Zap, Droplets, Shovel]
 
 export default function Services() {
   const { t } = useLanguage()
-
-  // Utilise les traductions depuis les fichiers JSON
-  const services: Service[] = [
-    { icon: "🏗️", title: t('Services.building'), description: t('Services.buildingDesc') },
-    { icon: "🔨", title: t('Services.renovation'), description: t('Services.renovationDesc') },
-    { icon: "🔧", title: t('Services.maintenance'), description: t('Services.maintenanceDesc') },
-    { icon: "🌿", title: t('Services.landscaping'), description: t('Services.landscapingDesc') },
-    { icon: "📐", title: t('Services.supervision'), description: t('Services.supervisionDesc') }
-  ]
+  const categories = t('Services.categories') as unknown as ServiceCategory[]
 
   return (
     <section className="py-20 bg-gray-50 scroll-mt-16" id="services">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center rounded-full bg-green-100 px-4 py-1.5 text-sm font-medium text-green-800 mb-4">
-            ⭐ {t('Services.badge')}
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <span className="text-amber-600 font-semibold text-xs uppercase tracking-[0.2em]">
+            {t('Services.badge')}
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-green-900 mt-3 mb-4 tracking-tight">
             {t('Services.title')}
           </h2>
-          <p className="text-gray-600 italic">
-            "{t('Services.subtitle')}"
+          <p className="text-gray-600 text-lg">
+            {t('Services.subtitle')}
           </p>
         </div>
 
-        {/* Services grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {services.map((service, index) => (
-            <div 
-              key={index} 
-              className="group bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 hover:border-amber-200"
-            >
-              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
-                {service.icon}
+        {/* Categories grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categories.map((category, index) => {
+            const Icon = ICONS[index] ?? Building2
+            return (
+              <div
+                key={category.title}
+                className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm"
+              >
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-green-50 text-green-800">
+                  <Icon className="h-6 w-6" strokeWidth={1.5} aria-hidden="true" />
+                </div>
+                <h3 className="text-lg font-semibold text-green-900 mb-3">
+                  {category.title}
+                </h3>
+                <ul className="space-y-2">
+                  {category.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-gray-600">
+                      <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber-500" aria-hidden="true" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h3 className="text-xl font-bold text-green-800 mb-2">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {service.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Footer note */}
-        <div className="text-center mt-12 text-sm text-gray-500">
-          <span className="inline-flex items-center gap-2">
-            <span className="text-green-600">✓</span> Quality Guaranteed
-            <span className="text-green-600 ml-2">✓</span> On-Time Delivery
-            <span className="text-green-600 ml-2">✓</span> Certified Professionals
-          </span>
+            )
+          })}
         </div>
       </div>
     </section>

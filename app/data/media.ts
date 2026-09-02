@@ -30,8 +30,14 @@ export const ecolePhotos = [
 export const otherProjects = [
   { src: "/images/projects/Avenir.jpeg", title: "Avenir Project", category: "Other Achievement" },
   { src: "/images/projects/Project1.jpeg", title: "Project 1", category: "Other Achievement" },
-  { src: "/images/projects/projet-en-cours.jpeg", title: "Project in Progress", category: "Other Achievement" }
+  { src: "/images/projects/projet-en-cours.jpeg", title: "Project in Progress", category: "Other Achievement" },
+  { src: "/images/projects/isango-phase-3.avif", title: "ISANGE Phase 3", category: "Residential" },
+  { src: "/images/projects/one-residence.avif", title: "One Residence", category: "Residential" }
 ]
+
+// Nouvelles réalisations (réutilisées sur la page /realisations)
+export const isangoPhase3 = "/images/projects/isango-phase-3.avif"
+export const oneResidence = "/images/projects/one-residence.avif"
 
 
 

@@ -3,6 +3,8 @@
 
 import Image from 'next/image'
 import { useState, useEffect, useRef, useCallback, useId } from 'react'
+import type { LucideIcon } from 'lucide-react'
+import { Handshake, School, Building2, ImageOff, X } from 'lucide-react'
 import { egImaraPartners, inProgressPhotos, ecolePhotos, otherProjects } from '@/app/data/media'
 import { useLanguage } from '../i18n/LanguageContext'
 
@@ -21,8 +23,6 @@ interface IndexedPhoto extends PhotoItem {
 }
 
 // ─── Constantes module-level ─────────────────────────────────────────────────
-
-const CARD_ANIMATION_DELAY_MS = 80
 
 const ALL_PHOTOS: IndexedPhoto[] = (
   [...egImaraPartners, ...inProgressPhotos, ...ecolePhotos, ...otherProjects] as PhotoItem[]
@@ -48,8 +48,8 @@ const isPartnerPhoto = (title: string) =>
 
 function PartnerBadge() {
   return (
-    <div className="mt-2 inline-flex items-center gap-1 bg-amber-100 text-amber-800 text-xs font-semibold px-2 py-1 rounded-full">
-      <span aria-hidden="true">🤝</span> ECOSTRUCT × EGB × IMARA
+    <div className="mt-2 inline-flex items-center bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-full">
+      ECOSTRUCT × EGB × IMARA
     </div>
   )
 }
@@ -59,11 +59,9 @@ function PartnerBadge() {
 export default function Gallery() {
   const { t } = useLanguage()
 
-  const [selected, setSelected]         = useState<number | null>(null)
-  const [activeTab, setActiveTab]       = useState<TabKey>('partners')
-  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set())
+  const [selected, setSelected]   = useState<number | null>(null)
+  const [activeTab, setActiveTab] = useState<TabKey>('partners')
 
-  const cardRefs     = useRef<(HTMLDivElement | null)[]>([])
   const touchStartX  = useRef<number | null>(null)
   const modalRef     = useRef<HTMLDivElement>(null)
   const modalTitleId = useId()
@@ -73,41 +71,13 @@ export default function Gallery() {
       ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
       : false
 
-  const TABS: { key: TabKey; label: string; emoji: string }[] = [
-    { key: 'partners', label: t('Gallery.tabPartners'), emoji: '🤝' },
-    { key: 'ecole',    label: t('Gallery.tabEcole'),    emoji: '🏫' },
-    { key: 'others',   label: t('Gallery.tabOthers'),   emoji: '🏗️' },
+  const TABS: { key: TabKey; label: string; icon: LucideIcon }[] = [
+    { key: 'partners', label: t('Gallery.tabPartners'), icon: Handshake },
+    { key: 'ecole',    label: t('Gallery.tabEcole'),    icon: School },
+    { key: 'others',   label: t('Gallery.tabOthers'),   icon: Building2 },
   ]
 
   const currentPhotos = PHOTOS_BY_TAB[activeTab]
-
-  // ── IntersectionObserver ──────────────────────────────────────────────────
-  useEffect(() => {
-    setVisibleCards(new Set())
-    cardRefs.current = []
-
-    let observer: IntersectionObserver | null = null
-
-    const id = setTimeout(() => {
-      observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            const index = cardRefs.current.indexOf(entry.target as HTMLDivElement)
-            if (entry.isIntersecting && index !== -1) {
-              setVisibleCards((prev) => new Set([...prev, index]))
-            }
-          })
-        },
-        { threshold: 0.15, rootMargin: '40px' }
-      )
-      cardRefs.current.forEach((ref) => { if (ref) observer!.observe(ref) })
-    }, 0)
-
-    return () => {
-      clearTimeout(id)
-      observer?.disconnect()
-    }
-  }, [activeTab])
 
   // ── Scroll lock ───────────────────────────────────────────────────────────
   useEffect(() => {
@@ -180,18 +150,15 @@ export default function Gallery() {
 
   return (
     <section
-      className="py-24 bg-gradient-to-b from-gray-50 to-white scroll-mt-16"
+      className="py-24 bg-gray-50 scroll-mt-16"
       id="gallery"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
-            <span className="w-2 h-2 bg-green-600 rounded-full animate-pulse" aria-hidden="true" />
-            {t('Gallery.badge')}
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-green-900 mt-3 mb-4">
+          <span className="text-amber-600 font-semibold text-xs uppercase tracking-[0.2em]">{t('Gallery.badge')}</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-green-900 mt-3 mb-4 tracking-tight">
             {t('Gallery.title')}
           </h2>
           <p className="text-gray-600 text-lg">
@@ -205,7 +172,7 @@ export default function Gallery() {
           aria-label={t('Gallery.tabListLabel')}
           className="flex flex-wrap justify-center gap-4 mb-12"
         >
-          {TABS.map(({ key, label, emoji }) => (
+          {TABS.map(({ key, label, icon: Icon }) => (
             <button
               key={key}
               role="tab"
@@ -213,15 +180,15 @@ export default function Gallery() {
               aria-selected={activeTab === key}
               aria-controls={`tabpanel-${key}`}
               onClick={() => setActiveTab(key)}
-              className={`px-6 py-3 rounded-full text-base font-semibold transition-all duration-300
-                flex items-center gap-2 shadow-md hover:shadow-lg
+              className={`px-5 py-2.5 rounded-md text-sm font-semibold transition-colors duration-200
+                flex items-center gap-2
                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700
                 ${activeTab === key
-                  ? 'bg-green-800 text-white scale-105 shadow-xl'
+                  ? 'bg-green-800 text-white'
                   : 'bg-white text-gray-700 hover:bg-green-50 border border-gray-200'
                 }`}
             >
-              <span className="text-xl" aria-hidden="true">{emoji}</span>
+              <Icon className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
               {label}
               <span className={`ml-1 text-xs rounded-full px-2 py-0.5 ${
                 activeTab === key ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-500'
@@ -234,17 +201,10 @@ export default function Gallery() {
 
         {/* Partnership banner */}
         {activeTab === 'partners' && (
-          <div className="relative overflow-hidden mb-12 rounded-2xl bg-gradient-to-r from-amber-50 to-green-50 border border-amber-200 shadow-md">
-            <div
-              className="absolute inset-0 opacity-10 bg-[radial-gradient(#eab308_1px,transparent_1px)] [background-size:16px_16px]"
-              aria-hidden="true"
-            />
-            <div className="relative p-5 text-center">
-              <p className="text-green-800 text-base md:text-lg font-semibold flex flex-wrap items-center justify-center gap-2">
-                <span className="text-3xl" aria-hidden="true">🤝</span>
-                <span>{t('Gallery.partnershipBanner')}</span>
-              </p>
-            </div>
+          <div className="mb-12 rounded-lg bg-gray-50 border border-gray-200 p-5 text-center">
+            <p className="text-green-900 text-base md:text-lg font-medium">
+              {t('Gallery.partnershipBanner')}
+            </p>
           </div>
         )}
 
@@ -256,25 +216,15 @@ export default function Gallery() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {currentPhotos.map((photo, idx) => {
-            const isVisible = visibleCards.has(idx)
             return (
               <button
                 key={`${photo.src}-${idx}`}
-                ref={(el) => { cardRefs.current[idx] = el as HTMLDivElement | null }}
                 type="button"
                 onClick={() => openPhoto(photo._globalIndex)}
-                tabIndex={isVisible ? 0 : -1}
                 aria-label={`${t('Gallery.viewPhoto')} ${photo.title}`}
-                className={`group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-lg text-left w-full
-                  hover:shadow-2xl transition-all duration-500 hover:-translate-y-2
-                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700
-                  ${isVisible
-                    ? 'opacity-100 translate-y-0'
-                    : 'opacity-0 translate-y-10'
-                  }`}
-                style={{
-                  transitionDelay: prefersReducedMotion ? '0ms' : `${idx * CARD_ANIMATION_DELAY_MS}ms`,
-                }}
+                className="group cursor-pointer bg-white rounded-lg overflow-hidden shadow-sm text-left w-full
+                  hover:shadow-md transition-shadow duration-300
+                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
               >
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
@@ -290,10 +240,10 @@ export default function Gallery() {
                     />
                   ) : (
                     <div
-                      className="w-full h-full flex items-center justify-center text-gray-400 text-5xl bg-gray-50"
+                      className="w-full h-full flex items-center justify-center text-gray-400 bg-gray-50"
                       aria-label={t('Gallery.noImage')}
                     >
-                      📷
+                      <ImageOff className="h-8 w-8" strokeWidth={1.5} aria-hidden="true" />
                     </div>
                   )}
                   <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white text-xs font-semibold px-2 py-1 rounded-full">
@@ -303,14 +253,14 @@ export default function Gallery() {
 
                 {/* Title & badge */}
                 <div className="p-5 bg-white">
-                  <h3 className="text-lg font-bold text-green-800 leading-tight mb-1">
+                  <h3 className="text-lg font-semibold text-green-900 leading-tight mb-1">
                     {photo.title}
                   </h3>
                   {isPartnerPhoto(photo.title) ? (
                     <PartnerBadge />
                   ) : photo.src.includes('ambassade-france-project') ? (
-                    <div className="mt-2 inline-flex items-center gap-1 bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded-full">
-                      <span aria-hidden="true">🏗️</span> ECOSTRUCT
+                    <div className="mt-2 inline-flex items-center bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-full">
+                      ECOSTRUCT
                     </div>
                   ) : (
                     <p className="text-sm text-gray-500 mt-1">{photo.category}</p>
@@ -336,7 +286,7 @@ export default function Gallery() {
         >
           <div
             ref={modalRef}
-            className="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-auto relative"
+            className="bg-gray-900 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-auto relative"
             style={prefersReducedMotion ? undefined : { animation: 'gallery-scale-in 0.3s ease-out' }}
             onClick={(e) => e.stopPropagation()}
             onKeyDown={onModalKeyDown}
@@ -391,10 +341,11 @@ export default function Gallery() {
                 type="button"
                 data-autofocus
                 onClick={() => setSelected(null)}
-                className="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm transition
+                className="mt-6 inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-md text-sm transition
                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                {t('Gallery.close')} ✕
+                <X className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+                {t('Gallery.close')}
               </button>
             </div>
           </div>

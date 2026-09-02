@@ -1,26 +1,36 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useSyncExternalStore } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
+
+function subscribeReducedMotion(callback: () => void) {
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+  mq.addEventListener('change', callback)
+  return () => mq.removeEventListener('change', callback)
+}
+
+function getReducedMotionSnapshot() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
+function getReducedMotionServerSnapshot() {
+  return false
+}
 
 export default function Hero() {
   const { t } = useLanguage()
   const [videoError, setVideoError] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot
+  )
   const videoRef = useRef<HTMLVideoElement>(null)
   const hasTriedPlay = useRef(false)
 
   const SERVICES = (t('Hero.services') as unknown) as string[]
-  // Detect reduced motion preference
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-    setPrefersReducedMotion(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
 
   useEffect(() => {
     const video = videoRef.current
@@ -119,19 +129,18 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4 pt-16">
 
-        <p className="inline-flex items-center gap-2 text-amber-400 text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] mb-5 border border-amber-400/40 rounded-full px-4 py-1.5 backdrop-blur-sm">
-          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" aria-hidden="true" />
+        <p className="text-amber-400 text-xs sm:text-sm font-semibold uppercase tracking-[0.3em] mb-6">
           {t('Hero.eyebrow')}
         </p>
 
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-3 leading-none tracking-tight">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-none tracking-tight">
           {t('Hero.weAre')}{' '}
-          <span className="text-amber-400 drop-shadow-[0_0_40px_rgba(251,191,36,0.45)]">
+          <span className="text-amber-400">
             {t('Hero.brand')}
           </span>
         </h1>
 
-        <p className="text-lg md:text-2xl font-medium mb-10 text-white/75 italic tracking-wide">
+        <p className="text-lg md:text-2xl font-medium mb-10 text-white/90">
           {t('Hero.tagline')}
         </p>
 
@@ -142,7 +151,7 @@ export default function Hero() {
           {SERVICES.map((service) => (
             <li
               key={service}
-              className="text-xs sm:text-sm text-white/70 bg-white/10 border border-white/15 rounded-full px-3 py-1 backdrop-blur-sm"
+              className="text-xs sm:text-sm text-white/80 bg-white/10 border border-white/20 rounded-full px-3 py-1"
             >
               {service}
             </li>
@@ -152,13 +161,13 @@ export default function Hero() {
         <div className="flex gap-3 flex-wrap justify-center">
           <Link
             href="/#contact"
-            className="bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-gray-900 px-8 py-3 rounded-lg font-bold text-sm uppercase tracking-wide transition-all duration-200 shadow-lg shadow-amber-500/30 hover:shadow-amber-400/40 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
+            className="bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-gray-900 px-7 py-3 rounded-md font-semibold text-sm uppercase tracking-wide transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
           >
             {t('Hero.freeQuote')}
           </Link>
           <Link
             href="/realisations"
-            className="border border-white/50 hover:border-white hover:bg-white/10 text-white px-8 py-3 rounded-lg font-semibold text-sm uppercase tracking-wide transition-all duration-200 backdrop-blur-sm hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="border border-white/40 hover:border-white hover:bg-white/10 text-white px-7 py-3 rounded-md font-semibold text-sm uppercase tracking-wide transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             {t('Hero.viewWork')}
           </Link>
@@ -170,7 +179,7 @@ export default function Hero() {
         aria-hidden="true"
       >
         <span className="text-[10px] uppercase tracking-[0.2em]">{t('Hero.scroll')}</span>
-        <span className={prefersReducedMotion ? '' : 'animate-bounce'}>↓</span>
+        <span aria-hidden="true">↓</span>
       </div>
 
     </section>

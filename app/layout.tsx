@@ -6,14 +6,15 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import { LanguageProvider } from './i18n/LanguageContext'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-inter',
 })
 
 export const metadata: Metadata = {
-  title: 'ECOSTRUCT | Construction & Renovation in Rwanda',
-  description: 'ECOSTRUCT - You Dream It We Build It. Construction, renovation, electrical, plumbing, landscaping in Rwanda.',
+  title: 'ECO-STRUCT RWANDA LTD | Construction & Renovation in Rwanda',
+  description: 'ECO-STRUCT RWANDA LTD — reliable construction, renovation, civil works and technical solutions in Rwanda. Building Today. Creating Tomorrow.',
   icons: {
     icon: '/favicon.ico',
   },
@@ -26,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.variable} ${inter.className} antialiased`}>
         <LanguageProvider>
           <Header />
           <main>{children}</main>

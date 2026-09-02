@@ -1,10 +1,11 @@
 import Hero from './components/Hero'
 import AboutSection from './components/AboutSection'
 import Services from './components/Services'
-import Sustainability from './components/Sustainability'
-import Team from './components/Team'
+import Commitment from './components/Commitment'
+import Vision from './components/Vision'
 import VideoTestimonial from './components/VideoTestimonial'
 import Gallery from './components/Gallery'
+import Team from './components/Team'
 import ContactSection from './components/ContactSection'
 
 export default function Home() {
@@ -13,11 +14,11 @@ export default function Home() {
       <Hero />
       <AboutSection />
       <Services />
-      <Sustainability />
-      <Team />
+      <Commitment />
+      <Vision />
       <VideoTestimonial />
       <Gallery />
-
+      <Team />
       <ContactSection />
     </main>
   )

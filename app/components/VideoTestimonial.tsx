@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState, useEffect, useCallback } from 'react'
+import { Film } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 
 export default function VideoTestimonial() {
@@ -50,7 +51,11 @@ export default function VideoTestimonial() {
   const togglePlay = useCallback(() => {
     const video = videoRef.current
     if (!video) return
-    video.paused ? video.play().catch(() => setVideoError(true)) : video.pause()
+    if (video.paused) {
+      video.play().catch(() => setVideoError(true))
+    } else {
+      video.pause()
+    }
   }, [])
 
   const toggleMute = useCallback(() => {
@@ -74,7 +79,7 @@ export default function VideoTestimonial() {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-br from-green-50 to-white scroll-mt-16" id="testimonial">
+    <section className="py-20 bg-white scroll-mt-16" id="testimonial">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -92,7 +97,7 @@ export default function VideoTestimonial() {
 
         {/* Video Player */}
         <div className="max-w-4xl mx-auto">
-          <div className="rounded-2xl overflow-hidden shadow-2xl bg-black ring-1 ring-black/10">
+          <div className="rounded-lg overflow-hidden shadow-lg bg-black ring-1 ring-black/10">
             <div className="relative cursor-pointer" onClick={togglePlay}>
               <video
                 ref={videoRef}
@@ -106,7 +111,7 @@ export default function VideoTestimonial() {
 
               {videoError && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 gap-3">
-                  <span className="text-5xl">🎬</span>
+                  <Film className="h-10 w-10 text-white/60" strokeWidth={1.5} aria-hidden="true" />
                   <p className="text-white font-medium">{t('VideoTestimonial.unavailable')}</p>
                 </div>
               )}
@@ -196,7 +201,7 @@ export default function VideoTestimonial() {
               {t('VideoTestimonial.message1')}{' '}
               <span className="font-medium">{t('VideoTestimonial.message2')}</span>{' '}
               {t('VideoTestimonial.message3')}{' '}
-              <span className="italic">{t('VideoTestimonial.message4')}</span>.
+              {t('VideoTestimonial.message4')}.
             </p>
           </div>
         </div>

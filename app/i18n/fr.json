@@ -1,46 +1,20 @@
 {
   "Hero": {
-    "eyebrow": "Partenaire de Confiance au Rwanda",
-    "weAre": "NOUS SOMMES",
-    "brand": "ECOSTRUCT",
-    "tagline": "Vous le Rêvez — Nous le Construisons",
+    "eyebrow": "Construction • Rénovation • Génie civil • Solutions techniques",
+    "weAre": "ECO-STRUCT",
+    "brand": "RWANDA LTD",
+    "tagline": "Construire aujourd'hui. Créer demain.",
     "freeQuote": "Demander un Devis",
     "viewWork": "Voir nos Réalisations",
     "scroll": "Défiler",
-    "services": ["Construction de Bâtiments", "Travaux de Rénovation", "Services de Maintenance", "Aménagement Paysager & Travaux Extérieurs", "Supervision Technique"]
-  },
-  "Services": {
-    "badge": "NOS DOMAINES D'EXPERTISE",
-    "title": "Ce Que Nous Faisons de Mieux",
-    "subtitle": "Construire avec Qualité, responsabilité et confiance.",
-    "building": "Construction de Bâtiments",
-    "buildingDesc": "Bâtiments résidentiels, commerciaux et institutionnels.",
-    "renovation": "Travaux de Rénovation",
-    "renovationDesc": "Rénovation de bureaux, écoles, maisons, appartements et bâtiments publics.",
-    "maintenance": "Services de Maintenance",
-    "maintenanceDesc": "Réparations, peinture, plomberie, maçonnerie, béton et finitions.",
-    "landscaping": "Aménagement Paysager & Travaux Extérieurs",
-    "landscapingDesc": "Clôtures, drainage, pavage, jardins, aménagements extérieurs.",
-    "supervision": "Supervision Technique",
-    "supervisionDesc": "Coffrage, ferraillage, contrôle qualité béton et coordination de chantier."
-  },
-  "Team": {
-    "badge": "RENCONTREZ L'ÉQUIPE",
-    "title": "Derrière ECOSTRUCT, une Équipe Passionnée",
-    "subtitle": "Une expertise collective au service de nos clients — ensemble, nous construisons l'avenir du Rwanda.",
-    "footer": "👥 Une équipe en croissance — de nouveaux talents arrivent bientôt.",
-    "founderName": "Ndemeye Gaius",
-    "founderRole": "Fondateur & DG – Expert en Construction",
-    "founderBio": "Plus de 20 ans d'expérience en France, il dirige aujourd'hui l'excellence en construction au Rwanda.",
-    "japhetName": "Japhet",
-    "japhetRole": "Coordinateur de Projets Construction",
-    "japhetBio": "Coordination des projets de construction, planning chantier et contrôle qualité.",
-    "gercyName": "Gercy",
-    "gercyRole": "Superviseur Technique de Chantier",
-    "gercyBio": "Supervision des opérations sur site, assurance qualité et conformité technique.",
-    "shadrackName": "Shadrack",
-    "shadrackRole": "Directeur Commercial",
-    "shadrackBio": "Pilote le développement commercial et les partenariats stratégiques."
+    "services": [
+      "Construction & Gros œuvre",
+      "Rénovation & Finitions",
+      "Étanchéité & Toiture",
+      "Électricité & Travaux techniques",
+      "Plomberie & Sanitaires",
+      "Aménagements extérieurs"
+    ]
   },
   "Navigation": {
     "home": "Accueil",
@@ -51,16 +25,247 @@
     "contact": "Contact",
     "careers": "Carrières"
   },
-  "Footer": {
-    "quickLinks": "Liens Rapides",
-    "contact": "Contact",
-    "followUs": "Suivez-nous",
-    "rights": "Tous droits réservés."
+  "About": {
+    "whoWeAre": "À propos de nous",
+    "title": "Construction & rénovation fiables au Rwanda",
+    "p1": "ECO-STRUCT RWANDA LTD est une entreprise rwandaise spécialisée dans la construction, la rénovation et les travaux techniques, proposant des solutions fiables, professionnelles et adaptées aux projets résidentiels, commerciaux, institutionnels et diplomatiques.",
+    "p2": "Notre expertise couvre notamment le gros œuvre, la rénovation, l'étanchéité, la maçonnerie, l'électricité, la plomberie, la toiture, le pavage, les travaux de finition et la maintenance générale des bâtiments.",
+    "p3": "Dirigée par des professionnels disposant d'une solide expérience dans le secteur de la construction, ECO-STRUCT associe une expérience acquise notamment en Europe à une bonne connaissance du marché rwandais.",
+    "founderName": "Gaius Ndemeye",
+    "founderRole": "Directeur Général",
+    "whyTitle": "Pourquoi ECO-STRUCT ?",
+    "why1": "Direction expérimentée dans le secteur de la construction",
+    "why2": "Compétences techniques multidisciplinaires",
+    "why3": "Expérience auprès de clients institutionnels et diplomatiques",
+    "why4": "Présence locale associée à une expérience internationale",
+    "why5": "Équipes flexibles et réactives",
+    "why6": "Exécution des projets orientée vers la qualité"
+  },
+  "Services": {
+    "badge": "Nos Services",
+    "title": "Construction, Rénovation & Solutions Techniques",
+    "subtitle": "Des services complets et professionnels pour les projets résidentiels, commerciaux, institutionnels et diplomatiques.",
+    "categories": [
+      {
+        "title": "Construction & Gros œuvre",
+        "items": [
+          "Travaux en béton armé",
+          "Coffrage et ferraillage",
+          "Maçonnerie",
+          "Réparations structurelles",
+          "Murs et clôtures",
+          "Extensions et modifications de bâtiments"
+        ]
+      },
+      {
+        "title": "Rénovation & Finitions",
+        "items": [
+          "Rénovation complète de bâtiments",
+          "Peinture",
+          "Plafonds",
+          "Carrelage",
+          "Aménagement intérieur",
+          "Portes, fenêtres et travaux aluminium"
+        ]
+      },
+      {
+        "title": "Étanchéité & Toiture",
+        "items": [
+          "Étanchéité des terrasses",
+          "Réparation et rénovation de toitures",
+          "Recherche et traitement des infiltrations",
+          "Solutions d'évacuation des eaux"
+        ]
+      },
+      {
+        "title": "Électricité & Travaux techniques",
+        "items": [
+          "Installations électriques",
+          "Systèmes d'éclairage",
+          "Mise aux normes électriques",
+          "Onduleurs et solutions d'alimentation de secours",
+          "Maintenance technique"
+        ]
+      },
+      {
+        "title": "Plomberie & Sanitaires",
+        "items": [
+          "Réseaux d'alimentation en eau",
+          "Réseaux d'évacuation",
+          "Installations sanitaires",
+          "Remplacement et réparation des canalisations PVC"
+        ]
+      },
+      {
+        "title": "Aménagements extérieurs",
+        "items": [
+          "Pavage",
+          "Préparation paysagère",
+          "Drainage",
+          "Maçonnerie extérieure",
+          "Remise en état des sites"
+        ]
+      }
+    ]
+  },
+  "Commitment": {
+    "badge": "Nos Engagements",
+    "title": "Nos Engagements",
+    "subtitle": "Nous nous engageons à réaliser des travaux professionnels et durables, en mettant l'accent sur les valeurs qui comptent pour nos clients.",
+    "qualityTitle": "Qualité",
+    "qualityDesc": "Nous nous engageons à réaliser des travaux durables et professionnels conformément aux exigences des projets et aux bonnes pratiques de construction.",
+    "safetyTitle": "Sécurité",
+    "safetyDesc": "La sécurité est intégrée à la préparation et à l'exécution de nos interventions.",
+    "deadlinesTitle": "Délais",
+    "deadlinesDesc": "Nous organisons nos équipes et nos moyens afin de respecter les délais convenus et de limiter les perturbations pour nos clients.",
+    "satisfactionTitle": "Satisfaction client",
+    "satisfactionDesc": "Nous privilégions une communication claire, la réactivité et des solutions pratiques adaptées à chaque projet."
+  },
+  "Vision": {
+    "badge": "Notre Vision",
+    "title": "Un partenaire de confiance dans la construction au Rwanda",
+    "text": "Notre ambition est de positionner ECO-STRUCT RWANDA LTD comme un partenaire de confiance dans le secteur de la construction au Rwanda, grâce à la réalisation de projets de qualité, au développement de relations durables avec nos clients et à l'amélioration continue de nos compétences techniques."
+  },
+  "Team": {
+    "badge": "Notre Équipe",
+    "title": "Direction & Expertise",
+    "subtitle": "Dirigée par des professionnels expérimentés, dotés d'une expertise de terrain en construction et en gestion de projet.",
+    "footer": "Une équipe en croissance — de nouveaux talents arrivent bientôt.",
+    "founderName": "Gaius Ndemeye",
+    "founderRole": "Directeur Général",
+    "founderBio": "Une solide expérience de terrain dans la construction, le coffrage, le gros œuvre, l'encadrement des équipes et la gestion de chantier, acquise sur des projets majeurs en Europe et au Rwanda.",
+    "japhetName": "Japhet MUSHOTA KALUMBA",
+    "japhetRole": "Coordinateur de Projets Construction",
+    "japhetBio": "Coordination des projets de construction, planning chantier et contrôle qualité.",
+    "gercyName": "Gercy EMANE NDONG",
+    "gercyRole": "Superviseur Technique de Chantier",
+    "gercyBio": "Supervision des opérations sur site, assurance qualité et conformité technique.",
+    "shadrackName": "Shadrack Ndabahariye",
+    "shadrackRole": "Directeur Commercial",
+    "shadrackBio": "Pilote le développement commercial et les partenariats stratégiques."
+  },
+  "Gallery": {
+    "badge": "Notre Travail",
+    "title": "Nos Projets & Partenariats",
+    "subtitle": "Découvrez les projets qui nous ont valu la confiance des plus grandes institutions.",
+    "tabPartners": "Partenaires Stratégiques",
+    "tabEcole": "École Française",
+    "tabOthers": "Autres Projets",
+    "tabListLabel": "Catégories de projets",
+    "partnershipBanner": "Nous sommes fiers de travailler en partenariat avec des institutions et organisations de premier plan.",
+    "viewPhoto": "Voir la photo",
+    "noImage": "Aucune image disponible",
+    "prevImage": "Image précédente",
+    "nextImage": "Image suivante",
+    "close": "Fermer"
+  },
+  "VideoTestimonial": {
+    "badge": "Impact Communautaire",
+    "title": "Au-delà de la Construction",
+    "subtitle": "ECO-STRUCT RWANDA LTD s'engage à autonomiser les communautés par l'éducation.",
+    "unavailable": "Vidéo indisponible",
+    "play": "Lire",
+    "pause": "Pause",
+    "mute": "Muette",
+    "unmute": "Son",
+    "partnerBadge": "Construire aujourd'hui → Autonomiser demain",
+    "partnerName": "ECO-STRUCT RWANDA LTD",
+    "message1": "ne construit pas seulement des structures — nous construisons des avenirs. Grâce à ce partenariat, nous aidons à fournir",
+    "message2": "du matériel pédagogique de qualité",
+    "message3": "aux enfants, car",
+    "message4": "les communautés fortes commencent par l'éducation"
+  },
+  "Realisations": {
+    "badge": "Notre Expérience",
+    "title": "Projets & Réalisations",
+    "subtitle": "Une sélection de projets de construction, rénovation et maintenance réalisés au Rwanda.",
+    "partnerText": "ECO-STRUCT RWANDA LTD a participé à différents projets de construction, de rénovation et de maintenance au Rwanda.",
+    "exploreGallery": "Découvrez nos projets dans la galerie",
+    "projects": [
+      {
+        "title": "École Française de Kigali",
+        "status": "Terminé",
+        "description": "Travaux de rénovation et de construction pour l'École Française de Kigali, livrés selon les plus hauts standards.",
+        "bullets": [
+          "Travaux de rénovation et de construction",
+          "Installations sanitaires",
+          "Réaménagement intérieur",
+          "Travaux de cuisine professionnelle",
+          "Mise à niveau des installations électriques",
+          "Rénovation des plafonds administratifs"
+        ],
+        "tags": ["Rénovation", "Éducation", "Kigali"]
+      },
+      {
+        "title": "Résidence de l'Ambassade de France – Kigali",
+        "status": "Terminé",
+        "description": "Travaux structurels et extérieurs pour la résidence de l'Ambassade de France à Kigali.",
+        "bullets": [
+          "Renforcement de mur de clôture",
+          "Travaux d'étanchéité de terrasse",
+          "Remplacement de canalisation d'évacuation",
+          "Travaux de pavage",
+          "Remise en état des extérieurs"
+        ],
+        "tags": ["Génie civil", "Diplomatique", "Kigali"]
+      },
+      {
+        "title": "Galaxy Hotel – Kigali",
+        "status": "Terminé",
+        "description": "Travaux de réhabilitation d'une zone extérieure pour Galaxy Hotel à Kigali.",
+        "bullets": [
+          "Réhabilitation d'une zone extérieure",
+          "Dessouchage",
+          "Pose de géotextile et de pierres"
+        ],
+        "tags": ["Aménagements extérieurs", "Hôtellerie", "Kigali"]
+      },
+      {
+        "title": "Résidence de l'Ambassadeur de Suisse",
+        "status": "Terminé",
+        "description": "Projet de toiture et étude technique pour la résidence de l'Ambassadeur de Suisse.",
+        "bullets": [
+          "Projet de toiture et étude technique"
+        ],
+        "tags": ["Toiture", "Diplomatique"]
+      },
+      {
+        "title": "ISANGE Phase 3",
+        "status": "Terminé",
+        "description": "Projet de construction résidentielle — ISANGE Phase 3, livré selon les plus hauts standards.",
+        "bullets": [
+          "Construction résidentielle",
+          "Gros œuvre",
+          "Travaux de finition"
+        ],
+        "tags": ["Construction", "Résidentiel"]
+      },
+      {
+        "title": "One Residence",
+        "status": "Terminé",
+        "description": "Construction résidentielle haut de gamme — One Residence, achevée avec précision et finitions de qualité.",
+        "bullets": [
+          "Construction résidentielle",
+          "Travaux de finition",
+          "Livraison de qualité"
+        ],
+        "tags": ["Construction", "Résidentiel"]
+      }
+    ],
+    "projectsCount": "Projets Livrés",
+    "yearsExperience": "Ans d'Expérience",
+    "clientSatisfaction": "Satisfaction Client",
+    "ctaText": "Vous souhaitez travailler avec nous sur votre prochain projet ?",
+    "getInTouch": "Nous Contacter",
+    "backToHome": "Retour à l'Accueil"
   },
   "Contact": {
     "getInTouch": "Nous Contacter",
     "title": "Prêt à Démarrer Votre Projet ?",
     "subtitle": "Contactez-nous pour un devis gratuit. Réponse sous 24h.",
+    "companyName": "ECO-STRUCT RWANDA LTD",
+    "managingDirector": "Directeur Général",
+    "directorName": "Gaius Ndemeye",
     "fullName": "Nom Complet",
     "emailAddress": "Adresse Email",
     "phoneNumber": "Téléphone",
@@ -72,33 +277,17 @@
     "followUs": "Suivez-nous",
     "email": "Email"
   },
-  "Realisations": {
-    "badge": "Notre Portfolio",
-    "title": "Projets & Réalisations",
-    "subtitle": "Travaux achevés et chantiers en cours au Rwanda — construits avec précision, livrés avec fierté.",
-    "partnerText": "Nous travaillons actuellement sur de nombreux projets avec des partenaires stratégiques.",
-    "exploreGallery": "Découvrez nos partenariats ici",
-    "ecoleTitle": "École Française de Kigali",
-    "completedLabel": "✅ Terminé 2025",
-    "ecoleDesc": "Rénovation complète de l'École Française de Kigali — salles de classe, espaces administratifs et extérieurs modernisés. Livré dans les délais avec des standards élevés.",
-    "currentTitle": "Chantier en Cours",
-    "currentLabel": "🔄 En Cours",
-    "currentDesc": "Un nouveau projet de construction actuellement en cours au Rwanda. Plus de détails seront communiqués prochainement.",
-    "tagRenovation": "Rénovation",
-    "tagEducation": "Éducation",
-    "tagConstruction": "Construction",
-    "tagNewBuild": "Nouvelle Construction",
-    "projectsCount": "Projets Livrés & En Cours",
-    "yearsExperience": "Ans d'Expérience",
-    "clientSatisfaction": "Satisfaction Client",
-    "ctaText": "Vous souhaitez travailler avec nous sur votre prochain projet ?",
-    "getInTouch": "Nous Contacter",
-    "backToHome": "Retour à l'Accueil"
+  "Footer": {
+    "quickLinks": "Liens Rapides",
+    "contact": "Contact",
+    "followUs": "Suivez-nous",
+    "rights": "Tous droits réservés.",
+    "slogan": "Construire aujourd'hui. Créer demain."
   },
   "Careers": {
-    "badge": "REJOIGNEZ NOTRE ÉQUIPE",
+    "badge": "Rejoignez notre équipe",
     "title": "Carrières chez",
-    "brand": "ECOSTRUCT",
+    "brand": "ECO-STRUCT RWANDA LTD",
     "subtitle": "Construisez l'avenir du Rwanda avec nous. Nous recherchons des personnes passionnées pour façonner le paysage de la construction de demain.",
     "comingSoon": "Offres d'emploi bientôt disponibles",
     "comingSoonDesc": "Nous préparons des opportunités passionnantes pour rejoindre notre équipe.",
@@ -113,99 +302,5 @@
     "quality": "Engagement pour la qualité",
     "innovation": "Innovation & durabilité",
     "backToHome": "Retour à l'Accueil"
-  },
-  "Sustainability": {
-    "whyChoose": "Pourquoi Choisir Eco-Struct Ltd?",
-    "sustainableTitle": "Construction Durable",
-    "forTomorrow": "pour Demain",
-    "description": "Chez Eco-Struct Ltd, nous croyons que la construction ne doit pas seulement réaliser les projets d'aujourd'hui — elle doit aussi protéger l'environnement de demain.",
-    "vision": "Contrairement à de nombreuses entreprises de construction traditionnelles, notre vision va au-delà de la construction de structures.",
-    "objectiveTitle": "Notre objectif est de promouvoir :",
-    "sustainableMethods": "Méthodes de construction durables",
-    "environmentalProtection": "Protection de l'environnement",
-    "recyclingMaterials": "Recyclage et réutilisation des matériaux",
-    "localMaterials": "Utilisation de matériaux locaux et d'expertise locale",
-    "wasteReduction": "Réduction des déchets de construction",
-    "resourceManagement": "Gestion responsable des ressources",
-    "objectiveFooter": "Nous visons à réduire l'impact environnemental de la construction tout en créant des projets durables, modernes et efficaces pour les générations futures.",
-    "commitmentTitle": "Notre Engagement Environnemental",
-    "recyclingTitle": "Recyclage & Gestion Responsable des Déchets",
-    "recyclingDesc": "Nous encourageons le tri, le recyclage et la réutilisation des matériaux de construction autant que possible afin de réduire les déchets sur nos chantiers.",
-    "localMaterialsTitle": "Utilisation de Matériaux Locaux",
-    "localMaterialsDesc": "Nous privilégions les matériaux et fournisseurs locaux pour soutenir l'économie rwandaise, réduire la pollution liée au transport et promouvoir le développement durable.",
-    "smarterConstructionTitle": "Construction plus Intelligente",
-    "smarterConstructionDesc": "Nos projets sont conçus pour combiner qualité, durabilité, efficacité énergétique et responsabilité environnementale.",
-    "buildingForFutureTitle": "Construire pour l'Avenir",
-    "buildingForFutureDesc": "Chaque projet devrait contribuer à un environnement plus propre, une communauté plus forte et un avenir meilleur pour les prochaines générations.",
-    "ecoFriendly": "Solutions de Construction Écologiques au Rwanda",
-    "conclusionBold": "Eco-Struct Ltd",
-    "conclusionText": "s'engage à créer des solutions de construction qui respectent à la fois les personnes et la nature.",
-    "footerNote": "Chaque projet devrait contribuer à : un environnement plus propre, une communauté plus forte et un avenir meilleur pour les prochaines générations."
-  },
-  "About": {
-    "whoWeAre": "Qui Sommes-Nous",
-    "title": "ECOSTRUCT – Votre Partenaire de Confiance au Rwanda",
-    "subtitle": "Construction • Rénovation • Électricité & Plomberie • Aménagement Paysager • Maintenance",
-    "founderName": "Ndemeye Gaius",
-    "founderRole": "Fondateur & DG",
-    "description": "ECOSTRUCT est une entreprise rwandaise avec une expertise reconnue dans la construction, la rénovation et la gestion technique des installations. Nous sommes approuvés par des organisations internationales, ONG et ambassades, qui ont reconnu notre professionnalisme à travers des lettres de recommandation officielles.",
-    "journey": "Notre Parcours",
-    "timelineYear1": "20+ ans",
-    "timelineTitle1": "Expérience en France",
-    "timelineBody1": "Avec plus de 20 ans d'expérience dans l'industrie de la construction en France, Ndemeye Gaius a développé une solide expertise, des normes élevées et une passion pour une construction de qualité, durable et innovante.",
-    "timelineYear2": "2024",
-    "timelineTitle2": "Retour au Rwanda",
-    "timelineBody2": "Après de nombreux projets réussis en France, il a décidé en 2024 de retourner au Rwanda avec un objectif clair : apporter ses connaissances, son expérience internationale et ses méthodes de construction modernes à son pays.",
-    "timelineYear3": "Aujourd'hui",
-    "timelineTitle3": "ECOSTRUCT Rwanda",
-    "timelineBody3": "Nous sommes approuvés par des organisations internationales, ONG et ambassades, qui ont reconnu notre professionnalisme à travers des lettres de recommandation officielles.",
-    "internationalExperience": "Expérience avec les institutions internationales",
-    "qualitySafety": "Engagement fort pour la qualité et la sécurité",
-    "environmentalPractices": "Pratiques respectueuses de l'environnement",
-    "humanValues": "Focus sur les valeurs humaines et la satisfaction client",
-    "reliableDelivery": "Livraison fiable et ponctuelle",
-    "inAction": "En Action",
-    "teamAtWork": "Notre Équipe au Travail",
-    "teamAtWorkDesc": "Derrière chaque projet, une équipe dédiée garantissant qualité et précision.",
-    "onSiteSupervision": "Supervision technique sur chantier",
-    "precisionPlanning": "Planification de précision & conception",
-    "ourServices": "Nos Services",
-    "whatWeDoBest": "Ce Que Nous Faisons de Mieux",
-    "buildingConstruction": "Construction de Bâtiments",
-    "reBuildingConstruction": "Reconstruction",
-    "electricalPlumbing": "Électricité & Plomberie",
-    "landscaping": "Aménagement Paysager",
-    "maintenance": "Maintenance & Gestion des Installations",
-    "ourCommitment": "Notre Engagement",
-    "commitmentQuote": "Nous ne construisons pas seulement des structures – nous bâtissons la confiance et des partenariats durables.",
-    "yearsExperience": "Ans d'Expérience",
-    "founded": "Fondée",
-    "clientSatisfaction": "Satisfaction Client",
-    "footerQuote": "Construire de manière responsable — respecter les personnes, renforcer les communautés et protéger notre planète pour les générations futures."
-  },
-  "VideoTestimonial": {
-    "badge": "Impact Communautaire",
-    "title": "Au-delà de la Construction",
-    "subtitle": "ECOSTRUCT Rwanda s'engage à autonomiser les communautés par l'éducation.",
-    "unavailable": "Vidéo indisponible",
-    "play": "Lire",
-    "pause": "Pause",
-    "mute": "Muette",
-    "unmute": "Son",
-    "partnerBadge": "🏗️ Construire Aujourd'hui → 📚 Autonomiser Demain",
-    "partnerName": "ECOSTRUCT Rwanda",
-    "message1": "ne construit pas seulement des structures — nous construisons des avenirs. Grâce à ce partenariat, nous aidons à fournir",
-    "message2": "du matériel pédagogique de qualité",
-    "message3": "aux enfants, car",
-    "message4": "les communautés fortes commencent par l'éducation"
-  },
-  "Gallery": {
-    "badge": "DÉCOUVREZ NOTRE TRAVAIL",
-    "title": "Nos Projets & Partenariats",
-    "subtitle": "Découvrez les projets qui nous ont valu la confiance des plus grandes institutions.",
-    "tabPartners": "Partenaires Stratégiques",
-    "tabEcole": "École Française",
-    "tabOthers": "Autres Projets",
-    "close": "Fermer"
   }
 }
