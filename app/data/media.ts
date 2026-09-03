@@ -5,25 +5,14 @@ export const logoFrench = "/images/logo/logo-francais.jpeg"
 // Photo fondateur
 export const founderPhoto = "/images/equipe/founder.jpg"
 
-// 1. EGB + IMARA (stratégiques)
-export const egImaraPartners = [
-  { src: "/images/projects/egb-imara-partnership.jpg", title: "EGB & IMARA Property", category: "Strategic Partnership" },
-  { src: "/images/projects/egb-imara-2.jpg", title: "EGB Partnership", category: "Strategic Partner" },
-  { src: "/images/projects/egb-imara-3.jpg", title: "IMARA Property", category: "Strategic Partner" }
-]
+// 1. Partenaires stratégiques (photos à venir)
+export const egImaraPartners = []
 
-export const inProgressPhotos = [
-  { src: "/images/projects/ambassade-france-project.jpeg", title: "ECOSTRUCT", category: "Strategic Partner" }
-]
+// Projets en cours (photos à venir)
+export const inProgressPhotos = []
 
-// 4. Autres projets (auxiliaires – fin de galerie)
-export const otherProjects = [
-  { src: "/images/projects/Avenir.jpeg", title: "Avenir Project", category: "Other Achievement" },
-  { src: "/images/projects/Project1.jpeg", title: "Project 1", category: "Other Achievement" },
-  { src: "/images/projects/projet-en-cours.jpeg", title: "Project in Progress", category: "Other Achievement" },
-  { src: "/images/projects/isango-phase-3.avif", title: "ISANGE Phase 3", category: "Residential" },
-  { src: "/images/projects/one-residence.avif", title: "One Residence", category: "Residential" }
-]
+// 4. Autres projets (photos à venir)
+export const otherProjects = []
 
 // Nouvelles réalisations (réutilisées sur la page /realisations)
 export const isangoPhase3 = "/images/projects/isango-phase-3.avif"

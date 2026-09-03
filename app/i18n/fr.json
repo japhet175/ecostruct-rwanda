@@ -107,7 +107,8 @@
     "noImage": "Aucune image disponible",
     "prevImage": "Image précédente",
     "nextImage": "Image suivante",
-    "close": "Fermer"
+    "close": "Fermer",
+    "empty": "De nouvelles photos de projets arrivent bientôt."
   },
   "VideoTestimonial": {
     "badge": "Impact Communautaire",

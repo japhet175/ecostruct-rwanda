@@ -164,6 +164,14 @@ export default function Gallery() {
           </p>
         </div>
 
+        {ALL_PHOTOS.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-500 text-lg">{t('Gallery.empty')}</p>
+          </div>
+        )}
+
+        {ALL_PHOTOS.length > 0 && (
+          <>
         {/* Tabs */}
         <div
           role="tablist"
@@ -268,6 +276,8 @@ export default function Gallery() {
             )
           })}
         </div>
+          </>
+        )}
       </div>
 
       {/* Modal */}
