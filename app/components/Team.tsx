@@ -12,12 +12,6 @@ export default function Team() {
 
   const teamMembers = [
     {
-      nameKey: 'founderName',
-      roleKey: 'founderRole',
-      bioKey: 'founderBio',
-      photo: '/images/equipe/founder.jpg',
-    },
-    {
       nameKey: 'japhetName',
       roleKey: 'japhetRole',
       bioKey: 'japhetBio',
@@ -29,12 +23,12 @@ export default function Team() {
       bioKey: 'gercyBio',
       photo: '/images/equipe/construction-legal-coordinator.jpg',
     },
-   {
-  nameKey: 'shadrackName',
-  roleKey: 'shadrackRole',
-  bioKey: 'shadrackBio',
-  photo: '/images/equipe/shadrack.jpg',
-},
+    {
+      nameKey: 'shadrackName',
+      roleKey: 'shadrackRole',
+      bioKey: 'shadrackBio',
+      photo: '/images/equipe/shadrack.jpg',
+    },
   ]
 
   // Animation au scroll

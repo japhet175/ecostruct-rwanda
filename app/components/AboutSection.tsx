@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Check } from 'lucide-react'
+import { Check, MapPin } from 'lucide-react'
 import { founderPhoto } from '@/app/data/media'
 import { useLanguage } from '../i18n/LanguageContext'
 
@@ -28,7 +28,7 @@ export default function AboutSection() {
         <div className="grid lg:grid-cols-5 gap-12 items-start">
           {/* Photo & founder */}
           <div className="lg:col-span-2">
-            <div className="rounded-lg overflow-hidden shadow-md ring-1 ring-green-900/10">
+            <div className="rounded-lg overflow-hidden">
               <Image
                 src={founderPhoto}
                 alt={t('About.founderName')}
@@ -38,10 +38,14 @@ export default function AboutSection() {
                 priority
               />
             </div>
-            <div className="mt-5 border-l-4 border-amber-400 pl-4">
+            <div className="mt-5">
               <h3 className="text-xl font-bold text-green-900">{t('About.founderName')}</h3>
               <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mt-1">
                 {t('About.founderRole')}
+              </p>
+              <p className="flex items-center gap-1.5 text-gray-500 text-sm mt-2">
+                <MapPin className="h-4 w-4 text-amber-600 shrink-0" strokeWidth={1.5} aria-hidden="true" />
+                {t('About.location')}
               </p>
             </div>
           </div>
