@@ -28,13 +28,12 @@ export default function AboutSection() {
         <div className="grid lg:grid-cols-5 gap-12 items-start">
           {/* Photo & founder */}
           <div className="lg:col-span-2">
-            <div className="rounded-lg overflow-hidden">
+            <div className="relative rounded-lg overflow-hidden aspect-square">
               <Image
                 src={founderPhoto}
                 alt={t('About.founderName')}
-                width={600}
-                height={450}
-                className="w-full h-auto object-cover"
+                fill
+                className="object-cover"
                 priority
               />
             </div>
