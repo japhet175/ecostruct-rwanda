@@ -4,13 +4,13 @@
 import Image from 'next/image'
 import { useState, useEffect, useRef, useCallback, useId } from 'react'
 import type { LucideIcon } from 'lucide-react'
-import { Handshake, School, Building2, ImageOff, X } from 'lucide-react'
-import { egImaraPartners, inProgressPhotos, ecolePhotos, otherProjects } from '@/app/data/media'
+import { Handshake, Building2, ImageOff, X } from 'lucide-react'
+import { egImaraPartners, inProgressPhotos, otherProjects } from '@/app/data/media'
 import { useLanguage } from '../i18n/LanguageContext'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type TabKey = 'partners' | 'ecole' | 'others'
+type TabKey = 'partners' | 'others'
 
 interface PhotoItem {
   src: string
@@ -25,7 +25,7 @@ interface IndexedPhoto extends PhotoItem {
 // ─── Constantes module-level ─────────────────────────────────────────────────
 
 const ALL_PHOTOS: IndexedPhoto[] = (
-  [...egImaraPartners, ...inProgressPhotos, ...ecolePhotos, ...otherProjects] as PhotoItem[]
+  [...egImaraPartners, ...inProgressPhotos, ...otherProjects] as PhotoItem[]
 ).map((p, i) => ({ ...p, _globalIndex: i }))
 
 const SRC_TO_INDEX = new Map(ALL_PHOTOS.map((p) => [p.src, p._globalIndex]))
@@ -35,7 +35,6 @@ const toIndexed = (photos: PhotoItem[]): IndexedPhoto[] =>
 
 const PHOTOS_BY_TAB: Record<TabKey, IndexedPhoto[]> = {
   partners: toIndexed([...egImaraPartners, ...inProgressPhotos]),
-  ecole:    toIndexed(ecolePhotos),
   others:   toIndexed(otherProjects),
 }
 
@@ -73,7 +72,6 @@ export default function Gallery() {
 
   const TABS: { key: TabKey; label: string; icon: LucideIcon }[] = [
     { key: 'partners', label: t('Gallery.tabPartners'), icon: Handshake },
-    { key: 'ecole',    label: t('Gallery.tabEcole'),    icon: School },
     { key: 'others',   label: t('Gallery.tabOthers'),   icon: Building2 },
   ]
 

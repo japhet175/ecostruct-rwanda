@@ -16,16 +16,6 @@ export const inProgressPhotos = [
   { src: "/images/projects/ambassade-france-project.jpeg", title: "ECOSTRUCT", category: "Strategic Partner" }
 ]
 
-// 3. École Française (6 photos)
-export const ecolePhotos = [
-  { src: "/images/projects/ecole-francaise-1.jpg", title: "École Française", category: "Renovation" },
-  { src: "/images/projects/ecole-francaise-2.jpg", title: "École Française", category: "Renovation" },
-  { src: "/images/projects/ecole-francaise-3.jpg", title: "École Française", category: "Renovation" },
-  { src: "/images/projects/ecole-francaise-4.jpg", title: "École Française", category: "Renovation" },
-  { src: "/images/projects/ecole-francaise-5.jpg", title: "École Française", category: "Renovation" },
-  { src: "/images/projects/ecole-francaise-6.jpg", title: "École Française", category: "Renovation" }
-]
-
 // 4. Autres projets (auxiliaires – fin de galerie)
 export const otherProjects = [
   { src: "/images/projects/Avenir.jpeg", title: "Avenir Project", category: "Other Achievement" },
