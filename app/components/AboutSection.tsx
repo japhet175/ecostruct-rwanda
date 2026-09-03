@@ -1,8 +1,6 @@
 'use client'
 
-import Image from 'next/image'
-import { Check, MapPin } from 'lucide-react'
-import { founderPhoto } from '@/app/data/media'
+import { Check } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 
 export default function AboutSection() {
@@ -25,36 +23,10 @@ export default function AboutSection() {
         </div>
 
         {/* About content */}
-        <div className="grid lg:grid-cols-5 gap-12 items-start">
-          {/* Photo & founder */}
-          <div className="lg:col-span-2">
-            <div className="relative rounded-lg overflow-hidden aspect-square">
-              <Image
-                src={founderPhoto}
-                alt={t('About.founderName')}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-            <div className="mt-5">
-              <h3 className="text-xl font-bold text-green-900">{t('About.founderName')}</h3>
-              <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mt-1">
-                {t('About.founderRole')}
-              </p>
-              <p className="flex items-center gap-1.5 text-gray-500 text-sm mt-2">
-                <MapPin className="h-4 w-4 text-amber-600 shrink-0" strokeWidth={1.5} aria-hidden="true" />
-                {t('About.location')}
-              </p>
-            </div>
-          </div>
-
-          {/* Paragraphs */}
-          <div className="lg:col-span-3 space-y-5">
-            <p className="text-gray-600 leading-relaxed">{t('About.p1')}</p>
-            <p className="text-gray-600 leading-relaxed">{t('About.p2')}</p>
-            <p className="text-gray-600 leading-relaxed">{t('About.p3')}</p>
-          </div>
+        <div className="max-w-3xl mx-auto space-y-5">
+          <p className="text-gray-600 leading-relaxed">{t('About.p1')}</p>
+          <p className="text-gray-600 leading-relaxed">{t('About.p2')}</p>
+          <p className="text-gray-600 leading-relaxed">{t('About.p3')}</p>
         </div>
 
         {/* Why ECO-STRUCT */}
