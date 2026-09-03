@@ -1,12 +1,16 @@
 'use client'
 
-import { Check } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
+
+interface WhyItem {
+  title: string
+  desc: string
+}
 
 export default function AboutSection() {
   const { t } = useLanguage()
 
-  const whyKeys = ['why1', 'why2', 'why3', 'why4', 'why5', 'why6']
+  const whyItems = t('About.whyItems') as unknown as WhyItem[]
 
   return (
     <section className="py-24 bg-white scroll-mt-16" id="about">
@@ -29,21 +33,40 @@ export default function AboutSection() {
           <p className="text-gray-600 leading-relaxed">{t('About.p3')}</p>
         </div>
 
-        {/* Why ECO-STRUCT */}
+        {/* Choose ECO-STRUCT */}
         <div className="mt-20" id="why">
-          <div className="text-center mb-10">
+          <div className="text-center max-w-3xl mx-auto mb-12">
             <h3 className="text-2xl md:text-3xl font-bold text-green-900 tracking-tight">
               {t('About.whyTitle')}
             </h3>
+            <p className="text-gray-600 text-lg mt-4 leading-relaxed">
+              {t('About.whySubtitle')}
+            </p>
           </div>
-          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {whyKeys.map((key) => (
-              <li key={key} className="flex items-start gap-3 bg-green-50 border border-green-100 rounded-lg p-4">
-                <Check className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" strokeWidth={2} aria-hidden="true" />
-                <span className="text-gray-700 text-sm">{t(`About.${key}`)}</span>
-              </li>
+
+          {/* Feature cards */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {whyItems.map((item) => (
+              <div key={item.title} className="bg-green-50 border border-green-100 rounded-lg p-6">
+                <h4 className="text-lg font-semibold text-green-900 mb-2">{item.title}</h4>
+                <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+              </div>
             ))}
-          </ul>
+          </div>
+
+          {/* Commitment */}
+          <div className="max-w-3xl mx-auto text-center rounded-lg bg-green-900 px-8 py-10">
+            <p className="text-amber-400 font-semibold text-xs uppercase tracking-[0.2em] mb-3">
+              {t('About.whyCommitmentTitle')}
+            </p>
+            <p className="text-white text-xl md:text-2xl font-bold leading-snug">
+              {t('About.whyCommitment')}
+            </p>
+          </div>
+
+          <p className="text-center text-gray-600 text-lg max-w-2xl mx-auto mt-8 leading-relaxed">
+            {t('About.whyClosing')}
+          </p>
         </div>
 
       </div>

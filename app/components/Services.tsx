@@ -1,19 +1,14 @@
 'use client'
 
 import type { LucideIcon } from 'lucide-react'
-import { Building2, Hammer, Umbrella, Zap, Droplets, Shovel } from 'lucide-react'
+import { Building2, Hammer, Umbrella, Zap, Droplets, Shovel, Compass } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 
-interface ServiceCategory {
-  title: string
-  items: string[]
-}
-
-const ICONS: LucideIcon[] = [Building2, Hammer, Umbrella, Zap, Droplets, Shovel]
+const ICONS: LucideIcon[] = [Building2, Hammer, Umbrella, Zap, Droplets, Shovel, Compass]
 
 export default function Services() {
   const { t } = useLanguage()
-  const categories = t('Services.categories') as unknown as ServiceCategory[]
+  const categories = t('Services.categories') as unknown as string[]
 
   return (
     <section className="py-20 bg-gray-50 scroll-mt-16" id="services">
@@ -38,23 +33,15 @@ export default function Services() {
             const Icon = ICONS[index] ?? Building2
             return (
               <div
-                key={category.title}
-                className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm"
+                key={category}
+                className="group bg-white rounded-lg p-6 border border-gray-200 shadow-sm hover:shadow-md hover:border-green-200 transition-all duration-300"
               >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-green-50 text-green-800">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-green-50 text-green-800 group-hover:bg-green-800 group-hover:text-white transition-colors duration-300">
                   <Icon className="h-6 w-6" strokeWidth={1.5} aria-hidden="true" />
                 </div>
-                <h3 className="text-lg font-semibold text-green-900 mb-3">
-                  {category.title}
+                <h3 className="text-lg font-semibold text-green-900">
+                  {category}
                 </h3>
-                <ul className="space-y-2">
-                  {category.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-gray-600">
-                      <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber-500" aria-hidden="true" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
               </div>
             )
           })}

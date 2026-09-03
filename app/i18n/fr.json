@@ -31,82 +31,31 @@
     "p1": "ECO-STRUCT RWANDA LTD est une entreprise rwandaise spécialisée dans la construction, la rénovation et les travaux techniques, proposant des solutions fiables, professionnelles et adaptées aux projets résidentiels, commerciaux, institutionnels et diplomatiques.",
     "p2": "Notre expertise couvre notamment le gros œuvre, la rénovation, l'étanchéité, la maçonnerie, l'électricité, la plomberie, la toiture, le pavage, les travaux de finition et la maintenance générale des bâtiments.",
     "p3": "Dirigée par des professionnels disposant d'une solide expérience dans le secteur de la construction, ECO-STRUCT associe une expérience acquise notamment en Europe à une bonne connaissance du marché rwandais.",
-    "founderName": "Gaius Ndemeye",
-    "founderRole": "Directeur Général",
-    "location": "Kigali, Rwanda",
-    "whyTitle": "Pourquoi ECO-STRUCT ?",
-    "why1": "Direction expérimentée dans le secteur de la construction",
-    "why2": "Compétences techniques multidisciplinaires",
-    "why3": "Expérience auprès de clients institutionnels et diplomatiques",
-    "why4": "Présence locale associée à une expérience internationale",
-    "why5": "Équipes flexibles et réactives",
-    "why6": "Exécution des projets orientée vers la qualité"
+    "whyTitle": "Pourquoi choisir ECO-STRUCT ?",
+    "whySubtitle": "Eco-Struct Rwanda Ltd associe une solide expertise en construction à un engagement clair en faveur d'un développement durable et local au Rwanda.",
+    "whyItems": [
+      { "title": "Approche locale & durable", "desc": "Nous privilégions l'utilisation de matériaux et de ressources locaux dès que cela est techniquement possible. Cela réduit l'impact environnemental lié au transport tout en soutenant l'économie locale rwandaise." },
+      { "title": "Responsabilité environnementale", "desc": "La durabilité est au cœur de notre approche. Nous intégrons des matériaux écologiques, des solutions économes en énergie et des pratiques de construction responsables dans chaque projet." },
+      { "title": "Qualité & expertise professionnelle", "desc": "Fort d'une vaste expérience dans le secteur de la construction, Eco-Struct s'engage à livrer des projets de qualité, sûrs et durables — de la planification et de la coordination jusqu'à l'exécution et la remise finale." },
+      { "title": "Compétences & partenariats locaux", "desc": "Nous travaillons avec des professionnels rwandais, des ouvriers qualifiés, des artisans, des fournisseurs et des partenaires locaux de confiance, contribuant à la création d'emplois et au développement des compétences." },
+      { "title": "Solutions adaptées au Rwanda", "desc": "Notre objectif n'est pas simplement de construire, mais de développer des solutions pratiques, durables et économiques adaptées au climat, aux ressources et à l'environnement de la construction au Rwanda." }
+    ],
+    "whyCommitmentTitle": "Notre Engagement",
+    "whyCommitment": "Construire localement. Construire de manière responsable. Construire pour l'avenir.",
+    "whyClosing": "Choisir Eco-Struct Rwanda Ltd, c'est choisir un partenaire de construction engagé pour la qualité, la durabilité, la création de valeur locale et la performance à long terme."
   },
   "Services": {
     "badge": "Nos Services",
     "title": "Construction, Rénovation & Solutions Techniques",
     "subtitle": "Des services complets et professionnels pour les projets résidentiels, commerciaux, institutionnels et diplomatiques.",
     "categories": [
-      {
-        "title": "Construction & Gros œuvre",
-        "items": [
-          "Travaux en béton armé",
-          "Coffrage et ferraillage",
-          "Maçonnerie",
-          "Réparations structurelles",
-          "Murs et clôtures",
-          "Extensions et modifications de bâtiments"
-        ]
-      },
-      {
-        "title": "Rénovation & Finitions",
-        "items": [
-          "Rénovation complète de bâtiments",
-          "Peinture",
-          "Plafonds",
-          "Carrelage",
-          "Aménagement intérieur",
-          "Portes, fenêtres et travaux aluminium"
-        ]
-      },
-      {
-        "title": "Étanchéité & Toiture",
-        "items": [
-          "Étanchéité des terrasses",
-          "Réparation et rénovation de toitures",
-          "Recherche et traitement des infiltrations",
-          "Solutions d'évacuation des eaux"
-        ]
-      },
-      {
-        "title": "Électricité & Travaux techniques",
-        "items": [
-          "Installations électriques",
-          "Systèmes d'éclairage",
-          "Mise aux normes électriques",
-          "Onduleurs et solutions d'alimentation de secours",
-          "Maintenance technique"
-        ]
-      },
-      {
-        "title": "Plomberie & Sanitaires",
-        "items": [
-          "Réseaux d'alimentation en eau",
-          "Réseaux d'évacuation",
-          "Installations sanitaires",
-          "Remplacement et réparation des canalisations PVC"
-        ]
-      },
-      {
-        "title": "Aménagements extérieurs",
-        "items": [
-          "Pavage",
-          "Préparation paysagère",
-          "Drainage",
-          "Maçonnerie extérieure",
-          "Remise en état des sites"
-        ]
-      }
+      "Construction & Gros œuvre",
+      "Rénovation & Finitions",
+      "Étanchéité & Toiture",
+      "Électricité & Travaux techniques",
+      "Plomberie & Sanitaires",
+      "Aménagements extérieurs",
+      "Études de terrain & de sites"
     ]
   },
   "Commitment": {

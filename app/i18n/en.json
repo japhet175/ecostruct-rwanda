@@ -31,82 +31,31 @@
     "p1": "ECO-STRUCT RWANDA LTD is a Rwanda-based construction and renovation company providing reliable, professional and tailored solutions for residential, commercial, institutional and diplomatic projects.",
     "p2": "Our expertise covers structural works, renovation, waterproofing, masonry, electrical works, plumbing, roofing, paving, finishing works and general building maintenance.",
     "p3": "Led by professionals with extensive experience in the construction industry, ECO-STRUCT combines European construction experience with strong knowledge of the Rwandan market.",
-    "founderName": "Gaius Ndemeye",
-    "founderRole": "Managing Director",
-    "location": "Kigali, Rwanda",
-    "whyTitle": "Why ECO-STRUCT?",
-    "why1": "Experienced construction management",
-    "why2": "Multidisciplinary technical capabilities",
-    "why3": "Experience with institutional and diplomatic clients",
-    "why4": "Local presence with international experience",
-    "why5": "Flexible and responsive teams",
-    "why6": "Quality-focused project execution"
+    "whyTitle": "Choose ECO-STRUCT?",
+    "whySubtitle": "Eco-Struct Rwanda Ltd combines strong construction expertise with a clear commitment to sustainable and locally driven development in Rwanda.",
+    "whyItems": [
+      { "title": "Local & Sustainable Approach", "desc": "We prioritize the use of locally sourced materials and resources whenever technically possible. This helps reduce transportation-related environmental impact while supporting Rwanda's local economy." },
+      { "title": "Environmental Responsibility", "desc": "Sustainability is at the heart of our approach. We aim to integrate eco-friendly materials, energy-efficient solutions and responsible construction practices into every project." },
+      { "title": "Quality & Professional Expertise", "desc": "With extensive experience in the construction industry, Eco-Struct is committed to delivering high-quality, safe and durable projects — from planning and coordination through to execution and final handover." },
+      { "title": "Local Skills & Partnerships", "desc": "We work with Rwandan professionals, skilled workers, artisans, suppliers and trusted local partners, contributing to local job creation and knowledge development." },
+      { "title": "Solutions Adapted to Rwanda", "desc": "Our objective is not simply to build, but to develop practical, sustainable and cost-effective solutions adapted to Rwanda's climate, resources and construction environment." }
+    ],
+    "whyCommitmentTitle": "Our Commitment",
+    "whyCommitment": "Build locally. Build responsibly. Build for the future.",
+    "whyClosing": "Choosing Eco-Struct Rwanda Ltd means choosing a construction partner committed to quality, sustainability, local value creation and long-term performance."
   },
   "Services": {
     "badge": "Our Services",
     "title": "Construction, Renovation & Technical Solutions",
     "subtitle": "Comprehensive and professional services for residential, commercial, institutional and diplomatic projects.",
     "categories": [
-      {
-        "title": "Construction & Structural Works",
-        "items": [
-          "Reinforced concrete works",
-          "Formwork and reinforcement",
-          "Masonry",
-          "Structural repairs",
-          "Walls and fencing",
-          "Building extensions and modifications"
-        ]
-      },
-      {
-        "title": "Renovation & Finishing",
-        "items": [
-          "Complete building renovation",
-          "Painting",
-          "Ceilings",
-          "Tiling",
-          "Interior refurbishment",
-          "Doors, windows and aluminium works"
-        ]
-      },
-      {
-        "title": "Waterproofing & Roofing",
-        "items": [
-          "Terrace waterproofing",
-          "Roof repairs and renovation",
-          "Leak detection and treatment",
-          "Drainage solutions"
-        ]
-      },
-      {
-        "title": "Electrical & Technical Works",
-        "items": [
-          "Electrical installations",
-          "Lighting systems",
-          "Electrical upgrading",
-          "UPS and backup power solutions",
-          "Technical maintenance"
-        ]
-      },
-      {
-        "title": "Plumbing & Sanitary Works",
-        "items": [
-          "Water supply networks",
-          "Drainage systems",
-          "Sanitary installations",
-          "PVC pipe replacement and repairs"
-        ]
-      },
-      {
-        "title": "External Works",
-        "items": [
-          "Paving",
-          "Landscaping preparation",
-          "Drainage",
-          "External masonry",
-          "Site rehabilitation"
-        ]
-      }
+      "Construction & Structural Works",
+      "Renovation & Finishing",
+      "Waterproofing & Roofing",
+      "Electrical & Technical Works",
+      "Plumbing & Sanitary Works",
+      "External Works",
+      "Land & Site Studies"
     ]
   },
   "Commitment": {
