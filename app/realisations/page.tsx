@@ -1,9 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { LucideIcon } from 'lucide-react'
-import { School, Landmark, Hotel, Home, Building2, Building, Handshake } from 'lucide-react'
+import { School, Landmark, Hotel, Home, Building2, Building, Handshake, X } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 
 interface Project {
@@ -28,6 +29,8 @@ const PROJECT_ICONS: LucideIcon[] = [School, Landmark, Hotel, Home, Building2, B
 export default function RealisationsPage() {
   const { t } = useLanguage()
   const projects = t('Realisations.projects') as unknown as Project[]
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [zoomed, setZoomed] = useState(false)
 
   const stats = [
     { value: `${projects.length}+`, label: t('Realisations.projectsCount') },
@@ -75,15 +78,20 @@ export default function RealisationsPage() {
               >
                 <div className="md:flex">
                   {image && (
-                    <div className="md:w-1/2 relative h-72 md:h-auto bg-gray-50 flex-shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => { setSelectedImage(image); setZoomed(false) }}
+                      aria-label={project.title}
+                      className="md:w-1/2 relative h-72 md:h-auto bg-gray-50 flex-shrink-0 overflow-hidden cursor-zoom-in group"
+                    >
                       <Image
                         src={image}
                         alt={project.title}
                         fill
-                        className="object-cover"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                         sizes="(max-width: 768px) 100vw, 50vw"
                       />
-                    </div>
+                    </button>
                   )}
                   <div className={`p-8 flex flex-col justify-center ${image ? 'md:w-1/2' : 'w-full'}`}>
                     <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -137,6 +145,37 @@ export default function RealisationsPage() {
         </div>
 
       </div>
+
+      {/* Lightbox / zoom */}
+      {selectedImage && (
+        <div className="fixed inset-0 z-50">
+          <div
+            className="absolute inset-0 bg-black/95"
+            onClick={() => { setSelectedImage(null); setZoomed(false) }}
+          />
+          <button
+            type="button"
+            onClick={() => { setSelectedImage(null); setZoomed(false) }}
+            aria-label={t('Gallery.close')}
+            className="absolute top-4 right-4 z-20 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          >
+            <X className="h-5 w-5" strokeWidth={2} />
+          </button>
+          <div
+            className="absolute inset-0 overflow-auto"
+            onClick={() => { setSelectedImage(null); setZoomed(false) }}
+          >
+            <div className="min-h-full flex items-center justify-center p-4">
+              <img
+                src={selectedImage}
+                alt=""
+                onClick={(e) => { e.stopPropagation(); setZoomed((z) => !z) }}
+                className={`${zoomed ? 'max-w-none' : 'max-w-[90vw] max-h-[85vh]'} object-contain cursor-zoom-in select-none transition-all duration-200`}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   )
 }
