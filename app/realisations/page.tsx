@@ -95,19 +95,6 @@ export default function RealisationsPage() {
                         {project.status}
                       </span>
                     </div>
-                    <p className="text-gray-600 leading-relaxed mb-5">{project.description}</p>
-
-                    {project.bullets.length > 0 && (
-                      <ul className="space-y-1.5 mb-5">
-                        {project.bullets.map((bullet) => (
-                          <li key={bullet} className="flex items-start gap-2 text-sm text-gray-600">
-                            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber-500" aria-hidden="true" />
-                            {bullet}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
                         <span key={tag} className="text-xs bg-gray-100 text-gray-500 px-3 py-1 rounded-full font-medium">

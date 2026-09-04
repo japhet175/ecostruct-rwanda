@@ -14,7 +14,7 @@ export default function Testimonials() {
   const items = t('Testimonials.items') as unknown as Testimonial[]
 
   return (
-    <section className="py-24 bg-gray-50 scroll-mt-16" id="testimonials">
+    <section className="py-24 bg-sand scroll-mt-16" id="testimonials">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
 
         {/* Header */}

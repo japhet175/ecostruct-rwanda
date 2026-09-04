@@ -1,7 +1,5 @@
 'use client'
 
-import Image from 'next/image'
-import { founderPhoto } from '@/app/data/media'
 import { useLanguage } from '../i18n/LanguageContext'
 
 interface WhyItem {
@@ -15,7 +13,7 @@ export default function AboutSection() {
   const whyItems = t('About.whyItems') as unknown as WhyItem[]
 
   return (
-    <section className="py-24 bg-white scroll-mt-16" id="about">
+    <section className="py-24 bg-sand scroll-mt-16" id="about">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
 
         {/* Header */}
@@ -29,26 +27,10 @@ export default function AboutSection() {
         </div>
 
         {/* About content */}
-        <div className="grid lg:grid-cols-5 gap-12 items-start">
-          {/* Photo */}
-          <div className="lg:col-span-2">
-            <div className="relative rounded-lg overflow-hidden aspect-square">
-              <Image
-                src={founderPhoto}
-                alt="Gaius Ndemeye"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          </div>
-
-          {/* Paragraphs */}
-          <div className="lg:col-span-3 space-y-5">
-            <p className="text-gray-600 leading-relaxed">{t('About.p1')}</p>
-            <p className="text-gray-600 leading-relaxed">{t('About.p2')}</p>
-            <p className="text-gray-600 leading-relaxed">{t('About.p3')}</p>
-          </div>
+        <div className="max-w-3xl mx-auto space-y-5">
+          <p className="text-gray-600 leading-relaxed">{t('About.p1')}</p>
+          <p className="text-gray-600 leading-relaxed">{t('About.p2')}</p>
+          <p className="text-gray-600 leading-relaxed">{t('About.p3')}</p>
         </div>
 
         {/* Choose ECO-STRUCT */}
@@ -65,7 +47,7 @@ export default function AboutSection() {
           {/* Feature cards */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {whyItems.map((item) => (
-              <div key={item.title} className="bg-green-50 border border-green-100 rounded-lg p-6">
+              <div key={item.title} className="bg-white border border-gray-200 border-l-4 border-l-teal rounded-lg p-6">
                 <h4 className="text-lg font-semibold text-green-900 mb-2">{item.title}</h4>
                 <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
               </div>
