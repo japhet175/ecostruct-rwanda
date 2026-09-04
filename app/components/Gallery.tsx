@@ -73,7 +73,7 @@ export default function Gallery() {
   const TABS: { key: TabKey; label: string; icon: LucideIcon }[] = [
     { key: 'partners', label: t('Gallery.tabPartners'), icon: Handshake },
     { key: 'others',   label: t('Gallery.tabOthers'),   icon: Building2 },
-  ]
+  ].filter((tab) => PHOTOS_BY_TAB[tab.key].length > 0)
 
   const currentPhotos = PHOTOS_BY_TAB[activeTab]
 
