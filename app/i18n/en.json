@@ -29,8 +29,8 @@
     "whoWeAre": "About Us",
     "title": "Reliable Construction & Renovation in Rwanda",
     "p1": "ECO-STRUCT RWANDA LTD is a Rwanda-based construction and renovation company providing reliable, professional and tailored solutions for residential, commercial, institutional and diplomatic projects.",
-    "p2": "Our expertise covers structural works, renovation, waterproofing, masonry, electrical works, plumbing, roofing, paving, finishing works and general building maintenance.",
-    "p3": "Led by professionals with extensive experience in the construction industry, ECO-STRUCT combines European construction experience with strong knowledge of the Rwandan market.",
+    "p2": "We manage every stage of a project — from planning and structural works to finishing and handover — with a single standard: quality, safety and on-time delivery.",
+    "p3": "Led by professionals with extensive hands-on experience in Europe and Rwanda, ECO-STRUCT is trusted by international organizations, NGOs and embassies, who have recognized our professionalism through official recommendation letters.",
     "whyTitle": "Choose ECO-STRUCT?",
     "whySubtitle": "Eco-Struct Rwanda Ltd combines strong construction expertise with a clear commitment to sustainable and locally driven development in Rwanda.",
     "whyItems": [
@@ -43,6 +43,15 @@
     "whyCommitmentTitle": "Our Commitment",
     "whyCommitment": "Build locally. Build responsibly. Build for the future.",
     "whyClosing": "Choosing Eco-Struct Rwanda Ltd means choosing a construction partner committed to quality, sustainability, local value creation and long-term performance."
+  },
+  "Testimonials": {
+    "badge": "Testimonials",
+    "title": "What Our Clients Say",
+    "items": [
+      { "quote": "ECO-STRUCT delivered our project on time and to a high standard. Their team was professional, responsive and easy to work with from start to finish.", "author": "Jean-Claude", "role": "Client, Kigali" },
+      { "quote": "From planning to handover, the quality of work and attention to detail exceeded our expectations. A reliable construction partner.", "author": "Institutional Partner", "role": "Kigali" },
+      { "quote": "They understood our needs, respected the budget and delivered exactly what was promised. We highly recommend ECO-STRUCT.", "author": "Property Developer", "role": "Kigali" }
+    ]
   },
   "Services": {
     "badge": "Our Services",

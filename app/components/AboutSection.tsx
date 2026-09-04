@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+import { founderPhoto } from '@/app/data/media'
 import { useLanguage } from '../i18n/LanguageContext'
 
 interface WhyItem {
@@ -27,10 +29,26 @@ export default function AboutSection() {
         </div>
 
         {/* About content */}
-        <div className="max-w-3xl mx-auto space-y-5">
-          <p className="text-gray-600 leading-relaxed">{t('About.p1')}</p>
-          <p className="text-gray-600 leading-relaxed">{t('About.p2')}</p>
-          <p className="text-gray-600 leading-relaxed">{t('About.p3')}</p>
+        <div className="grid lg:grid-cols-5 gap-12 items-start">
+          {/* Photo */}
+          <div className="lg:col-span-2">
+            <div className="relative rounded-lg overflow-hidden aspect-square">
+              <Image
+                src={founderPhoto}
+                alt="Gaius Ndemeye"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
+
+          {/* Paragraphs */}
+          <div className="lg:col-span-3 space-y-5">
+            <p className="text-gray-600 leading-relaxed">{t('About.p1')}</p>
+            <p className="text-gray-600 leading-relaxed">{t('About.p2')}</p>
+            <p className="text-gray-600 leading-relaxed">{t('About.p3')}</p>
+          </div>
         </div>
 
         {/* Choose ECO-STRUCT */}
