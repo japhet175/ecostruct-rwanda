@@ -18,7 +18,7 @@ interface Project {
 const PROJECT_IMAGES: (string | null)[] = [
   '/images/projects/antoine-st-exupery.jpeg',
   '/images/projects/ambassade-france-residence.jpeg',
-  null,
+  '/images/projects/galaxy-hotel.jpeg',
   '/images/projects/isango-phase-3.avif',
   '/images/projects/one-residence.avif',
 ]
