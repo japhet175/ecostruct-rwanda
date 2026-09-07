@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { LucideIcon } from 'lucide-react'
-import { School, Landmark, Hotel, Home, Building2, Building, Handshake, X } from 'lucide-react'
+import { School, Landmark, Hotel, Building2, Building, Handshake, X } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 
 interface Project {
@@ -19,12 +19,11 @@ const PROJECT_IMAGES: (string | null)[] = [
   '/images/projects/antoine-st-exupery.jpeg',
   '/images/projects/ambassade-france-residence.jpeg',
   null,
-  null,
   '/images/projects/isango-phase-3.avif',
   '/images/projects/one-residence.avif',
 ]
 
-const PROJECT_ICONS: LucideIcon[] = [School, Landmark, Hotel, Home, Building2, Building]
+const PROJECT_ICONS: LucideIcon[] = [School, Landmark, Hotel, Building2, Building]
 
 export default function RealisationsPage() {
   const { t } = useLanguage()

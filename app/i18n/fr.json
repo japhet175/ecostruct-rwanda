@@ -170,46 +170,25 @@
         "tags": ["Génie civil", "Diplomatique", "Kigali"]
       },
       {
-        "title": "Galaxy Hotel – Kigali",
+        "title": "Travaux extérieurs",
         "status": "Terminé",
-        "description": "Travaux de réhabilitation d'une zone extérieure pour Galaxy Hotel à Kigali.",
-        "bullets": [
-          "Réhabilitation d'une zone extérieure",
-          "Dessouchage",
-          "Pose de géotextile et de pierres"
-        ],
-        "tags": ["Aménagements extérieurs", "Hôtellerie", "Kigali"]
+        "description": "",
+        "bullets": [],
+        "tags": ["Aménagements extérieurs", "Kigali"]
       },
       {
-        "title": "Résidence de l'Ambassadeur de Suisse",
+        "title": "Consultance technique",
         "status": "Terminé",
-        "description": "Projet de toiture et étude technique pour la résidence de l'Ambassadeur de Suisse.",
-        "bullets": [
-          "Projet de toiture et étude technique"
-        ],
-        "tags": ["Toiture", "Diplomatique"]
+        "description": "",
+        "bullets": [],
+        "tags": ["Consultance technique"]
       },
       {
-        "title": "ISANGE Phase 3",
+        "title": "Consultance technique",
         "status": "Terminé",
-        "description": "Projet de construction résidentielle — ISANGE Phase 3, livré selon les plus hauts standards.",
-        "bullets": [
-          "Construction résidentielle",
-          "Gros œuvre",
-          "Travaux de finition"
-        ],
-        "tags": ["Construction", "Résidentiel"]
-      },
-      {
-        "title": "One Residence",
-        "status": "Terminé",
-        "description": "Construction résidentielle haut de gamme — One Residence, achevée avec précision et finitions de qualité.",
-        "bullets": [
-          "Construction résidentielle",
-          "Travaux de finition",
-          "Livraison de qualité"
-        ],
-        "tags": ["Construction", "Résidentiel"]
+        "description": "",
+        "bullets": [],
+        "tags": ["Consultance technique"]
       }
     ],
     "projectsCount": "Projets Livrés",

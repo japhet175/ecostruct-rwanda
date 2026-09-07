@@ -170,46 +170,25 @@
         "tags": ["Civil Works", "Diplomatic", "Kigali"]
       },
       {
-        "title": "Galaxy Hotel – Kigali",
+        "title": "External work",
         "status": "Completed",
-        "description": "External site rehabilitation works for Galaxy Hotel in Kigali.",
-        "bullets": [
-          "External site rehabilitation",
-          "Tree stump removal",
-          "Geotextile and stone installation"
-        ],
-        "tags": ["External Works", "Hospitality", "Kigali"]
+        "description": "",
+        "bullets": [],
+        "tags": ["External Works", "Kigali"]
       },
       {
-        "title": "Swiss Ambassador's Residence",
+        "title": "Technical consultancy",
         "status": "Completed",
-        "description": "Roofing project and technical assessment for the Swiss Ambassador's residence.",
-        "bullets": [
-          "Roofing project and technical assessment"
-        ],
-        "tags": ["Roofing", "Diplomatic"]
+        "description": "",
+        "bullets": [],
+        "tags": ["Technical Consultancy"]
       },
       {
-        "title": "ISANGE Phase 3",
+        "title": "Technical consultancy",
         "status": "Completed",
-        "description": "Residential construction project — ISANGE Phase 3, delivered to the highest standards.",
-        "bullets": [
-          "Residential construction",
-          "Structural works",
-          "Finishing works"
-        ],
-        "tags": ["Construction", "Residential"]
-      },
-      {
-        "title": "One Residence",
-        "status": "Completed",
-        "description": "Premium residential build — One Residence, completed with precision and quality finishing.",
-        "bullets": [
-          "Residential construction",
-          "Finishing works",
-          "Quality delivery"
-        ],
-        "tags": ["Construction", "Residential"]
+        "description": "",
+        "bullets": [],
+        "tags": ["Technical Consultancy"]
       }
     ],
     "projectsCount": "Projects Delivered",
