@@ -5,6 +5,7 @@ interface ContactPayload {
   name?: string
   email?: string
   phone?: string
+  service?: string
   message?: string
   website?: string // honeypot field — must be empty
 }
@@ -31,6 +32,7 @@ export async function POST(request: NextRequest) {
   const name = (body.name ?? '').trim()
   const email = (body.email ?? '').trim()
   const phone = (body.phone ?? '').trim()
+  const service = (body.service ?? '').trim()
   const message = (body.message ?? '').trim()
   const website = (body.website ?? '').trim()
 
@@ -77,6 +79,7 @@ export async function POST(request: NextRequest) {
     `Name: ${name}`,
     `Email: ${email}`,
     phone ? `Phone: ${phone}` : '',
+    service ? `Service: ${service}` : '',
     '',
     'Message:',
     message,
@@ -91,6 +94,7 @@ export async function POST(request: NextRequest) {
         <tr><td style="padding: 4px 0; font-weight: bold; width: 90px;">Name</td><td>${escapeHtml(name)}</td></tr>
         <tr><td style="padding: 4px 0; font-weight: bold;">Email</td><td>${escapeHtml(email)}</td></tr>
         ${phone ? `<tr><td style="padding: 4px 0; font-weight: bold;">Phone</td><td>${escapeHtml(phone)}</td></tr>` : ''}
+        ${service ? `<tr><td style="padding: 4px 0; font-weight: bold;">Service</td><td>${escapeHtml(service)}</td></tr>` : ''}
       </table>
       <p style="font-weight: bold; margin: 20px 0 8px;">Message</p>
       <p style="white-space: pre-line; background: #f9fafb; padding: 12px; border-radius: 6px;">${escapeHtml(message)}</p>

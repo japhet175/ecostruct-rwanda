@@ -8,6 +8,7 @@ interface FormData {
   name: string
   email: string
   phone: string
+  service: string
   message: string
   website: string
 }
@@ -86,6 +87,7 @@ export default function ContactSection() {
     name: '',
     email: '',
     phone: '',
+    service: '',
     message: '',
     website: ''
   })
@@ -95,7 +97,7 @@ export default function ContactSection() {
   const [focused, setFocused] = useState<keyof FormData | null>(null)
 
   const handleChange = useCallback((
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
@@ -120,7 +122,7 @@ export default function ContactSection() {
       }
 
       setSubmitStatus('success')
-      setFormData({ name: '', email: '', phone: '', message: '', website: '' })
+      setFormData({ name: '', email: '', phone: '', service: '', message: '', website: '' })
     } catch (err) {
       console.error('Contact form error:', err)
       setSubmitStatus('error')
@@ -232,6 +234,17 @@ export default function ContactSection() {
                 onFocus={setFocused}
                 onBlur={() => setFocused(null)}
               />
+              <select
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:border-amber-500 transition-colors duration-200 text-gray-700"
+              >
+                <option value="">{t('Contact.selectService')}</option>
+                {(t('Services.categories') as unknown as string[]).map((service) => (
+                  <option key={service} value={service}>{service}</option>
+                ))}
+              </select>
               <InputField
                 name="message"
                 placeholderKey="message"

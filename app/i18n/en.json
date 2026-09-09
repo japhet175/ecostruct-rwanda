@@ -214,6 +214,7 @@
     "emailAddress": "Email Address",
     "phoneNumber": "Phone Number",
     "message": "Tell us about your project",
+    "selectService": "Select a service...",
     "send": "Send Message",
     "sending": "Sending",
     "success": "Message sent successfully! We'll contact you soon.",
