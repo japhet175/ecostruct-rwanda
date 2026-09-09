@@ -199,6 +199,10 @@
     "getInTouch": "Nous Contacter",
     "backToHome": "Retour à l'Accueil"
   },
+  "CTA": {
+    "title": "Prêt à Construire avec Nous ?",
+    "subtitle": "Parlez-nous de votre projet et recevez un devis gratuit sous 24 heures."
+  },
   "Contact": {
     "getInTouch": "Nous Contacter",
     "title": "Prêt à Démarrer Votre Projet ?",

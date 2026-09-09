@@ -7,6 +7,7 @@ import VideoTestimonial from './components/VideoTestimonial'
 import Gallery from './components/Gallery'
 import Testimonials from './components/Testimonials'
 import Team from './components/Team'
+import CTA from './components/CTA'
 import ContactSection from './components/ContactSection'
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <Gallery />
       <Testimonials />
       <Team />
+      <CTA />
       <ContactSection />
     </main>
   )
