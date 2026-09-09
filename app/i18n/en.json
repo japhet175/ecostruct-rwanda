@@ -199,6 +199,22 @@
     "getInTouch": "Get in Touch",
     "backToHome": "Back to Home"
   },
+  "Process": {
+    "badge": "How We Work",
+    "title": "A Clear Process from Start to Finish",
+    "subtitle": "Four simple steps to bring your project to life, on time and on budget.",
+    "step1Title": "Study & Consultation",
+    "step1Desc": "We listen to your needs, assess the site and define the scope of your project.",
+    "step2Title": "Planning & Design",
+    "step2Desc": "We prepare a clear plan, detailed budget and realistic timeline.",
+    "step3Title": "Construction & Supervision",
+    "step3Desc": "Our team builds to the highest standards, with regular quality control.",
+    "step4Title": "Delivery & Handover",
+    "step4Desc": "We deliver your project on time and ensure your complete satisfaction."
+  },
+  "TrustBar": {
+    "title": "They Trust Us"
+  },
   "CTA": {
     "title": "Ready to Build with Us?",
     "subtitle": "Tell us about your project and receive a free quote within 24 hours."

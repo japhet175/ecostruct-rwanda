@@ -1,6 +1,8 @@
 import Hero from './components/Hero'
+import TrustBar from './components/TrustBar'
 import AboutSection from './components/AboutSection'
 import Services from './components/Services'
+import Process from './components/Process'
 import Commitment from './components/Commitment'
 import Vision from './components/Vision'
 import VideoTestimonial from './components/VideoTestimonial'
@@ -14,8 +16,10 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <TrustBar />
       <AboutSection />
       <Services />
+      <Process />
       <Commitment />
       <Vision />
       <VideoTestimonial />

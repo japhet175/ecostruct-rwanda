@@ -2,6 +2,7 @@
 
 import type { LucideIcon } from 'lucide-react'
 import { Compass, Building2, Hammer, Umbrella, Zap, Droplets, Shovel } from 'lucide-react'
+import Reveal from './Reveal'
 import { useLanguage } from '../i18n/LanguageContext'
 
 const ICONS: LucideIcon[] = [Compass, Building2, Hammer, Umbrella, Zap, Droplets, Shovel]
@@ -33,8 +34,8 @@ export default function Services() {
             const Icon = ICONS[index] ?? Building2
             const isFeatured = index === 0
             return (
+              <Reveal key={category} delay={index * 80} className="h-full">
               <div
-                key={category}
                 className={`group rounded-lg p-6 border transition-all duration-300 ${
                   isFeatured
                     ? 'bg-green-900 border-green-900 shadow-md'
@@ -54,6 +55,7 @@ export default function Services() {
                   {category}
                 </h3>
               </div>
+              </Reveal>
             )
           })}
         </div>

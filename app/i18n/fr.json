@@ -199,6 +199,22 @@
     "getInTouch": "Nous Contacter",
     "backToHome": "Retour à l'Accueil"
   },
+  "Process": {
+    "badge": "Notre Méthode",
+    "title": "Un processus clair du début à la fin",
+    "subtitle": "Quatre étapes simples pour concrétiser votre projet, dans les délais et le budget.",
+    "step1Title": "Étude & Consultation",
+    "step1Desc": "Nous écoutons vos besoins, évaluons le site et définissons le périmètre de votre projet.",
+    "step2Title": "Planification & Conception",
+    "step2Desc": "Nous préparons un plan clair, un budget détaillé et un calendrier réaliste.",
+    "step3Title": "Construction & Supervision",
+    "step3Desc": "Notre équipe construit selon les plus hauts standards, avec un contrôle qualité régulier.",
+    "step4Title": "Livraison & Remise",
+    "step4Desc": "Nous livrons votre projet dans les délais et veillons à votre entière satisfaction."
+  },
+  "TrustBar": {
+    "title": "Ils nous font confiance"
+  },
   "CTA": {
     "title": "Prêt à Construire avec Nous ?",
     "subtitle": "Parlez-nous de votre projet et recevez un devis gratuit sous 24 heures."

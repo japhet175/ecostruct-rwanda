@@ -1,6 +1,7 @@
 'use client'
 
 import { Quote } from 'lucide-react'
+import Reveal from './Reveal'
 import { useLanguage } from '../i18n/LanguageContext'
 
 interface Testimonial {
@@ -41,7 +42,8 @@ export default function Testimonials() {
         {/* Testimonials grid */}
         <div className="grid md:grid-cols-3 gap-6">
           {items.map((item, index) => (
-            <figure key={item.author} className="bg-white rounded-lg border border-gray-200 shadow-sm p-6">
+            <Reveal key={item.author} delay={index * 100} className="h-full">
+            <figure className="bg-white rounded-lg border border-gray-200 shadow-sm p-6 h-full">
               <div className="flex items-center gap-4 mb-5">
                 <div
                   className={`h-12 w-12 rounded-full ${AVATAR_COLORS[index % AVATAR_COLORS.length]} text-white flex items-center justify-center font-semibold text-sm shrink-0`}
@@ -58,6 +60,7 @@ export default function Testimonials() {
                 &ldquo;{item.quote}&rdquo;
               </blockquote>
             </figure>
+            </Reveal>
           ))}
         </div>
 
