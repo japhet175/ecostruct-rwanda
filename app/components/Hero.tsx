@@ -140,7 +140,7 @@ export default function Hero() {
           </span>
         </h1>
 
-        <p className="text-lg md:text-2xl font-medium mb-10 text-white/90">
+        <p className="text-xl md:text-3xl font-semibold mb-10 text-white">
           {t('Hero.tagline')}
         </p>
 

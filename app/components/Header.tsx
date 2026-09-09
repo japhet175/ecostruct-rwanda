@@ -59,6 +59,13 @@ export default function Header() {
               ))}
             </ul>
 
+            <Link
+              href="/#contact"
+              className="hidden lg:inline-flex bg-green-800 hover:bg-green-700 text-white text-sm font-semibold px-4 py-2 rounded-md transition-colors duration-200"
+            >
+              {t('Navigation.cta')}
+            </Link>
+
             {/* Language Switcher - Desktop */}
             <div className="flex items-center gap-1 pl-4 ml-2 border-l border-gray-200">
               <button onClick={() => setLanguage('en')} className={`px-2 py-1 text-sm font-semibold transition-colors ${
