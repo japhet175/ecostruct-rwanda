@@ -16,7 +16,7 @@ export default function Services() {
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-amber-600 font-semibold text-xs uppercase tracking-[0.2em]">
+          <span className="text-amber-600 font-semibold text-xs uppercase italic tracking-[0.2em]">
             {t('Services.badge')}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-green-900 mt-3 mb-4 tracking-tight">

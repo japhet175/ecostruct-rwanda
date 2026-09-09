@@ -18,7 +18,7 @@ export default function AboutSection() {
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-amber-600 font-semibold text-xs uppercase tracking-[0.2em]">
+          <span className="text-amber-600 font-semibold text-xs uppercase italic tracking-[0.2em]">
             {t('About.whoWeAre')}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-green-900 mt-3 tracking-tight">
@@ -56,7 +56,7 @@ export default function AboutSection() {
 
           {/* Commitment */}
           <div className="max-w-3xl mx-auto text-center rounded-lg bg-green-900 px-8 py-10">
-            <p className="text-amber-400 font-semibold text-xs uppercase tracking-[0.2em] mb-3">
+            <p className="text-amber-400 font-semibold text-xs uppercase italic tracking-[0.2em] mb-3">
               {t('About.whyCommitmentTitle')}
             </p>
             <p className="text-white text-xl md:text-2xl font-bold leading-snug">

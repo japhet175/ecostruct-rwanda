@@ -129,7 +129,7 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4 pt-16">
 
-        <p className="text-amber-400 text-xs sm:text-sm font-semibold uppercase tracking-[0.3em] mb-6">
+        <p className="text-amber-400 text-xs sm:text-sm font-semibold uppercase italic tracking-[0.3em] mb-6">
           {t('Hero.eyebrow')}
         </p>
 
@@ -178,7 +178,7 @@ export default function Hero() {
         className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-1 text-white/40 select-none"
         aria-hidden="true"
       >
-        <span className="text-[10px] uppercase tracking-[0.2em]">{t('Hero.scroll')}</span>
+        <span className="text-[10px] uppercase italic tracking-[0.2em]">{t('Hero.scroll')}</span>
         <span aria-hidden="true">↓</span>
       </div>
 

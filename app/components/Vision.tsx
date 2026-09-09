@@ -8,7 +8,7 @@ export default function Vision() {
   return (
     <section className="py-24 bg-green-900 scroll-mt-16" id="vision">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
-        <span className="text-amber-400 font-semibold text-xs uppercase tracking-[0.2em]">
+        <span className="text-amber-400 font-semibold text-xs uppercase italic tracking-[0.2em]">
           {t('Vision.badge')}
         </span>
         <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-6 tracking-tight">
