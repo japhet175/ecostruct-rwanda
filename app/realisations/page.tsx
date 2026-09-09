@@ -94,8 +94,8 @@ export default function RealisationsPage() {
                   )}
                   <div className={`p-8 flex flex-col justify-center ${image ? 'md:w-1/2' : 'w-full'}`}>
                     <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-green-50 text-green-700">
-                        <Icon className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
+                      <span className="inline-flex h-14 w-14 items-center justify-center rounded-md bg-green-50 text-green-700">
+                        <Icon className="h-7 w-7" strokeWidth={1.5} aria-hidden="true" />
                       </span>
                       <h2 className="text-2xl font-semibold text-green-900">{project.title}</h2>
                       <span className="text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-700">

@@ -49,7 +49,7 @@ export default function Careers() {
         {/* Coming Soon Card */}
         <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
           <div className="bg-green-800 px-6 py-8 text-center">
-            <Construction className="h-12 w-12 mx-auto mb-3 text-green-200" strokeWidth={1.5} aria-hidden="true" />
+            <Construction className="h-16 w-16 mx-auto mb-4 text-green-200" strokeWidth={1.25} aria-hidden="true" />
             <h3 className="text-2xl md:text-3xl font-bold text-white">{t('Careers.comingSoon')}</h3>
             <p className="text-green-100 mt-2">
               {t('Careers.comingSoonDesc')}
@@ -101,8 +101,10 @@ export default function Careers() {
           <h3 className="text-xl font-semibold text-green-800 mb-6">{t('Careers.whatWeLookFor')}</h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {valuesList.map((item) => (
-              <div key={item.key} className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-                <item.icon className="h-6 w-6 text-green-700 mb-3" strokeWidth={1.5} aria-hidden="true" />
+              <div key={item.key} className="bg-white rounded-lg p-5 shadow-sm border border-gray-200 hover:shadow-md transition-shadow text-center">
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-md bg-green-50 text-green-700 mb-3">
+                  <item.icon className="h-7 w-7" strokeWidth={1.5} aria-hidden="true" />
+                </div>
                 <p className="text-gray-700 font-medium text-sm">{t(`Careers.${item.key}`)}</p>
               </div>
             ))}

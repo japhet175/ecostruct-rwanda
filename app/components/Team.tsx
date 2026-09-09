@@ -81,7 +81,7 @@ export default function Team() {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Photo avec overlay gradient */}
-              <div className="aspect-square relative overflow-hidden bg-green-800">
+              <div className="aspect-[4/5] relative overflow-hidden bg-green-800">
                 <Image
                   src={member.photo}
                   alt={t(`Team.${member.nameKey}`)}
@@ -106,9 +106,6 @@ export default function Team() {
                 <p className="text-gray-600 text-sm leading-relaxed">
                   {t(`Team.${member.bioKey}`)}
                 </p>
-                
-                {/* Ligne décorative */}
-                <div className="w-12 h-0.5 bg-amber-400 mx-auto mt-4 rounded-full" />
               </div>
             </div>
           ))}
