@@ -21,7 +21,7 @@ export default function Commitment() {
   ]
 
   return (
-    <section className="py-20 bg-white scroll-mt-16" id="commitment">
+    <section className="py-24 bg-white scroll-mt-16" id="commitment">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
 
         {/* Header */}

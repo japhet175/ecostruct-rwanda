@@ -6,7 +6,7 @@ export default function Vision() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-20 bg-green-900 scroll-mt-16" id="vision">
+    <section className="py-24 bg-green-900 scroll-mt-16" id="vision">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
         <span className="text-amber-400 font-semibold text-xs uppercase tracking-[0.2em]">
           {t('Vision.badge')}
