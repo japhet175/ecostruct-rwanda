@@ -21,8 +21,8 @@ export const inProgressPhotos = [
 export const otherProjects = []
 
 // Nouvelles réalisations (réutilisées sur la page /realisations)
-export const isangoPhase3 = "/images/projects/isango-phase-3.avif"
-export const oneResidence = "/images/projects/one-residence.avif"
+export const isangoPhase3 = "/images/projects/isango-phase-3.jpg"
+export const oneResidence = "/images/projects/one-residence.jpg"
 
 
 
