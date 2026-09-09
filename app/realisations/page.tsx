@@ -19,8 +19,8 @@ const PROJECT_IMAGES: (string | null)[] = [
   '/images/projects/antoine-st-exupery.jpeg',
   '/images/projects/ambassade-france-residence.jpeg',
   '/images/projects/galaxy-hotel.jpeg',
-  '/images/projects/isango-phase-3.avif',
-  '/images/projects/one-residence.avif',
+  '/images/projects/isango-phase-3.jpg',
+  '/images/projects/one-residence.jpg',
 ]
 
 const PROJECT_ICONS: LucideIcon[] = [School, Landmark, Hotel, Building2, Building]
