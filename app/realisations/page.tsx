@@ -81,7 +81,7 @@ export default function RealisationsPage() {
                       type="button"
                       onClick={() => { setSelectedImage(image); setZoomed(false) }}
                       aria-label={project.title}
-                      className="md:w-1/2 relative h-72 md:h-auto bg-gray-50 flex-shrink-0 overflow-hidden cursor-zoom-in group"
+                      className="w-full md:w-1/2 relative h-72 md:h-auto bg-gray-50 flex-shrink-0 overflow-hidden cursor-zoom-in group"
                     >
                       <Image
                         src={image}
