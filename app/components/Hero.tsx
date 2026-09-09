@@ -134,8 +134,8 @@ export default function Hero() {
         </p>
 
         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-none tracking-tight">
-          {t('Hero.weAre')}{' '}
-          <span className="text-amber-400">
+          <span className="italic">{t('Hero.weAre')}</span>{' '}
+          <span className="text-amber-400 italic">
             {t('Hero.brand')}
           </span>
         </h1>

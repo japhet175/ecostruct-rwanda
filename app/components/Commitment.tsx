@@ -41,8 +41,8 @@ export default function Commitment() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {values.map(({ icon: Icon, titleKey, descKey }) => (
             <div key={titleKey} className="bg-gray-50 border border-gray-100 rounded-lg p-6">
-              <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-md bg-green-50 text-green-800">
-                <Icon className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
+              <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-md bg-green-50 text-green-800">
+                <Icon className="h-7 w-7" strokeWidth={1.5} aria-hidden="true" />
               </div>
               <h3 className="text-lg font-semibold text-green-900 mb-2">{t(`Commitment.${titleKey}`)}</h3>
               <p className="text-gray-600 text-sm leading-relaxed">{t(`Commitment.${descKey}`)}</p>

@@ -42,13 +42,13 @@ export default function Services() {
                 }`}
               >
                 <div
-                  className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md transition-colors duration-300 ${
+                  className={`mb-4 inline-flex h-14 w-14 items-center justify-center rounded-md transition-colors duration-300 ${
                     isFeatured
                       ? 'bg-amber-500 text-white'
                       : 'bg-green-50 text-green-800 group-hover:bg-green-800 group-hover:text-white'
                   }`}
                 >
-                  <Icon className="h-6 w-6" strokeWidth={1.5} aria-hidden="true" />
+                  <Icon className="h-8 w-8" strokeWidth={1.5} aria-hidden="true" />
                 </div>
                 <h3 className={`text-lg font-semibold ${isFeatured ? 'text-white' : 'text-green-900'}`}>
                   {category}
