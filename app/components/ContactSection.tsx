@@ -180,7 +180,7 @@ export default function ContactSection() {
                 <Mail className="h-5 w-5 text-amber-400 shrink-0 mt-0.5" strokeWidth={1.5} aria-hidden="true" />
                 <div>
                   <p className="text-sm text-green-200">{t('Contact.email')}</p>
-                  <p className="font-medium break-all">ndemeyegals@gmail.com</p>
+                  <p className="font-medium break-all">ndemeyegaius@gmail.com</p>
                 </div>
               </div>
 
