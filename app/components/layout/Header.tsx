@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { logoEnglish, logoFrench } from '@/app/data/media'
 import { useLanguage } from '@/app/i18n/LanguageContext'
@@ -13,6 +14,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const pathname = usePathname()
 
   const toggleMenu = () => setIsMenuOpen(prev => !prev)
   const closeMenu = () => setIsMenuOpen(false)
@@ -47,7 +49,8 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const isSolid = scrolled || isMenuOpen
+  // La navbar transparente n'a de sens que sur le hero de l'accueil
+  const isSolid = scrolled || isMenuOpen || pathname !== '/'
 
   return (
     <header
@@ -80,7 +83,7 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-8">
             <ul className="flex items-center space-x-8" role="list">
               {NAV_LINKS.map((link) => {
-                const isActive = link.section !== null && link.section === activeSection
+                const isActive = pathname === '/' && link.section !== null && link.section === activeSection
                 return (
                   <li key={link.href}>
                     <Link
