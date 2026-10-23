@@ -6,7 +6,7 @@ import { useState, useEffect, useRef, useCallback, useId } from 'react'
 import type { LucideIcon } from 'lucide-react'
 import { Handshake, Building2, ImageOff, X } from 'lucide-react'
 import { egImaraPartners, inProgressPhotos, otherProjects } from '@/app/data/media'
-import { useLanguage } from '../i18n/LanguageContext'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

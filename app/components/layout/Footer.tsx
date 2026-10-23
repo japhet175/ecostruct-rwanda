@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import { logoEnglish, logoFrench } from '@/app/data/media'
-import { useLanguage } from '../i18n/LanguageContext'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 export default function Footer() {
   const { t, language } = useLanguage()

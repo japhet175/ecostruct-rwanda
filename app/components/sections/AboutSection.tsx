@@ -1,6 +1,6 @@
 'use client'
 
-import { useLanguage } from '../i18n/LanguageContext'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface WhyItem {
   title: string

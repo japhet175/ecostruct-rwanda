@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react'
 import { Phone, Mail, MapPin } from 'lucide-react'
-import { useLanguage } from '../i18n/LanguageContext'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface FormData {
   name: string

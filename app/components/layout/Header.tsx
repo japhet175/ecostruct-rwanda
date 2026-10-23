@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { logoEnglish, logoFrench } from '@/app/data/media'
-import { useLanguage } from '../i18n/LanguageContext'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 const SECTION_IDS = ['services', 'why', 'about', 'contact']
 

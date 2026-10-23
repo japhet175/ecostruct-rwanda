@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useLanguage } from '../i18n/LanguageContext'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 export default function CTA() {
   const { t } = useLanguage()

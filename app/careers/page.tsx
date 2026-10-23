@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import type { LucideIcon } from 'lucide-react'
 import { HardHat, Users, Award, Lightbulb, Construction, Mail, Check } from 'lucide-react'
-import { useLanguage } from '../i18n/LanguageContext'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 export default function Careers() {
   const { t } = useLanguage()

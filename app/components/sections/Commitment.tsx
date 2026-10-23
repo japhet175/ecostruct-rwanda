@@ -2,7 +2,7 @@
 
 import type { LucideIcon } from 'lucide-react'
 import { Award, ShieldCheck, Clock, HeartHandshake } from 'lucide-react'
-import { useLanguage } from '../i18n/LanguageContext'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface CommitmentValue {
   icon: LucideIcon

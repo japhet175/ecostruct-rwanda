@@ -35,11 +35,26 @@
     "whyTitle": "Choose ECO-STRUCT?",
     "whySubtitle": "Eco-Struct Rwanda Ltd combines strong construction expertise with a clear commitment to sustainable and locally driven development in Rwanda.",
     "whyItems": [
-      { "title": "Local & Sustainable Approach", "desc": "We prioritize the use of locally sourced materials and resources whenever technically possible. This helps reduce transportation-related environmental impact while supporting Rwanda's local economy." },
-      { "title": "Environmental Responsibility", "desc": "Sustainability is at the heart of our approach. We aim to integrate eco-friendly materials, energy-efficient solutions and responsible construction practices into every project." },
-      { "title": "Quality & Professional Expertise", "desc": "With extensive experience in the construction industry, Eco-Struct is committed to delivering high-quality, safe and durable projects — from planning and coordination through to execution and final handover." },
-      { "title": "Local Skills & Partnerships", "desc": "We work with Rwandan professionals, skilled workers, artisans, suppliers and trusted local partners, contributing to local job creation and knowledge development." },
-      { "title": "Solutions Adapted to Rwanda", "desc": "Our objective is not simply to build, but to develop practical, sustainable and cost-effective solutions adapted to Rwanda's climate, resources and construction environment." }
+      {
+        "title": "Local & Sustainable Approach",
+        "desc": "We prioritize the use of locally sourced materials and resources whenever technically possible. This helps reduce transportation-related environmental impact while supporting Rwanda's local economy."
+      },
+      {
+        "title": "Environmental Responsibility",
+        "desc": "Sustainability is at the heart of our approach. We aim to integrate eco-friendly materials, energy-efficient solutions and responsible construction practices into every project."
+      },
+      {
+        "title": "Quality & Professional Expertise",
+        "desc": "With extensive experience in the construction industry, Eco-Struct is committed to delivering high-quality, safe and durable projects — from planning and coordination through to execution and final handover."
+      },
+      {
+        "title": "Local Skills & Partnerships",
+        "desc": "We work with Rwandan professionals, skilled workers, artisans, suppliers and trusted local partners, contributing to local job creation and knowledge development."
+      },
+      {
+        "title": "Solutions Adapted to Rwanda",
+        "desc": "Our objective is not simply to build, but to develop practical, sustainable and cost-effective solutions adapted to Rwanda's climate, resources and construction environment."
+      }
     ],
     "whyCommitmentTitle": "Our Commitment",
     "whyCommitment": "Build locally. Build responsibly. Build for the future.",
@@ -49,9 +64,21 @@
     "badge": "Testimonials",
     "title": "What Our Clients Say",
     "items": [
-      { "quote": "ECO-STRUCT delivered our project on time and to a high standard. Their team was professional, responsive and easy to work with from start to finish.", "author": "Jean-Claude", "role": "Client, Kigali" },
-      { "quote": "From planning to handover, the quality of work and attention to detail exceeded our expectations. A reliable construction partner.", "author": "Institutional Partner", "role": "Kigali" },
-      { "quote": "They understood our needs, respected the budget and delivered exactly what was promised. We highly recommend ECO-STRUCT.", "author": "Property Developer", "role": "Kigali" }
+      {
+        "quote": "ECO-STRUCT delivered our project on time and to a high standard. Their team was professional, responsive and easy to work with from start to finish.",
+        "author": "Jean-Claude",
+        "role": "Client, Kigali"
+      },
+      {
+        "quote": "From planning to handover, the quality of work and attention to detail exceeded our expectations. A reliable construction partner.",
+        "author": "Institutional Partner",
+        "role": "Kigali"
+      },
+      {
+        "quote": "They understood our needs, respected the budget and delivered exactly what was promised. We highly recommend ECO-STRUCT.",
+        "author": "Property Developer",
+        "role": "Kigali"
+      }
     ]
   },
   "Services": {
@@ -142,62 +169,18 @@
     "subtitle": "A selection of construction, renovation and maintenance projects completed across Rwanda.",
     "partnerText": "ECO-STRUCT RWANDA LTD has participated in various construction, renovation and maintenance projects in Rwanda.",
     "exploreGallery": "Explore our projects in the gallery",
-    "projects": [
-      {
-        "title": "École Française de Kigali",
-        "status": "Completed",
-        "description": "Renovation and construction works for the French School in Kigali, delivered to the highest standards.",
-        "bullets": [
-          "Renovation and construction works",
-          "Sanitary facilities",
-          "Interior modifications",
-          "Professional kitchen works",
-          "Electrical upgrading",
-          "Administrative ceiling renovation"
-        ],
-        "tags": ["Renovation"]
-      },
-      {
-        "title": "French Embassy Residence – Kigali",
-        "status": "Completed",
-        "description": "Structural and external works for the French Embassy residence in Kigali.",
-        "bullets": [
-          "Boundary wall reinforcement",
-          "Terrace waterproofing",
-          "Drainage pipe replacement",
-          "Paving works",
-          "Exterior rehabilitation"
-        ],
-        "tags": ["Renovation"]
-      },
-      {
-        "title": "Galaxy Hotel",
-        "status": "Completed",
-        "description": "",
-        "bullets": [],
-        "tags": ["External Work"]
-      },
-      {
-        "title": "ISANGE Phase 3",
-        "status": "Completed",
-        "description": "",
-        "bullets": [],
-        "tags": ["Technical Consultancy"]
-      },
-      {
-        "title": "One Residence",
-        "status": "Completed",
-        "description": "",
-        "bullets": [],
-        "tags": ["Technical Consultancy"]
-      }
-    ],
     "projectsCount": "Projects Delivered",
     "yearsExperience": "Years Experience",
     "clientSatisfaction": "Client Satisfaction",
     "ctaText": "Want to work with us on your next project?",
     "getInTouch": "Get in Touch",
-    "backToHome": "Back to Home"
+    "backToHome": "Back to Home",
+    "status": "Completed",
+    "tags": {
+      "renovation": "Renovation",
+      "externalWork": "External Work",
+      "technicalConsultancy": "Technical Consultancy"
+    }
   },
   "Process": {
     "badge": "How We Work",

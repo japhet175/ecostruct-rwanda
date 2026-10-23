@@ -1,105 +1,44 @@
-# ECOSTRUCT Rwanda – Site Vitrine
+# ECO-STRUCT RWANDA LTD — Site vitrine
 
-## 📖 Description
+Site bilingue (EN/FR) de construction, rénovation et solutions techniques au Rwanda.
+En ligne : https://eco-sturct.com
 
-Site web professionnel pour **ECOSTRUCT Rwanda**, entreprise de construction, rénovation, électricité, plomberie et aménagement paysager.
+## Stack
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · lucide-react · nodemailer · Vercel
 
-- 🌍 **Bilingue** : Anglais / Français
-- 📱 **Responsive** : Mobile, tablette, desktop
-- ⚡ **Performant** : Optimisé Lighthouse (>90)
-- 🔒 **Sécurisé** : Headers CSP, XSS protection
+## Structure
+```
+app/
+├── components/
+│   ├── layout/      Header, Footer
+│   ├── sections/    Sections de la page d'accueil (Hero, Services, Process, Gallery, …)
+│   └── ui/          Composants réutilisables (Reveal)
+├── data/
+│   ├── media.ts     Logos et photos de la galerie
+│   └── projects.ts  Réalisations (titre, photo, icône, type de travaux)
+├── i18n/            Traductions en.json / fr.json + LanguageContext
+├── api/contact/     Envoi des emails du formulaire (SMTP)
+├── realisations/  careers/  contact/   Pages
+└── sitemap.ts  robots.ts  layout.tsx  page.tsx
+public/
+├── images/  equipe/  logo/  projects/
+└── videos/
+```
 
----
+## Ajouter une réalisation
+Ajouter la photo dans `public/images/projects/`, puis une entrée dans `app/data/projects.ts`.
 
-## 🛠️ Stack Technique
+## Développement
+```bash
+npm install
+npm run dev     # http://localhost:3000
+npm run lint
+npm run build
+```
 
-| Technologie | Version | Rôle |
-|-------------|---------|------|
-| **Next.js** | 16.2.6 | Framework React (App Router) |
-| **TypeScript** | 6.0.3 | Typage statique |
-| **Tailwind CSS** | 4.x | Stylisme utilitaire |
-| **Vercel** | – | Hébergement & CDN |
+## Formulaire de contact
+Variables à définir dans Vercel → Settings → Environment Variables (voir `.env.example`) :
+`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `CONTACT_TO_EMAIL`.
 
----
-
-## 📁 Structure du Projet
-
-
----
-
-## 🎨 Système de Design
-
-### Palette de couleurs
-
-| Rôle | Code HEX |
-|------|----------|
-| Primary – Vert | `#1e3c2c` (green-900) |
-| Secondary – Or | `#f59e0b` (amber-500) |
-| Background – Blanc | `#ffffff` |
-| Background – Gris clair | `#f9fafb` (gray-50) |
-| Texte principal | `#374151` (gray-700) |
-
-### Typographie
-
-- **Police** : Inter (Google Fonts)
-- **Hiérarchie** :
-  - Hero : 5xl → 8xl
-  - Titres sections : 3xl → 5xl
-  - Corps : text-sm → text-base
-
-### Animations
-
-- `hover:-translate-y-2` : Cartes au survol
-- `animate-pulse` : Badges
-- `animate-bounce` : Indicateur de scroll
-- `group-hover:scale-110` : Icônes
-
-### Composants UI réutilisables
-
-| Composant | Utilisation |
-|-----------|-------------|
-| `StatCard` | Cartes statistiques (About) |
-| `TimelineStep` | Frise chronologique |
-| `InputField` | Champ de formulaire flottant |
-| `PhotoCard` | Carte galerie |
-
----
-
-## 🔧 Patterns de développement
-
-### 1. Multilinguisme (Context API)
-
-```tsx
-// Appel dans un composant
-const { t, language, setLanguage } = useLanguage()
-return <h1>{t('Hero.title')}</h1>
-
---
-
-econstruct/
-├── app/
-│ ├── components/
-│ │ ├── Header.tsx
-│ │ ├── Hero.tsx
-│ │ ├── AboutSection.tsx
-│ │ ├── Services.tsx
-│ │ ├── Team.tsx
-│ │ ├── Gallery.tsx
-│ │ ├── ContactSection.tsx
-│ │ └── Footer.tsx
-│ ├── i18n/
-│ │ ├── LanguageContext.tsx
-│ │ ├── en.json
-│ │ └── fr.json
-│ ├── careers/
-│ │ └── page.tsx
-│ ├── realisations/
-│ │ └── page.tsx
-│ ├── layout.tsx
-│ └── page.tsx
-├── public/
-│ ├── images/
-│ └── videos/
-├── next.config.ts
-├── tailwind.config.ts
-└── package.json
+## Déploiement
+Chaque push sur `main` déclenche un déploiement Vercel (domaine `eco-sturct.com`).

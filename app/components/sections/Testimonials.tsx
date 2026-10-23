@@ -1,8 +1,8 @@
 'use client'
 
 import { Quote } from 'lucide-react'
-import Reveal from './Reveal'
-import { useLanguage } from '../i18n/LanguageContext'
+import Reveal from '@/app/components/ui/Reveal'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface Testimonial {
   quote: string

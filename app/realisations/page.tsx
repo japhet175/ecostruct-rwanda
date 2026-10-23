@@ -3,31 +3,12 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import type { LucideIcon } from 'lucide-react'
-import { School, Landmark, Hotel, Building2, Building, Handshake, X } from 'lucide-react'
-import { useLanguage } from '../i18n/LanguageContext'
-
-interface Project {
-  title: string
-  status: string
-  description: string
-  bullets: string[]
-  tags: string[]
-}
-
-const PROJECT_IMAGES: (string | null)[] = [
-  '/images/projects/antoine-st-exupery.jpeg',
-  '/images/projects/ambassade-france-residence.jpeg',
-  '/images/projects/galaxy-hotel.jpeg',
-  '/images/projects/isango-phase-3.jpg',
-  '/images/projects/one-residence.jpg',
-]
-
-const PROJECT_ICONS: LucideIcon[] = [School, Landmark, Hotel, Building2, Building]
+import { Handshake, X } from 'lucide-react'
+import { projects } from '@/app/data/projects'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 export default function RealisationsPage() {
-  const { t } = useLanguage()
-  const projects = t('Realisations.projects') as unknown as Project[]
+  const { t, language } = useLanguage()
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [zoomed, setZoomed] = useState(false)
 
@@ -67,47 +48,44 @@ export default function RealisationsPage() {
         </div>
 
         <div className="space-y-8">
-          {projects.map((project, index) => {
-            const Icon = PROJECT_ICONS[index] ?? Building2
-            const image = PROJECT_IMAGES[index]
+          {projects.map((project) => {
+            const Icon = project.icon
+            const image = project.image
+            const title = project.title[language]
             return (
               <article
-                key={project.title}
+                key={project.id}
                 className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden border border-gray-200"
               >
                 <div className="md:flex">
-                  {image && (
-                    <button
+                  <button
                       type="button"
                       onClick={() => { setSelectedImage(image); setZoomed(false) }}
-                      aria-label={project.title}
+                      aria-label={title}
                       className="w-full md:w-1/2 relative h-72 md:h-auto bg-gray-50 flex-shrink-0 overflow-hidden cursor-zoom-in group"
                     >
                       <Image
                         src={image}
-                        alt={project.title}
+                        alt={title}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                         sizes="(max-width: 768px) 100vw, 50vw"
                       />
                     </button>
-                  )}
-                  <div className={`p-8 flex flex-col justify-center ${image ? 'md:w-1/2' : 'w-full'}`}>
+                  <div className="p-8 flex flex-col justify-center md:w-1/2">
                     <div className="flex flex-wrap items-center gap-3 mb-4">
                       <span className="inline-flex h-14 w-14 items-center justify-center rounded-md bg-green-50 text-green-700">
                         <Icon className="h-7 w-7" strokeWidth={1.5} aria-hidden="true" />
                       </span>
-                      <h2 className="text-2xl font-semibold text-green-900">{project.title}</h2>
+                      <h2 className="text-2xl font-semibold text-green-900">{title}</h2>
                       <span className="text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-700">
-                        {project.status}
+                        {t('Realisations.status')}
                       </span>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag) => (
-                        <span key={tag} className="text-xs bg-gray-100 text-gray-500 px-3 py-1 rounded-full font-medium">
-                          {tag}
-                        </span>
-                      ))}
+                      <span className="text-xs bg-gray-100 text-gray-500 px-3 py-1 rounded-full font-medium">
+                        {t(`Realisations.tags.${project.tag}`)}
+                      </span>
                     </div>
                   </div>
                 </div>

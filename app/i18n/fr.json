@@ -35,11 +35,26 @@
     "whyTitle": "Pourquoi choisir ECO-STRUCT ?",
     "whySubtitle": "Eco-Struct Rwanda Ltd associe une solide expertise en construction à un engagement clair en faveur d'un développement durable et local au Rwanda.",
     "whyItems": [
-      { "title": "Approche locale & durable", "desc": "Nous privilégions l'utilisation de matériaux et de ressources locaux dès que cela est techniquement possible. Cela réduit l'impact environnemental lié au transport tout en soutenant l'économie locale rwandaise." },
-      { "title": "Responsabilité environnementale", "desc": "La durabilité est au cœur de notre approche. Nous intégrons des matériaux écologiques, des solutions économes en énergie et des pratiques de construction responsables dans chaque projet." },
-      { "title": "Qualité & expertise professionnelle", "desc": "Fort d'une vaste expérience dans le secteur de la construction, Eco-Struct s'engage à livrer des projets de qualité, sûrs et durables — de la planification et de la coordination jusqu'à l'exécution et la remise finale." },
-      { "title": "Compétences & partenariats locaux", "desc": "Nous travaillons avec des professionnels rwandais, des ouvriers qualifiés, des artisans, des fournisseurs et des partenaires locaux de confiance, contribuant à la création d'emplois et au développement des compétences." },
-      { "title": "Solutions adaptées au Rwanda", "desc": "Notre objectif n'est pas simplement de construire, mais de développer des solutions pratiques, durables et économiques adaptées au climat, aux ressources et à l'environnement de la construction au Rwanda." }
+      {
+        "title": "Approche locale & durable",
+        "desc": "Nous privilégions l'utilisation de matériaux et de ressources locaux dès que cela est techniquement possible. Cela réduit l'impact environnemental lié au transport tout en soutenant l'économie locale rwandaise."
+      },
+      {
+        "title": "Responsabilité environnementale",
+        "desc": "La durabilité est au cœur de notre approche. Nous intégrons des matériaux écologiques, des solutions économes en énergie et des pratiques de construction responsables dans chaque projet."
+      },
+      {
+        "title": "Qualité & expertise professionnelle",
+        "desc": "Fort d'une vaste expérience dans le secteur de la construction, Eco-Struct s'engage à livrer des projets de qualité, sûrs et durables — de la planification et de la coordination jusqu'à l'exécution et la remise finale."
+      },
+      {
+        "title": "Compétences & partenariats locaux",
+        "desc": "Nous travaillons avec des professionnels rwandais, des ouvriers qualifiés, des artisans, des fournisseurs et des partenaires locaux de confiance, contribuant à la création d'emplois et au développement des compétences."
+      },
+      {
+        "title": "Solutions adaptées au Rwanda",
+        "desc": "Notre objectif n'est pas simplement de construire, mais de développer des solutions pratiques, durables et économiques adaptées au climat, aux ressources et à l'environnement de la construction au Rwanda."
+      }
     ],
     "whyCommitmentTitle": "Notre Engagement",
     "whyCommitment": "Construire localement. Construire de manière responsable. Construire pour l'avenir.",
@@ -49,9 +64,21 @@
     "badge": "Témoignages",
     "title": "Ce que disent nos clients",
     "items": [
-      { "quote": "ECO-STRUCT a livré notre projet dans les délais et avec un haut niveau de qualité. Leur équipe a été professionnelle, réactive et agréable à travailler du début à la fin.", "author": "Jean-Claude", "role": "Client, Kigali" },
-      { "quote": "De la planification à la remise des clés, la qualité du travail et le souci du détail ont dépassé nos attentes. Un partenaire de construction fiable.", "author": "Partenaire institutionnel", "role": "Kigali" },
-      { "quote": "Ils ont compris nos besoins, respecté le budget et livré exactement ce qui avait été promis. Nous recommandons vivement ECO-STRUCT.", "author": "Promoteur immobilier", "role": "Kigali" }
+      {
+        "quote": "ECO-STRUCT a livré notre projet dans les délais et avec un haut niveau de qualité. Leur équipe a été professionnelle, réactive et agréable à travailler du début à la fin.",
+        "author": "Jean-Claude",
+        "role": "Client, Kigali"
+      },
+      {
+        "quote": "De la planification à la remise des clés, la qualité du travail et le souci du détail ont dépassé nos attentes. Un partenaire de construction fiable.",
+        "author": "Partenaire institutionnel",
+        "role": "Kigali"
+      },
+      {
+        "quote": "Ils ont compris nos besoins, respecté le budget et livré exactement ce qui avait été promis. Nous recommandons vivement ECO-STRUCT.",
+        "author": "Promoteur immobilier",
+        "role": "Kigali"
+      }
     ]
   },
   "Services": {
@@ -142,62 +169,18 @@
     "subtitle": "Une sélection de projets de construction, rénovation et maintenance réalisés au Rwanda.",
     "partnerText": "ECO-STRUCT RWANDA LTD a participé à différents projets de construction, de rénovation et de maintenance au Rwanda.",
     "exploreGallery": "Découvrez nos projets dans la galerie",
-    "projects": [
-      {
-        "title": "École Française de Kigali",
-        "status": "Terminé",
-        "description": "Travaux de rénovation et de construction pour l'École Française de Kigali, livrés selon les plus hauts standards.",
-        "bullets": [
-          "Travaux de rénovation et de construction",
-          "Installations sanitaires",
-          "Réaménagement intérieur",
-          "Travaux de cuisine professionnelle",
-          "Mise à niveau des installations électriques",
-          "Rénovation des plafonds administratifs"
-        ],
-        "tags": ["Rénovation"]
-      },
-      {
-        "title": "Résidence de l'Ambassade de France – Kigali",
-        "status": "Terminé",
-        "description": "Travaux structurels et extérieurs pour la résidence de l'Ambassade de France à Kigali.",
-        "bullets": [
-          "Renforcement de mur de clôture",
-          "Travaux d'étanchéité de terrasse",
-          "Remplacement de canalisation d'évacuation",
-          "Travaux de pavage",
-          "Remise en état des extérieurs"
-        ],
-        "tags": ["Rénovation"]
-      },
-      {
-        "title": "Galaxy Hotel",
-        "status": "Terminé",
-        "description": "",
-        "bullets": [],
-        "tags": ["Travaux extérieurs"]
-      },
-      {
-        "title": "ISANGE Phase 3",
-        "status": "Terminé",
-        "description": "",
-        "bullets": [],
-        "tags": ["Consultance technique"]
-      },
-      {
-        "title": "One Residence",
-        "status": "Terminé",
-        "description": "",
-        "bullets": [],
-        "tags": ["Consultance technique"]
-      }
-    ],
     "projectsCount": "Projets Livrés",
     "yearsExperience": "Ans d'Expérience",
     "clientSatisfaction": "Satisfaction Client",
     "ctaText": "Vous souhaitez travailler avec nous sur votre prochain projet ?",
     "getInTouch": "Nous Contacter",
-    "backToHome": "Retour à l'Accueil"
+    "backToHome": "Retour à l'Accueil",
+    "status": "Terminé",
+    "tags": {
+      "renovation": "Rénovation",
+      "externalWork": "Travaux extérieurs",
+      "technicalConsultancy": "Consultance technique"
+    }
   },
   "Process": {
     "badge": "Notre Méthode",

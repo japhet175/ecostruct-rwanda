@@ -2,8 +2,8 @@
 
 import type { LucideIcon } from 'lucide-react'
 import { Compass, Building2, Hammer, Umbrella, Zap, Droplets, Shovel } from 'lucide-react'
-import Reveal from './Reveal'
-import { useLanguage } from '../i18n/LanguageContext'
+import Reveal from '@/app/components/ui/Reveal'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 const ICONS: LucideIcon[] = [Compass, Building2, Hammer, Umbrella, Zap, Droplets, Shovel]
 
