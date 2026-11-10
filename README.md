@@ -1,7 +1,7 @@
 # ECO-STRUCT RWANDA LTD — Site vitrine
 
 Site bilingue (EN/FR) de construction, rénovation et solutions techniques au Rwanda.
-En ligne : https://eco-sturct.com
+En ligne : https://www.eco-sturct.com
 
 ## Stack
 Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · lucide-react · Web3Forms · Vercel

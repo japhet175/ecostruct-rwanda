@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'https://eco-sturct.com/sitemap.xml',
+    sitemap: 'https://www.eco-sturct.com/sitemap.xml',
   }
 }
