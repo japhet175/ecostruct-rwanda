@@ -89,8 +89,8 @@ export default function Careers() {
 
             <p className="text-gray-500 text-sm">
               {t('Careers.orSend')}{' '}
-              <a href="mailto:careers@ecostruct-rwanda.com" className="text-green-700 font-medium hover:underline">
-                careers@ecostruct-rwanda.com
+              <a href="mailto:ndemeyegaius@gmail.com" className="text-green-700 font-medium hover:underline">
+                ndemeyegaius@gmail.com
               </a>
             </p>
           </div>

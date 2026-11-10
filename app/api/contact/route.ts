@@ -55,7 +55,8 @@ export async function POST(request: NextRequest) {
   const port = Number(process.env.SMTP_PORT ?? '465')
   const user = process.env.SMTP_USER
   const pass = process.env.SMTP_PASS
-  const to = process.env.CONTACT_TO_EMAIL ?? user
+  // Destinataire : l'email du directeur affiché sur le site (section Contact).
+  const to = process.env.CONTACT_TO_EMAIL ?? 'ndemeyegaius@gmail.com'
 
   if (!host || !user || !pass) {
     console.error('[contact] SMTP is not configured. Set SMTP_HOST, SMTP_USER, SMTP_PASS.')

@@ -78,7 +78,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 text-amber-400 shrink-0" strokeWidth={1.5} aria-hidden="true" />
-                info@ecostruct-rwanda.com
+                ndemeyegaius@gmail.com
               </li>
               <li className="flex items-center gap-2.5">
                 <MapPin className="h-4 w-4 text-amber-400 shrink-0" strokeWidth={1.5} aria-hidden="true" />
