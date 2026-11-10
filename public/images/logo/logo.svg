@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 96" role="img" aria-label="ECO-STRUCT RWANDA LTD">
+  <rect x="0" y="16" width="64" height="64" rx="14" fill="#14532d"/>
+  <rect x="12" y="56" width="10" height="12" rx="2" fill="#ffffff"/>
+  <rect x="27" y="44" width="10" height="24" rx="2" fill="#ffffff"/>
+  <rect x="42" y="32" width="10" height="36" rx="2" fill="#fbbf24"/>
+
+  <text x="82" y="52" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800" letter-spacing="1" fill="#14532d">ECO-STRUCT</text>
+  <text x="82" y="74" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="4" fill="#b45309">RWANDA LTD</text>
+</svg>
