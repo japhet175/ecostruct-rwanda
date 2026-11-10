@@ -4,7 +4,7 @@ Site bilingue (EN/FR) de construction, rénovation et solutions techniques au Rw
 En ligne : https://eco-sturct.com
 
 ## Stack
-Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · lucide-react · nodemailer · Vercel
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · lucide-react · Web3Forms · Vercel
 
 ## Structure
 ```
@@ -17,7 +17,6 @@ app/
 │   ├── media.ts     Logos et photos de la galerie
 │   └── projects.ts  Réalisations (titre, photo, icône, type de travaux)
 ├── i18n/            Traductions en.json / fr.json + LanguageContext
-├── api/contact/     Envoi des emails du formulaire (SMTP)
 ├── realisations/  careers/  contact/   Pages
 └── sitemap.ts  robots.ts  layout.tsx  page.tsx
 public/
@@ -37,8 +36,9 @@ npm run build
 ```
 
 ## Formulaire de contact
-Variables à définir dans Vercel → Settings → Environment Variables (voir `.env.example`) :
-`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `CONTACT_TO_EMAIL`.
+Le formulaire est envoyé via [Web3Forms](https://web3forms.com), qui transmet les messages dans la boîte configurée.
+Variable à définir dans Vercel → Settings → Environment Variables (voir `.env.example`) :
+`NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`.
 
 ## Déploiement
 Chaque push sur `main` déclenche un déploiement Vercel (domaine `eco-sturct.com`).

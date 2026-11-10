@@ -108,17 +108,34 @@ export default function ContactSection() {
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
+    // Honeypot anti-spam : un bot a rempli ce champ caché → on fait semblant de réussir.
+    if (formData.website) {
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '', phone: '', service: '', message: '', website: '' })
+      setIsSubmitting(false)
+      return
+    }
+
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+          subject: `Nouveau message de ${formData.name} — eco-sturct.com`,
+          from_name: formData.name,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+        }),
       })
 
-      const data = await res.json().catch(() => ({} as { error?: string }))
+      const data = await res.json().catch(() => ({} as { success?: boolean; message?: string }))
 
-      if (!res.ok) {
-        throw new Error(data.error || 'Request failed')
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || 'Request failed')
       }
 
       setSubmitStatus('success')
