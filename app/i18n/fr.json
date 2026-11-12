@@ -147,22 +147,6 @@
     "close": "Fermer",
     "empty": "De nouvelles photos de projets arrivent bientôt."
   },
-  "VideoTestimonial": {
-    "badge": "Impact Communautaire",
-    "title": "Au-delà de la Construction",
-    "subtitle": "ECO-STRUCT RWANDA LTD s'engage à autonomiser les communautés par l'éducation.",
-    "unavailable": "Vidéo indisponible",
-    "play": "Lire",
-    "pause": "Pause",
-    "mute": "Muette",
-    "unmute": "Son",
-    "partnerBadge": "Construire aujourd'hui → Autonomiser demain",
-    "partnerName": "ECO-STRUCT RWANDA LTD",
-    "message1": "ne construit pas seulement des structures — nous construisons des avenirs. Grâce à ce partenariat, nous aidons à fournir",
-    "message2": "du matériel pédagogique de qualité",
-    "message3": "aux enfants, car",
-    "message4": "les communautés fortes commencent par l'éducation"
-  },
   "Realisations": {
     "badge": "Notre Expérience",
     "title": "Projets & Réalisations",

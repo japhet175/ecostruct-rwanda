@@ -5,7 +5,6 @@ import Services from './components/sections/Services'
 import Process from './components/sections/Process'
 import Commitment from './components/sections/Commitment'
 import Vision from './components/sections/Vision'
-import VideoTestimonial from './components/sections/VideoTestimonial'
 import Gallery from './components/sections/Gallery'
 import Testimonials from './components/sections/Testimonials'
 import Team from './components/sections/Team'
@@ -22,7 +21,6 @@ export default function Home() {
       <Process />
       <Commitment />
       <Vision />
-      <VideoTestimonial />
       <Gallery />
       <Testimonials />
       <Team />

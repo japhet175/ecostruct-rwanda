@@ -147,22 +147,6 @@
     "close": "Close",
     "empty": "New project photos coming soon."
   },
-  "VideoTestimonial": {
-    "badge": "Community Impact",
-    "title": "Building Beyond Construction",
-    "subtitle": "ECO-STRUCT RWANDA LTD is committed to empowering communities through education.",
-    "unavailable": "Video unavailable",
-    "play": "Play",
-    "pause": "Pause",
-    "mute": "Mute",
-    "unmute": "Unmute",
-    "partnerBadge": "Building Today → Empowering Tomorrow",
-    "partnerName": "ECO-STRUCT RWANDA LTD",
-    "message1": "doesn't just build structures — we build futures. Through this partnership, we help provide",
-    "message2": "quality learning materials",
-    "message3": "to children, because",
-    "message4": "strong communities start with education"
-  },
   "Realisations": {
     "badge": "Our Experience",
     "title": "Projects & Realisations",
